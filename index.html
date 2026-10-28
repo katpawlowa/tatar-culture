@@ -584,7 +584,7 @@
         <div class="avatar-podium">
           <h4 id="avatar-label" style="color:var(--primary); font-size:1.25rem; margin-bottom:0.75rem;">Татарская женщина</h4>
           <div class="avatar-frame">
-            <svg class="avatar-svg" viewBox="0 0 200 330" id="avatar-canvas"></svg>
+            <svg class="avatar-svg" viewBox="0 0 240 380" id="avatar-canvas"></svg>
           </div>
           <div id="costume-verdict" style="margin-top:1rem; text-align:center; font-weight:bold; font-size:0.95rem; color:var(--primary);">
             Примерьте элементы: выберите по одной вещи в каждом блоке!
@@ -880,8 +880,9 @@
       renderQuest();
     }
 
+    
     // ==========================================
-    // 2. ИГРОВОЙ ГАРДЕРОБ
+    // 2. ИГРОВОЙ ГАРДЕРОБ: ДЕТАЛИЗИРОВАННЫЕ ЛИЦА И ТОЧНАЯ ПОСАДКА ОДЕЖДЫ
     // ==========================================
     const rawCostumeData = {
       woman: {
@@ -892,24 +893,62 @@
             name: "Коралловый чепец «Кашмау» со шлейфом",
             correct: false,
             cultureName: "башкирский чепец «Кашмау»",
-            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="18" rx="14" ry="10" fill="#b91c1c"/><rect x="20" y="24" width="10" height="22" fill="#991b1b"/><circle cx="23" cy="28" r="1.5" fill="#fbbf24"/><circle cx="27" cy="34" r="1.5" fill="#fbbf24"/></svg>`,
-            draw: `<g><ellipse cx="100" cy="50" rx="18" ry="12" fill="#b91c1c"/><rect x="94" y="58" width="12" height="35" fill="#991b1b"/><circle cx="97" cy="65" r="2" fill="#fbbf24"/><circle cx="103" cy="74" r="2" fill="#fbbf24"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><ellipse cx="30" cy="22" rx="18" ry="12" fill="#b91c1c"/><rect x="23" y="28" width="14" height="28" rx="3" fill="#991b1b"/><circle cx="27" cy="34" r="2" fill="#fbbf24"/><circle cx="33" cy="34" r="2" fill="#fbbf24"/><circle cx="30" cy="42" r="2" fill="#fbbf24"/><circle cx="27" cy="50" r="1.5" fill="#f8fafc"/><circle cx="33" cy="50" r="1.5" fill="#f8fafc"/></svg>`,
+            draw: `<g id="layer-head-kashmau">
+              <!-- Шапочка кашмау с кораллами -->
+              <path d="M96 66 C96 42, 144 42, 144 66 C144 72, 96 72, 96 66 Z" fill="#b91c1c" stroke="#7f1d1d" stroke-width="1.5"/>
+              <ellipse cx="120" cy="52" rx="23" ry="11" fill="#dc2626"/>
+              <!-- Коралловая сетка и монеты на очелье -->
+              <circle cx="106" cy="62" r="2" fill="#fbbf24"/><circle cx="113" cy="62" r="2" fill="#fbbf24"/><circle cx="120" cy="62" r="2" fill="#fbbf24"/><circle cx="127" cy="62" r="2" fill="#fbbf24"/><circle cx="134" cy="62" r="2" fill="#fbbf24"/>
+              <!-- Ниспадающий наспинник со шлейфом монет -->
+              <path d="M111 68 L108 175 L132 175 L129 68 Z" fill="#991b1b" stroke="#7f1d1d" stroke-width="1"/>
+              <circle cx="116" cy="85" r="2.5" fill="#fbbf24"/><circle cx="124" cy="85" r="2.5" fill="#fbbf24"/>
+              <circle cx="115" cy="110" r="2.5" fill="#f8fafc"/><circle cx="125" cy="110" r="2.5" fill="#f8fafc"/>
+              <circle cx="114" cy="138" r="2.5" fill="#fbbf24"/><circle cx="126" cy="138" r="2.5" fill="#fbbf24"/>
+              <circle cx="116" cy="165" r="2" fill="#f8fafc"/><circle cx="124" cy="165" r="2" fill="#f8fafc"/>
+            </g>`
           },
           {
             id: 'kalfak',
             name: "Бархатный калфак с золотым шитьем",
             correct: true,
             cultureName: "татарский бархатный калфак",
-            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="20" rx="16" ry="10" fill="#047857"/><path d="M9 20 L25 38 L41 20 Z" fill="#065f46"/><circle cx="25" cy="38" r="3" fill="#fbbf24"/><path d="M18 20 Q25 28 32 20" stroke="#fbbf24" stroke-width="2" fill="none"/></svg>`,
-            draw: `<g transform="rotate(8, 110, 36)"><ellipse cx="108" cy="36" rx="15" ry="9" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/><path d="M93 36 L118 56 L123 36 Z" fill="#065f46"/><circle cx="118" cy="56" r="3" fill="#fbbf24"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><ellipse cx="30" cy="24" rx="20" ry="11" fill="#047857"/><path d="M12 24 L32 46 L48 24 Z" fill="#064e3b"/><circle cx="32" cy="46" r="3.5" fill="#fbbf24"/><path d="M20 25 Q30 36 40 25" stroke="#fbbf24" stroke-width="2.5" fill="none"/></svg>`,
+            draw: `<g id="layer-head-kalfak" transform="rotate(7, 132, 48)">
+              <!-- Изящный изумрудный бархатный калфак набок -->
+              <path d="M112 50 C110 32, 148 30, 150 50 Z" fill="#064e3b" stroke="#047857" stroke-width="1.5"/>
+              <ellipse cx="131" cy="50" rx="19" ry="8" fill="#047857"/>
+              <!-- Золотое шитье гладью в виде татарского тюльпана -->
+              <path d="M124 49 Q131 40 138 49 Q131 44 124 49 Z" fill="#fbbf24"/>
+              <circle cx="131" cy="41" r="2" fill="#fef08a"/>
+              <!-- Скошенный свисающий хвостик калфака с золотой кисточкой -->
+              <path d="M145 48 C158 56, 156 78, 146 84 C142 80, 142 66, 138 52 Z" fill="#065f46"/>
+              <circle cx="146" cy="85" r="3.5" fill="#fbbf24"/>
+              <line x1="146" y1="88" x2="146" y2="98" stroke="#fbbf24" stroke-width="2"/>
+              <line x1="144" y1="88" x2="142" y2="97" stroke="#fbbf24" stroke-width="1.5"/>
+              <line x1="148" y1="88" x2="150" y2="97" stroke="#fbbf24" stroke-width="1.5"/>
+            </g>`
           },
           {
             id: 'kokoshnik',
             name: "Высокий жемчужный кокошник",
             correct: false,
             cultureName: "русский кокошник",
-            icon: `<svg viewBox="0 0 50 50"><path d="M10 40 Q25 5 40 40 Z" fill="#dc2626"/><circle cx="25" cy="18" r="3" fill="#ffffff"/><circle cx="18" cy="26" r="2.5" fill="#ffffff"/><circle cx="32" cy="26" r="2.5" fill="#ffffff"/></svg>`,
-            draw: `<g><path d="M78 52 Q100 12 122 52 Z" fill="#dc2626" stroke="#fbbf24" stroke-width="1.5"/><circle cx="100" cy="28" r="3" fill="#ffffff"/><circle cx="92" cy="38" r="2.5" fill="#ffffff"/><circle cx="108" cy="38" r="2.5" fill="#ffffff"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M10 46 Q30 8 50 46 Z" fill="#dc2626" stroke="#fbbf24" stroke-width="2"/><circle cx="30" cy="22" r="3.5" fill="#ffffff"/><circle cx="21" cy="32" r="3" fill="#ffffff"/><circle cx="39" cy="32" r="3" fill="#ffffff"/><circle cx="16" cy="42" r="2.5" fill="#ffffff"/><circle cx="44" cy="42" r="2.5" fill="#ffffff"/></svg>`,
+            draw: `<g id="layer-head-kokoshnik">
+              <!-- Высокий праздничный кокошник полумесяцем -->
+              <path d="M90 68 C84 22, 156 22, 150 68 C135 60, 105 60, 90 68 Z" fill="#dc2626" stroke="#fbbf24" stroke-width="2"/>
+              <!-- Жемчужная сетка подниз на лбу -->
+              <path d="M100 66 Q120 74 140 66" stroke="#ffffff" stroke-width="2.5" stroke-dasharray="3,2" fill="none"/>
+              <!-- Жемчужное шитье на куполе -->
+              <circle cx="120" cy="34" r="3.5" fill="#ffffff" stroke="#e2e8f0"/>
+              <circle cx="108" cy="46" r="3" fill="#ffffff"/>
+              <circle cx="132" cy="46" r="3" fill="#ffffff"/>
+              <circle cx="98" cy="58" r="2.5" fill="#ffffff"/>
+              <circle cx="142" cy="58" r="2.5" fill="#ffffff"/>
+              <!-- Золотая тесьма по краю -->
+              <path d="M92 65 C88 26, 152 26, 148 65" stroke="#fbbf24" stroke-width="2" fill="none"/>
+            </g>`
           }
         ],
         vest: [
@@ -918,24 +957,62 @@
             name: "Крестьянский сарафан",
             correct: false,
             cultureName: "русский сарафан",
-            icon: `<svg viewBox="0 0 50 50"><path d="M18 10 L32 10 L42 45 L8 45 Z" fill="#b91c1c"/><line x1="25" y1="10" x2="25" y2="45" stroke="#fff" stroke-width="2"/></svg>`,
-            draw: `<g><polygon points="80,95 120,95 138,245 62,245" fill="#b91c1c"/><line x1="100" y1="95" x2="100" y2="245" stroke="#ffffff" stroke-width="3"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M22 12 L38 12 L50 54 L10 54 Z" fill="#b91c1c"/><line x1="30" y1="12" x2="30" y2="54" stroke="#fff" stroke-width="3"/></svg>`,
+            draw: `<g id="layer-body-sarafan">
+              <!-- Лямки сарафана четко на плечах -->
+              <rect x="94" y="98" width="10" height="30" fill="#b91c1c" stroke="#991b1b" stroke-width="1"/>
+              <rect x="136" y="98" width="10" height="30" fill="#b91c1c" stroke="#991b1b" stroke-width="1"/>
+              <!-- Полотнище косоклинного сарафана по фигуре манекена -->
+              <polygon points="90,126 150,126 168,290 72,290" fill="#dc2626" stroke="#991b1b" stroke-width="2"/>
+              <!-- Золотой позумент и пуговицы по центру -->
+              <rect x="116" y="126" width="8" height="164" fill="#fbbf24"/>
+              <circle cx="120" cy="140" r="2" fill="#451a03"/><circle cx="120" cy="160" r="2" fill="#451a03"/>
+              <circle cx="120" cy="180" r="2" fill="#451a03"/><circle cx="120" cy="200" r="2" fill="#451a03"/>
+              <circle cx="120" cy="220" r="2" fill="#451a03"/><circle cx="120" cy="240" r="2" fill="#451a03"/>
+              <circle cx="120" cy="260" r="2" fill="#451a03"/>
+              <!-- Кайма по низу подола -->
+              <rect x="72" y="278" width="96" height="12" fill="#991b1b"/>
+              <line x1="72" y1="278" x2="168" y2="278" stroke="#fbbf24" stroke-width="2"/>
+            </g>`
           },
           {
             id: 'kamzol_w',
             name: "Бархатный приталенный камзол",
             correct: true,
             cultureName: "татарский камзол",
-            icon: `<svg viewBox="0 0 50 50"><path d="M12 10 L38 10 L44 44 L6 44 Z" fill="#064e3b"/><path d="M25 10 L25 44" stroke="#fbbf24" stroke-width="2"/><path d="M18 18 Q25 24 32 18" stroke="#fbbf24" stroke-width="1.5" fill="none"/></svg>`,
-            draw: `<g><polygon points="70,90 130,90 140,215 60,215" fill="#065f46" stroke="#fbbf24" stroke-width="2"/><polygon points="85,90 100,140 115,90" fill="#fed7aa"/><line x1="100" y1="140" x2="100" y2="215" stroke="#fbbf24" stroke-width="3"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M14 10 L46 10 L52 54 L8 54 Z" fill="#064e3b"/><path d="M30 10 L30 54" stroke="#fbbf24" stroke-width="2.5"/><path d="M22 20 Q30 28 38 20" stroke="#fbbf24" stroke-width="2" fill="none"/></svg>`,
+            draw: `<g id="layer-body-kamzol">
+              <!-- Бархатный изумрудный камзол без рукавов с глубоким вырезом -->
+              <path d="M82 98 L104 98 L114 150 L126 150 L136 98 L158 98 L164 250 L146 252 L120 185 L94 252 L76 250 Z" fill="#064e3b" stroke="#047857" stroke-width="1.5"/>
+              <!-- Изящная золотая кайма по вороту и бортам -->
+              <path d="M104 98 L114 150 L120 185 L126 150 L136 98" stroke="#fbbf24" stroke-width="3" fill="none"/>
+              <line x1="120" y1="185" x2="120" y2="252" stroke="#fbbf24" stroke-width="3"/>
+              <!-- Золотая строчка и растительные завитки на полах -->
+              <path d="M86 242 Q96 230 106 242" stroke="#fbbf24" stroke-width="2" fill="none"/>
+              <path d="M134 242 Q144 230 154 242" stroke="#fbbf24" stroke-width="2" fill="none"/>
+              <!-- Золотые витые пуговицы на талии -->
+              <circle cx="120" cy="195" r="3" fill="#fef08a" stroke="#d97706" stroke-width="1.5"/>
+              <circle cx="120" cy="215" r="3" fill="#fef08a" stroke="#d97706" stroke-width="1.5"/>
+            </g>`
           },
           {
             id: 'shupar',
             name: "Холщовый кафтан «Шупар»",
             correct: false,
             cultureName: "чувашский холщовый «Шупар»",
-            icon: `<svg viewBox="0 0 50 50"><path d="M14 10 L36 10 L40 45 L10 45 Z" fill="#f8fafc" stroke="#cbd5e1"/><line x1="25" y1="10" x2="25" y2="45" stroke="#b91c1c" stroke-width="2"/></svg>`,
-            draw: `<g><polygon points="72,90 128,90 135,225 65,225" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/><line x1="100" y1="90" x2="100" y2="225" stroke="#b91c1c" stroke-width="3"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M16 12 L44 12 L48 54 L12 54 Z" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/><line x1="30" y1="12" x2="30" y2="54" stroke="#b91c1c" stroke-width="2.5"/></svg>`,
+            draw: `<g id="layer-body-shupar">
+              <!-- Белый холщовый кафтан распашного покроя -->
+              <polygon points="80,98 160,98 166,260 74,260" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+              <!-- Традиционная красно-черная чувашская вышивка по краям -->
+              <line x1="120" y1="98" x2="120" y2="260" stroke="#b91c1c" stroke-width="4"/>
+              <line x1="80" y1="98" x2="80" y2="260" stroke="#b91c1c" stroke-width="3"/>
+              <line x1="160" y1="98" x2="160" y2="260" stroke="#b91c1c" stroke-width="3"/>
+              <!-- Геометрические ромбические узоры на груди -->
+              <polygon points="106,130 114,138 106,146 98,138" fill="#b91c1c"/>
+              <polygon points="134,130 142,138 134,146 126,138" fill="#b91c1c"/>
+              <line x1="74" y1="254" x2="166" y2="254" stroke="#1e293b" stroke-width="3"/>
+            </g>`
           }
         ],
         acc: [
@@ -944,24 +1021,59 @@
             name: "Многорядные янтарные бусы",
             correct: false,
             cultureName: "славянские бусы",
-            icon: `<svg viewBox="0 0 50 50"><path d="M12 15 Q25 32 38 15" stroke="#d97706" stroke-width="3" fill="none"/><path d="M15 20 Q25 40 35 20" stroke="#d97706" stroke-width="2.5" fill="none"/></svg>`,
-            draw: `<g><path d="M85 92 Q100 120 115 92" stroke="#d97706" stroke-width="3" fill="none"/><path d="M88 96 Q100 130 112 96" stroke="#d97706" stroke-width="2.5" fill="none"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M14 18 Q30 38 46 18" stroke="#d97706" stroke-width="3.5" fill="none"/><path d="M18 25 Q30 46 42 25" stroke="#ea580c" stroke-width="3" fill="none"/></svg>`,
+            draw: `<g id="layer-acc-beads">
+              <!-- Три яруса янтарных бус на шее и груди -->
+              <path d="M106 102 Q120 126 134 102" stroke="#d97706" stroke-width="4.5" stroke-dasharray="6,2" fill="none"/>
+              <path d="M102 104 Q120 138 138 104" stroke="#ea580c" stroke-width="4" stroke-dasharray="6,2" fill="none"/>
+              <path d="M98 106 Q120 152 142 106" stroke="#b45309" stroke-width="3.5" stroke-dasharray="5,2" fill="none"/>
+              <!-- Крупный центральный янтарный камень -->
+              <circle cx="120" cy="126" r="4.5" fill="#f59e0b" stroke="#78350f" stroke-width="1"/>
+            </g>`
           },
           {
             id: 'rosette',
             name: "Бисерная розетка «Солнце»",
             correct: false,
             cultureName: "северное украшение",
-            icon: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="14" fill="#0284c7"/><circle cx="25" cy="25" r="7" fill="#ffffff"/><circle cx="25" cy="25" r="3" fill="#dc2626"/></svg>`,
-            draw: `<g><circle cx="100" cy="120" r="14" fill="#0284c7"/><circle cx="100" cy="120" r="8" fill="#ffffff"/><circle cx="100" cy="120" r="3" fill="#dc2626"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="18" fill="#0284c7"/><circle cx="30" cy="30" r="9" fill="#ffffff"/><circle cx="30" cy="30" r="4" fill="#dc2626"/></svg>`,
+            draw: `<g id="layer-acc-rosette">
+              <!-- Шнурок подвески -->
+              <line x1="120" y1="98" x2="120" y2="135" stroke="#475569" stroke-width="2"/>
+              <!-- Крупная бисерная розетка солнца народов севера -->
+              <circle cx="120" cy="148" r="18" fill="#0284c7" stroke="#0369a1" stroke-width="1.5"/>
+              <circle cx="120" cy="148" r="12" fill="#ffffff"/>
+              <circle cx="120" cy="148" r="6" fill="#dc2626"/>
+              <circle cx="120" cy="148" r="2.5" fill="#fbbf24"/>
+              <!-- Лучи из оленьего меха и бисера -->
+              <line x1="120" y1="128" x2="120" y2="124" stroke="#ffffff" stroke-width="2"/>
+              <line x1="120" y1="168" x2="120" y2="172" stroke="#ffffff" stroke-width="2"/>
+              <line x1="100" y1="148" x2="96" y2="148" stroke="#ffffff" stroke-width="2"/>
+              <line x1="140" y1="148" x2="144" y2="148" stroke="#ffffff" stroke-width="2"/>
+            </g>`
           },
           {
             id: 'izu',
             name: "Нагрудник «Изү» с монетами",
             correct: true,
             cultureName: "татарский нагрудник «Изү»",
-            icon: `<svg viewBox="0 0 50 50"><polygon points="15,12 35,12 25,42" fill="#047857"/><circle cx="25" cy="20" r="2.5" fill="#fbbf24"/><circle cx="21" cy="26" r="2" fill="#fbbf24"/><circle cx="29" cy="26" r="2" fill="#fbbf24"/><circle cx="25" cy="32" r="2" fill="#fbbf24"/></svg>`,
-            draw: `<g><polygon points="90,92 110,92 100,145" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/><circle cx="100" cy="104" r="2.5" fill="#fbbf24"/><circle cx="96" cy="114" r="2" fill="#fbbf24"/><circle cx="104" cy="114" r="2" fill="#fbbf24"/><circle cx="100" cy="126" r="2.5" fill="#fbbf24"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><polygon points="18,14 42,14 30,50" fill="#047857"/><circle cx="30" cy="24" r="3" fill="#fbbf24"/><circle cx="25" cy="32" r="2.5" fill="#fbbf24"/><circle cx="35" cy="32" r="2.5" fill="#fbbf24"/><circle cx="30" cy="40" r="2.5" fill="#fbbf24"/></svg>`,
+            draw: `<g id="layer-acc-izu">
+              <!-- Тканевая плакетка изү четко по нагрудному вырезу -->
+              <polygon points="106,102 134,102 120,165" fill="#047857" stroke="#fbbf24" stroke-width="2"/>
+              <polygon points="110,105 130,105 120,158" fill="#065f46"/>
+              <!-- Ряды нашитых серебряных и золотых монет (тәңкә) -->
+              <circle cx="120" cy="114" r="3.5" fill="#fef08a" stroke="#ca8a04" stroke-width="1"/>
+              <circle cx="114" cy="126" r="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+              <circle cx="126" cy="126" r="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+              <circle cx="116" cy="138" r="2.5" fill="#fef08a" stroke="#ca8a04" stroke-width="1"/>
+              <circle cx="124" cy="138" r="2.5" fill="#fef08a" stroke="#ca8a04" stroke-width="1"/>
+              <circle cx="120" cy="148" r="3" fill="#f8fafc" stroke="#94a3b8" stroke-width="1"/>
+              <!-- Коралловые бусинки-капельки по канту -->
+              <circle cx="106" cy="103" r="1.5" fill="#ef4444"/>
+              <circle cx="134" cy="103" r="1.5" fill="#ef4444"/>
+              <circle cx="120" cy="165" r="2" fill="#ef4444"/>
+            </g>`
           }
         ],
         shoes: [
@@ -970,24 +1082,66 @@
             name: "Узорные кожаные сапожки «Читек»",
             correct: true,
             cultureName: "татарские ичиги «Читек»",
-            icon: `<svg viewBox="0 0 50 50"><path d="M12 10 L24 10 L24 38 L36 40 L34 46 L8 46 L10 36 Z" fill="#047857"/><path d="M14 20 Q20 28 14 36" stroke="#fbbf24" stroke-width="2" fill="none"/><path d="M26 10 L38 10 L38 38 L48 40 L46 46 L22 46 L24 36 Z" fill="#b91c1c"/></svg>`,
-            draw: `<g><path d="M66 250 L84 250 L84 300 L95 304 L92 312 L62 312 L64 290 Z" fill="#065f46" stroke="#fbbf24" stroke-width="1.5"/><path d="M116 250 L134 250 L136 290 L138 312 L108 312 L105 304 L116 300 Z" fill="#b91c1c" stroke="#fbbf24" stroke-width="1.5"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M14 12 L28 12 L28 44 L42 46 L40 54 L10 54 L12 42 Z" fill="#047857"/><path d="M16 24 Q24 34 16 44" stroke="#fbbf24" stroke-width="2.5" fill="none"/><path d="M32 12 L46 12 L46 44 L58 46 L56 54 L28 54 L30 42 Z" fill="#b91c1c"/></svg>`,
+            draw: `<g id="layer-shoes-chitek">
+              <!-- Левый сапожок читек (изумрудно-зеленый с узором) -->
+              <path d="M96 295 L112 295 L112 344 L118 348 L114 360 L86 360 L88 340 L96 338 Z" fill="#047857" stroke="#064e3b" stroke-width="1.5"/>
+              <!-- Вставка кожаной мозаики рубинового цвета с золотым кантом -->
+              <path d="M94 310 Q106 322 96 336" stroke="#fbbf24" stroke-width="2.5" fill="none"/>
+              <path d="M88 346 Q102 342 114 350" stroke="#fbbf24" stroke-width="2" fill="none"/>
+              <circle cx="100" cy="324" r="2" fill="#dc2626"/>
+
+              <!-- Правый сапожок читек (бордово-красный с зеленым узором) -->
+              <path d="M128 295 L144 295 L144 338 L152 340 L154 360 L126 360 L122 348 L128 344 Z" fill="#b91c1c" stroke="#7f1d1d" stroke-width="1.5"/>
+              <path d="M144 310 Q132 322 142 336" stroke="#fbbf24" stroke-width="2.5" fill="none"/>
+              <path d="M152 346 Q138 342 126 350" stroke="#fbbf24" stroke-width="2" fill="none"/>
+              <circle cx="140" cy="324" r="2" fill="#047857"/>
+            </g>`
           },
           {
             id: 'lapti_w',
             name: "Лыковые лапти с онучами",
             correct: false,
             cultureName: "русские лапти",
-            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="35" rx="18" ry="8" fill="#d97706"/><line x1="12" y1="35" x2="38" y2="35" stroke="#78350f" stroke-width="1.5"/></svg>`,
-            draw: `<g><ellipse cx="76" cy="308" rx="15" ry="6" fill="#ca8a04" stroke="#78350f"/><ellipse cx="124" cy="308" rx="15" ry="6" fill="#ca8a04" stroke="#78350f"/><line x1="72" y1="280" x2="76" y2="308" stroke="#cbd5e1" stroke-width="3"/><line x1="120" y1="280" x2="124" y2="308" stroke="#cbd5e1" stroke-width="3"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><ellipse cx="30" cy="42" rx="22" ry="10" fill="#d97706"/><line x1="14" y1="42" x2="46" y2="42" stroke="#78350f" stroke-width="2"/></svg>`,
+            draw: `<g id="layer-shoes-lapti">
+              <!-- Белые холщовые онучи с крестообразным переплетом веревок (оборов) -->
+              <rect x="94" y="295" width="20" height="50" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+              <line x1="94" y1="300" x2="114" y2="315" stroke="#78350f" stroke-width="2"/>
+              <line x1="114" y1="300" x2="94" y2="315" stroke="#78350f" stroke-width="2"/>
+              <line x1="94" y1="320" x2="114" y2="335" stroke="#78350f" stroke-width="2"/>
+              <line x1="114" y1="320" x2="94" y2="335" stroke="#78350f" stroke-width="2"/>
+
+              <rect x="126" y="295" width="20" height="50" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+              <line x1="126" y1="300" x2="146" y2="315" stroke="#78350f" stroke-width="2"/>
+              <line x1="146" y1="300" x2="126" y2="315" stroke="#78350f" stroke-width="2"/>
+              <line x1="126" y1="320" x2="146" y2="335" stroke="#78350f" stroke-width="2"/>
+              <line x1="146" y1="320" x2="126" y2="335" stroke="#78350f" stroke-width="2"/>
+
+              <!-- Плетеные лапти на стопах -->
+              <ellipse cx="102" cy="354" rx="16" ry="8" fill="#ca8a04" stroke="#78350f" stroke-width="1.5"/>
+              <line x1="90" y1="354" x2="114" y2="354" stroke="#78350f" stroke-width="1.5"/>
+              <line x1="102" y1="348" x2="102" y2="360" stroke="#78350f" stroke-width="1.5"/>
+
+              <ellipse cx="138" cy="354" rx="16" ry="8" fill="#ca8a04" stroke="#78350f" stroke-width="1.5"/>
+              <line x1="126" y1="354" x2="150" y2="354" stroke="#78350f" stroke-width="1.5"/>
+              <line x1="138" y1="348" x2="138" y2="360" stroke="#78350f" stroke-width="1.5"/>
+            </g>`
           },
           {
             id: 'chuvyaki_w',
             name: "Мягкие бескаблучные чувяки",
             correct: false,
             cultureName: "кавказские чувяки",
-            icon: `<svg viewBox="0 0 50 50"><path d="M10 32 Q25 24 40 32 L38 42 L12 42 Z" fill="#475569"/></svg>`,
-            draw: `<g><path d="M62 300 Q76 292 90 300 L88 312 L60 312 Z" fill="#475569"/><path d="M110 300 Q124 292 138 300 L136 312 L108 312 Z" fill="#475569"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M12 36 Q30 26 48 36 L46 50 L14 50 Z" fill="#475569"/></svg>`,
+            draw: `<g id="layer-shoes-chuvyaki">
+              <!-- Ножки в чулках -->
+              <rect x="96" y="295" width="16" height="50" fill="#fed7aa"/>
+              <rect x="128" y="295" width="16" height="50" fill="#fed7aa"/>
+              <!-- Кожаные темные чувяки без каблука с мягким носком -->
+              <path d="M86 348 Q104 338 116 348 L114 360 L84 360 Z" fill="#334155" stroke="#1e293b" stroke-width="1.5"/>
+              <path d="M124 348 Q136 338 154 348 L156 360 L126 360 Z" fill="#334155" stroke="#1e293b" stroke-width="1.5"/>
+            </g>`
           }
         ]
       },
@@ -999,24 +1153,49 @@
             name: "Высокая папаха из овчины",
             correct: false,
             cultureName: "кавказская папаха",
-            icon: `<svg viewBox="0 0 50 50"><path d="M12 36 L14 14 Q25 8 36 14 L38 36 Z" fill="#334155"/><circle cx="25" cy="24" r="10" fill="#475569"/></svg>`,
-            draw: `<g><path d="M78 48 L82 14 Q100 6 118 14 L122 48 Z" fill="#334155" stroke="#1e293b" stroke-width="2"/><circle cx="100" cy="28" r="12" fill="#475569"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M14 44 L16 16 Q30 8 44 16 L46 44 Z" fill="#334155"/><circle cx="30" cy="28" r="13" fill="#475569"/></svg>`,
+            draw: `<g id="layer-head-papaha">
+              <!-- Высокая лохматая папаха прямо на голове джигита -->
+              <path d="M92 65 L96 16 Q120 6 144 16 L148 65 Z" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+              <!-- Рельеф овечьей шерсти -->
+              <circle cx="120" cy="30" r="16" fill="#475569"/>
+              <circle cx="106" cy="40" r="12" fill="#334155"/>
+              <circle cx="134" cy="40" r="12" fill="#334155"/>
+              <circle cx="120" cy="52" r="14" fill="#475569"/>
+            </g>`
           },
           {
             id: 'kolpak_kz',
             name: "Войлочный остроконечный колпак",
             correct: false,
             cultureName: "казахский колпак",
-            icon: `<svg viewBox="0 0 50 50"><polygon points="25,6 10,40 40,40" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/><path d="M16 34 Q25 28 34 34" stroke="#0284c7" stroke-width="2" fill="none"/></svg>`,
-            draw: `<g><polygon points="100,6 80,45 120,45" fill="#f8fafc" stroke="#94a3b8" stroke-width="2"/><path d="M86 38 Q100 32 114 38" stroke="#0284c7" stroke-width="2" fill="none"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><polygon points="30,8 12,48 48,48" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/><path d="M18 40 Q30 32 42 40" stroke="#0284c7" stroke-width="2.5" fill="none"/></svg>`,
+            draw: `<g id="layer-head-kolpak">
+              <!-- Высокий белый войлочный колпак с разрезными загнутыми полями -->
+              <polygon points="120,6 94,62 146,62" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+              <!-- Черный или синий бархатный отворот -->
+              <path d="M90 62 Q120 54 150 62 L146 72 Q120 64 94 72 Z" fill="#0284c7" stroke="#0369a1" stroke-width="1.5"/>
+              <!-- Орнамент кошкар-мюиз (бараньи рога) -->
+              <path d="M110 46 Q120 38 130 46" stroke="#0284c7" stroke-width="2.5" fill="none"/>
+            </g>`
           },
           {
             id: 'tubeteika',
             name: "Бархатная тюбетейка (Түбәтәй)",
             correct: true,
             cultureName: "татарская тюбетейка",
-            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="30" rx="16" ry="6" fill="#065f46"/><path d="M9 30 L12 18 L38 18 L41 30 Z" fill="#047857"/><path d="M18 24 Q25 18 32 24" stroke="#fbbf24" stroke-width="2" fill="none"/></svg>`,
-            draw: `<g><ellipse cx="100" cy="38" rx="20" ry="7" fill="#065f46"/><path d="M80 38 L84 26 L116 26 L120 38 Z" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/><path d="M92 32 Q100 27 108 32" stroke="#fbbf24" stroke-width="1.5" fill="none"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><ellipse cx="30" cy="36" rx="20" ry="8" fill="#065f46"/><path d="M10 36 L14 20 L46 20 L50 36 Z" fill="#047857"/><path d="M20 28 Q30 20 40 28" stroke="#fbbf24" stroke-width="2.5" fill="none"/></svg>`,
+            draw: `<g id="layer-head-tubeteika">
+              <!-- Бархатная татарская тюбетейка с плоским донышком -->
+              <path d="M96 52 L100 34 L140 34 L144 52 Z" fill="#064e3b" stroke="#047857" stroke-width="1.5"/>
+              <ellipse cx="120" cy="34" rx="20" ry="7" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/>
+              <ellipse cx="120" cy="52" rx="24" ry="7" fill="#065f46"/>
+              <!-- Золотое шитье гладью и канителью -->
+              <path d="M108 44 Q120 36 132 44" stroke="#fbbf24" stroke-width="2" fill="none"/>
+              <circle cx="120" cy="40" r="2" fill="#fef08a"/>
+              <circle cx="112" cy="46" r="1.5" fill="#fef08a"/>
+              <circle cx="128" cy="46" r="1.5" fill="#fef08a"/>
+            </g>`
           }
         ],
         vest: [
@@ -1025,24 +1204,63 @@
             name: "Прямой бархатный камзол",
             correct: true,
             cultureName: "татарский мужской камзол",
-            icon: `<svg viewBox="0 0 50 50"><path d="M10 8 L40 8 L44 46 L6 46 Z" fill="#064e3b"/><line x1="25" y1="8" x2="25" y2="46" stroke="#fbbf24" stroke-width="2"/></svg>`,
-            draw: `<g><polygon points="70,90 130,90 138,220 62,220" fill="#064e3b" stroke="#fbbf24" stroke-width="2"/><line x1="100" y1="90" x2="100" y2="220" stroke="#fbbf24" stroke-width="3"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M12 10 L48 10 L54 54 L6 54 Z" fill="#064e3b"/><line x1="30" y1="10" x2="30" y2="54" stroke="#fbbf24" stroke-width="2.5"/></svg>`,
+            draw: `<g id="layer-body-kamzol-m">
+              <!-- Мужской длинный камзол с прямыми спинкой и полами -->
+              <path d="M78 98 L106 98 L114 135 L126 135 L134 98 L162 98 L168 255 L120 258 L72 255 Z" fill="#064e3b" stroke="#047857" stroke-width="1.5"/>
+              <!-- Золотой позумент по вороту и застежке -->
+              <path d="M106 98 L114 135 L120 160 L126 135 L134 98" stroke="#fbbf24" stroke-width="3" fill="none"/>
+              <line x1="120" y1="160" x2="120" y2="258" stroke="#fbbf24" stroke-width="3"/>
+              <!-- Вышивка на груди и бортах -->
+              <path d="M92 120 Q104 110 114 120" stroke="#fbbf24" stroke-width="1.5" fill="none"/>
+              <path d="M126 120 Q136 110 148 120" stroke="#fbbf24" stroke-width="1.5" fill="none"/>
+              <!-- Кайма по подолу -->
+              <line x1="72" y1="250" x2="168" y2="250" stroke="#fbbf24" stroke-width="2"/>
+            </g>`
           },
           {
             id: 'cherkeska',
             name: "Черкеска с суконными газырями",
             correct: false,
             cultureName: "кавказская черкеска",
-            icon: `<svg viewBox="0 0 50 50"><path d="M12 8 L38 8 L42 46 L8 46 Z" fill="#1e293b"/><rect x="14" y="16" width="8" height="4" fill="#fbbf24"/><rect x="28" y="16" width="8" height="4" fill="#fbbf24"/></svg>`,
-            draw: `<g><polygon points="72,90 128,90 138,225 62,225" fill="#1e293b"/><polygon points="88,90 100,130 112,90" fill="#fed7aa"/><rect x="74" y="112" width="16" height="6" fill="#fbbf24"/><rect x="110" y="112" width="16" height="6" fill="#fbbf24"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M14 10 L46 10 L52 54 L8 54 Z" fill="#1e293b"/><rect x="16" y="20" width="10" height="5" fill="#fbbf24"/><rect x="34" y="20" width="10" height="5" fill="#fbbf24"/></svg>`,
+            draw: `<g id="layer-body-cherkeska">
+              <!-- Черкеска из черного сукна с треугольным вырезом под бешмет -->
+              <polygon points="76,98 164,98 170,265 70,265" fill="#1e293b" stroke="#0f172a" stroke-width="2"/>
+              <polygon points="104,98 120,140 136,98" fill="#fed7aa"/>
+              <line x1="120" y1="140" x2="120" y2="265" stroke="#94a3b8" stroke-width="2"/>
+              <!-- Нагрудные карманы с серебряными газырями по обе стороны -->
+              <rect x="84" y="125" width="22" height="9" fill="#334155" stroke="#fbbf24" stroke-width="1"/>
+              <line x1="88" y1="122" x2="88" y2="134" stroke="#ffffff" stroke-width="2"/>
+              <line x1="93" y1="122" x2="93" y2="134" stroke="#ffffff" stroke-width="2"/>
+              <line x1="98" y1="122" x2="98" y2="134" stroke="#ffffff" stroke-width="2"/>
+              <line x1="103" y1="122" x2="103" y2="134" stroke="#ffffff" stroke-width="2"/>
+
+              <rect x="134" y="125" width="22" height="9" fill="#334155" stroke="#fbbf24" stroke-width="1"/>
+              <line x1="138" y1="122" x2="138" y2="134" stroke="#ffffff" stroke-width="2"/>
+              <line x1="143" y1="122" x2="143" y2="134" stroke="#ffffff" stroke-width="2"/>
+              <line x1="148" y1="122" x2="148" y2="134" stroke="#ffffff" stroke-width="2"/>
+              <line x1="153" y1="122" x2="153" y2="134" stroke="#ffffff" stroke-width="2"/>
+            </g>`
           },
           {
             id: 'kosovorotka',
             name: "Рубаха-косоворотка",
             correct: false,
             cultureName: "русская косоворотка",
-            icon: `<svg viewBox="0 0 50 50"><path d="M12 10 L38 10 L40 44 L10 44 Z" fill="#dc2626"/><line x1="18" y1="10" x2="18" y2="24" stroke="#fff" stroke-width="2"/></svg>`,
-            draw: `<g><polygon points="70,88 130,88 134,220 66,220" fill="#dc2626"/><line x1="88" y1="88" x2="88" y2="125" stroke="#ffffff" stroke-width="3"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M14 12 L46 12 L48 52 L12 52 Z" fill="#dc2626"/><line x1="22" y1="12" x2="22" y2="28" stroke="#fff" stroke-width="2.5"/></svg>`,
+            draw: `<g id="layer-body-kosovorotka">
+              <!-- Красная рубаха косоворотка с косым воротом влево -->
+              <polygon points="76,98 164,98 168,240 72,240" fill="#dc2626" stroke="#b91c1c" stroke-width="2"/>
+              <!-- Косой разрез ворота слева с вышивкой и пуговицами -->
+              <rect x="100" y="98" width="6" height="42" fill="#ffffff"/>
+              <circle cx="103" cy="106" r="1.5" fill="#1e293b"/>
+              <circle cx="103" cy="116" r="1.5" fill="#1e293b"/>
+              <circle cx="103" cy="126" r="1.5" fill="#1e293b"/>
+              <circle cx="103" cy="136" r="1.5" fill="#1e293b"/>
+              <!-- Подол с вышитой тесьмой -->
+              <line x1="72" y1="234" x2="168" y2="234" stroke="#ffffff" stroke-width="4" stroke-dasharray="4,2"/>
+            </g>`
           }
         ],
         acc: [
@@ -1051,24 +1269,58 @@
             name: "Ремень со степными бляшками",
             correct: false,
             cultureName: "кочевой ремень",
-            icon: `<svg viewBox="0 0 50 50"><rect x="6" y="22" width="38" height="6" fill="#451a03"/><circle cx="15" cy="25" r="2" fill="#cbd5e1"/><circle cx="25" cy="25" r="2" fill="#cbd5e1"/><circle cx="35" cy="25" r="2" fill="#cbd5e1"/></svg>`,
-            draw: `<g><rect x="65" y="152" width="70" height="8" fill="#451a03"/><circle cx="85" cy="156" r="2.5" fill="#cbd5e1"/><circle cx="100" cy="156" r="2.5" fill="#cbd5e1"/><circle cx="115" cy="156" r="2.5" fill="#cbd5e1"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><rect x="8" y="26" width="44" height="8" fill="#451a03"/><circle cx="20" cy="30" r="2.5" fill="#cbd5e1"/><circle cx="30" cy="30" r="2.5" fill="#cbd5e1"/><circle cx="40" cy="30" r="2.5" fill="#cbd5e1"/></svg>`,
+            draw: `<g id="layer-acc-nomadbelt">
+              <!-- Узкий кожаный пояс с серебряными бляшками-накладками -->
+              <rect x="74" y="165" width="92" height="9" fill="#451a03" stroke="#270e02" stroke-width="1"/>
+              <rect x="114" y="162" width="12" height="15" fill="#cbd5e1" stroke="#64748b" stroke-width="1"/>
+              <!-- Подвесные ремешки с чеканкой -->
+              <circle cx="86" cy="169" r="2.5" fill="#f8fafc"/>
+              <circle cx="98" cy="169" r="2.5" fill="#f8fafc"/>
+              <circle cx="142" cy="169" r="2.5" fill="#f8fafc"/>
+              <circle cx="154" cy="169" r="2.5" fill="#f8fafc"/>
+              <!-- Свисающий хвостик пояса -->
+              <rect x="128" y="174" width="7" height="30" fill="#451a03"/>
+              <polygon points="128,204 135,204 131.5,210" fill="#cbd5e1"/>
+            </g>`
           },
           {
             id: 'kushak',
             name: "Широкий кушак с пряжкой «Каптырма»",
             correct: true,
             cultureName: "татарский кушак с «Каптырма»",
-            icon: `<svg viewBox="0 0 50 50"><rect x="6" y="20" width="38" height="10" fill="#047857"/><circle cx="25" cy="25" r="5" fill="#fbbf24"/><circle cx="25" cy="25" r="2.5" fill="#d97706"/></svg>`,
-            draw: `<g><rect x="63" y="148" width="74" height="14" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/><circle cx="100" cy="155" r="5" fill="#fbbf24"/><circle cx="100" cy="155" r="2" fill="#b45309"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><rect x="6" y="24" width="48" height="12" fill="#047857"/><circle cx="30" cy="30" r="6" fill="#fbbf24"/><circle cx="30" cy="30" r="3" fill="#d97706"/></svg>`,
+            draw: `<g id="layer-acc-kushak">
+              <!-- Широкий шелковый зеленый кушак на талии -->
+              <rect x="73" y="160" width="94" height="18" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/>
+              <line x1="73" y1="164" x2="167" y2="164" stroke="#064e3b" stroke-width="1.5"/>
+              <line x1="73" y1="174" x2="167" y2="174" stroke="#064e3b" stroke-width="1.5"/>
+              <!-- Двустворчатая серебряная пряжка «Каптырма» с филигранью -->
+              <ellipse cx="114" cy="169" rx="8" ry="7" fill="#fbbf24" stroke="#b45309" stroke-width="1"/>
+              <ellipse cx="126" cy="169" rx="8" ry="7" fill="#fbbf24" stroke="#b45309" stroke-width="1"/>
+              <circle cx="120" cy="169" r="3" fill="#dc2626"/>
+              <!-- Длинные концы кушака с золотой бахромой сбоку -->
+              <polygon points="142,178 156,178 152,242 138,242" fill="#047857" stroke="#fbbf24" stroke-width="1"/>
+              <line x1="138" y1="242" x2="152" y2="242" stroke="#fbbf24" stroke-width="3" stroke-dasharray="2,1"/>
+            </g>`
           },
           {
             id: 'gashnik',
             name: "Тканый шнур-гашник",
             correct: false,
             cultureName: "славянский гашник",
-            icon: `<svg viewBox="0 0 50 50"><path d="M6 25 Q25 20 44 25" stroke="#b91c1c" stroke-width="3" fill="none"/></svg>`,
-            draw: `<g><path d="M65 155 Q100 165 135 155" stroke="#b91c1c" stroke-width="3.5" fill="none"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M8 30 Q30 24 52 30" stroke="#b91c1c" stroke-width="3.5" fill="none"/></svg>`,
+            draw: `<g id="layer-acc-gashnik">
+              <!-- Тонкий плетеный шнурок поясок с узлом -->
+              <path d="M74 168 Q120 178 166 168" stroke="#b91c1c" stroke-width="3.5" fill="none"/>
+              <path d="M74 170 Q120 180 166 170" stroke="#ffffff" stroke-width="1.5" stroke-dasharray="4,2" fill="none"/>
+              <!-- Кисти узелка -->
+              <circle cx="106" cy="176" r="3" fill="#b91c1c"/>
+              <line x1="105" y1="179" x2="102" y2="215" stroke="#b91c1c" stroke-width="2.5"/>
+              <line x1="107" y1="179" x2="110" y2="215" stroke="#b91c1c" stroke-width="2.5"/>
+              <circle cx="102" cy="216" r="2" fill="#fbbf24"/>
+              <circle cx="110" cy="216" r="2" fill="#fbbf24"/>
+            </g>`
           }
         ],
         shoes: [
@@ -1077,76 +1329,61 @@
             name: "Юфтевые сапоги на подковах",
             correct: false,
             cultureName: "служилые сапоги",
-            icon: `<svg viewBox="0 0 50 50"><path d="M10 8 L22 8 L22 40 L34 42 L32 48 L8 48 Z" fill="#0f172a"/><path d="M26 8 L38 8 L38 40 L50 42 L48 48 L24 48 Z" fill="#0f172a"/></svg>`,
-            draw: `<g><path d="M68 250 L84 250 L84 300 L96 304 L94 314 L64 314 Z" fill="#0f172a"/><path d="M116 250 L132 250 L132 300 L144 304 L142 314 L112 314 Z" fill="#0f172a"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M12 10 L26 10 L26 42 L38 44 L36 52 L10 52 Z" fill="#0f172a"/><path d="M30 10 L44 10 L44 42 L56 44 L54 52 L28 52 Z" fill="#0f172a"/></svg>`,
+            draw: `<g id="layer-shoes-soldier">
+              <!-- Жесткие прямые кожаные сапоги со скошенным каблуком -->
+              <path d="M96 295 L112 295 L112 342 L120 346 L118 360 L86 360 L88 340 L96 338 Z" fill="#0f172a" stroke="#020617" stroke-width="1.5"/>
+              <rect x="88" y="356" width="10" height="4" fill="#64748b"/>
+              <path d="M128 295 L144 295 L144 338 L152 340 L154 360 L122 360 L120 346 L128 342 Z" fill="#0f172a" stroke="#020617" stroke-width="1.5"/>
+              <rect x="142" y="356" width="10" height="4" fill="#64748b"/>
+            </g>`
           },
           {
             id: 'ichigi_m',
             name: "Мягкие кожаные сапоги «Ичиги»",
             correct: true,
             cultureName: "татарские мягкие «Ичиги»",
-            icon: `<svg viewBox="0 0 50 50"><path d="M10 8 L22 8 L22 38 L32 40 L30 46 L8 46 Z" fill="#064e3b"/><path d="M26 8 L38 8 L38 38 L48 40 L46 46 L24 46 Z" fill="#064e3b"/></svg>`,
-            draw: `<g><path d="M68 250 L84 250 L84 298 L94 302 L92 310 L64 310 Z" fill="#064e3b" stroke="#fbbf24" stroke-width="1.5"/><path d="M116 250 L132 250 L132 298 L142 302 L140 310 L112 310 Z" fill="#064e3b" stroke="#fbbf24" stroke-width="1.5"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><path d="M12 10 L26 10 L26 42 L38 44 L36 52 L10 52 Z" fill="#064e3b"/><path d="M30 10 L44 10 L44 42 L56 44 L54 52 L28 52 Z" fill="#064e3b"/></svg>`,
+            draw: `<g id="layer-shoes-ichigi-m">
+              <!-- Мужские сафьяновые ичиги с мягкой подошвой и золотой строчкой -->
+              <path d="M96 295 L112 295 L112 344 L118 348 L114 360 L86 360 L88 340 L96 338 Z" fill="#064e3b" stroke="#047857" stroke-width="1.5"/>
+              <line x1="96" y1="295" x2="96" y2="358" stroke="#fbbf24" stroke-width="1.5"/>
+              <path d="M90 350 Q102 344 114 350" stroke="#fbbf24" stroke-width="1.5" fill="none"/>
+
+              <path d="M128 295 L144 295 L144 338 L152 340 L154 360 L126 360 L122 348 L128 344 Z" fill="#064e3b" stroke="#047857" stroke-width="1.5"/>
+              <line x1="144" y1="295" x2="144" y2="358" stroke="#fbbf24" stroke-width="1.5"/>
+              <path d="M150 350 Q138 344 126 350" stroke="#fbbf24" stroke-width="1.5" fill="none"/>
+            </g>`
           },
           {
             id: 'lapti_m',
             name: "Берестяные плетеные лапти",
             correct: false,
             cultureName: "крестьянские лапти",
-            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="36" rx="16" ry="8" fill="#ca8a04"/><line x1="12" y1="20" x2="25" y2="36" stroke="#94a3b8" stroke-width="2"/></svg>`,
-            draw: `<g><ellipse cx="76" cy="308" rx="15" ry="6" fill="#ca8a04" stroke="#78350f"/><ellipse cx="124" cy="308" rx="15" ry="6" fill="#ca8a04" stroke="#78350f"/></g>`
+            icon: `<svg viewBox="0 0 60 60"><ellipse cx="30" cy="42" rx="20" ry="10" fill="#ca8a04"/><line x1="14" y1="24" x2="30" y2="42" stroke="#94a3b8" stroke-width="2.5"/></svg>`,
+            draw: `<g id="layer-shoes-lapti-m">
+              <!-- Онучи мужские с перекрестными веревками -->
+              <rect x="96" y="295" width="18" height="50" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+              <line x1="96" y1="300" x2="114" y2="315" stroke="#78350f" stroke-width="2"/>
+              <line x1="114" y1="300" x2="96" y2="315" stroke="#78350f" stroke-width="2"/>
+              <line x1="96" y1="320" x2="114" y2="335" stroke="#78350f" stroke-width="2"/>
+              <line x1="114" y1="320" x2="96" y2="335" stroke="#78350f" stroke-width="2"/>
+
+              <rect x="126" y="295" width="18" height="50" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+              <line x1="126" y1="300" x2="144" y2="315" stroke="#78350f" stroke-width="2"/>
+              <line x1="144" y1="300" x2="126" y2="315" stroke="#78350f" stroke-width="2"/>
+              <line x1="126" y1="320" x2="144" y2="335" stroke="#78350f" stroke-width="2"/>
+              <line x1="144" y1="320" x2="126" y2="335" stroke="#78350f" stroke-width="2"/>
+
+              <!-- Лапти на ногах -->
+              <ellipse cx="102" cy="354" rx="16" ry="8" fill="#ca8a04" stroke="#78350f" stroke-width="1.5"/>
+              <ellipse cx="138" cy="354" rx="16" ry="8" fill="#ca8a04" stroke="#78350f" stroke-width="1.5"/>
+            </g>`
           }
         ]
       }
     };
 
-    let activeGender = 'woman';
-    let userWardrobe = { head: null, vest: null, acc: null, shoes: null };
-
-    function setAvatarGender(gender) {
-      activeGender = gender;
-      document.getElementById('btn-char-w').classList.toggle('active', gender === 'woman');
-      document.getElementById('btn-char-m').classList.toggle('active', gender === 'man');
-      document.getElementById('avatar-label').innerText = rawCostumeData[gender].title;
-      userWardrobe = { head: null, vest: null, acc: null, shoes: null };
-      renderWardrobeControls();
-      updateAvatarSvg();
-      document.getElementById('costume-verdict').innerHTML = "Примерьте элементы: выберите по одной вещи в каждом блоке!";
-      document.getElementById('costume-verdict').style.color = "var(--primary)";
-    }
-
-    function renderWardrobeControls() {
-      const box = document.getElementById('wardrobe-groups-box');
-      const data = rawCostumeData[activeGender];
-
-      const groups = [
-        { id: 'head', title: '1. Головной убор', list: data.head },
-        { id: 'vest', title: '2. Одежда (верх)', list: data.vest },
-        { id: 'acc', title: '3. Пояс / Нагрудник', list: data.acc },
-        { id: 'shoes', title: '4. Обувь', list: data.shoes }
-      ];
-
-      box.innerHTML = groups.map(g => `
-        <div class="wardrobe-cat">
-          <h4>${g.title}</h4>
-          <div class="items-trio">
-            ${g.list.map((item, idx) => `
-              <div class="item-chip ${userWardrobe[g.id] === idx ? 'selected' : ''}"
-                   onclick="chooseWardrobeItem('${g.id}', ${idx})">
-                <div class="item-chip-icon">${item.icon}</div>
-                <div class="item-chip-name">${item.name}</div>
-              </div>
-            `).join('')}
-          </div>
-        </div>
-      `).join('');
-    }
-
-    function chooseWardrobeItem(slot, idx) {
-      userWardrobe[slot] = idx;
-      renderWardrobeControls();
-      updateAvatarSvg();
-    }
 
     function updateAvatarSvg() {
       const svg = document.getElementById('avatar-canvas');
@@ -1158,28 +1395,131 @@
       const pickedAcc = userWardrobe.acc !== null ? data.acc[userWardrobe.acc] : null;
       const pickedShoes = userWardrobe.shoes !== null ? data.shoes[userWardrobe.shoes] : null;
 
-      let layers = `
-        <circle cx="100" cy="55" r="22" fill="#fed7aa"/>
-        <rect x="94" y="74" width="12" height="16" fill="#fdba74"/>
-        <rect x="42" y="90" width="16" height="110" rx="8" fill="#fdba74"/>
-        <rect x="142" y="90" width="16" height="110" rx="8" fill="#fdba74"/>
-      `;
+      let layers = '';
 
       if (isWoman) {
+        // ========== ТАТАРСКАЯ ЖЕНЩИНА (АНАТОМИЯ И ЛИЦО) ==========
         layers += `
-          <polygon points="75,88 125,88 145,240 55,240" fill="#fef3c7" stroke="#fde047" stroke-width="2"/>
-          <path d="M55 240 Q100 250 145 240 L148 260 Q100 270 52 260 Z" fill="#fef08a"/>
-          <path d="M52 260 Q100 275 148 260 L150 280 Q100 295 50 280 Z" fill="#fde047"/>
+          <!-- Тень под манекеном -->
+          <ellipse cx="120" cy="366" rx="60" ry="8" fill="#e2e8f0"/>
+
+          <!-- Руки (базовый слой) -->
+          <path d="M72 104 C64 120, 58 170, 62 215 C64 225, 72 225, 74 215 C72 175, 76 130, 84 108 Z" fill="#fed7aa" stroke="#fcd34d" stroke-width="0.5"/>
+          <path d="M168 104 C176 120, 182 170, 178 215 C176 225, 168 225, 166 215 C168 175, 164 130, 156 108 Z" fill="#fed7aa" stroke="#fcd34d" stroke-width="0.5"/>
+
+          <!-- Ножки манекена (до обуви) -->
+          <rect x="98" y="290" width="14" height="65" fill="#fde2c7"/>
+          <rect x="128" y="290" width="14" height="65" fill="#fde2c7"/>
+
+          <!-- Базовое платье Күлмәк с ярусными воланами-оборочками -->
+          <polygon points="84,98 156,98 170,265 70,265" fill="#fef3c7" stroke="#fde047" stroke-width="1.5"/>
+          <!-- 1-й ярус воланов -->
+          <path d="M70 265 Q120 274 170 265 L172 282 Q120 292 68 282 Z" fill="#fef08a" stroke="#fde047" stroke-width="1"/>
+          <!-- 2-й ярус воланов -->
+          <path d="M68 282 Q120 294 172 282 L174 298 Q120 310 66 298 Z" fill="#fde047" stroke="#facc15" stroke-width="1"/>
+          <!-- Оборки на рукавах платья -->
+          <path d="M58 206 Q66 214 74 206" stroke="#fde047" stroke-width="2.5" fill="none"/>
+          <path d="M166 206 Q174 214 182 206" stroke="#fde047" stroke-width="2.5" fill="none"/>
+
+          <!-- Шея -->
+          <rect x="113" y="78" width="14" height="24" rx="3" fill="#fed7aa"/>
+
+          <!-- Волосы (задний слой - косы со спины) -->
+          <path d="M94 72 C88 95, 92 145, 96 175 C99 175, 102 145, 98 72 Z" fill="#271b12"/>
+          <path d="M146 72 C152 95, 148 145, 144 175 C141 175, 138 145, 142 72 Z" fill="#271b12"/>
+
+          <!-- Голова и ушки -->
+          <ellipse cx="120" cy="62" rx="22" ry="25" fill="#fed7aa"/>
+          <ellipse cx="98" cy="65" rx="3" ry="5" fill="#fdbA74"/>
+          <ellipse cx="142" cy="65" rx="3" ry="5" fill="#fdbA74"/>
+          <!-- Золотые сережки (алка) -->
+          <circle cx="98" cy="71" r="2" fill="#fbbf24"/>
+          <circle cx="142" cy="71" r="2" fill="#fbbf24"/>
+
+          <!-- Прическа: темные гладкие волосы с прямым пробором -->
+          <path d="M98 56 C104 42, 136 42, 142 56 C138 46, 126 44, 120 48 C114 44, 102 46, 98 56 Z" fill="#271b12"/>
+          <path d="M98 56 C104 64, 114 62, 120 52 C126 62, 136 64, 142 56 C140 46, 100 46, 98 56 Z" fill="#3d2719"/>
+
+          <!-- ЛИЦО: Брови, глаза с ресничками, носик, улыбка, румянец -->
+          <!-- Изящные брови -->
+          <path d="M106 55 Q112 52 116 55" stroke="#271b12" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <path d="M124 55 Q128 52 134 55" stroke="#271b12" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+          <!-- Миндалевидные выразительные глаза -->
+          <ellipse cx="111" cy="60" rx="4.5" ry="3" fill="#ffffff"/>
+          <circle cx="111.5" cy="60" r="2.2" fill="#3d2719"/>
+          <circle cx="112.5" cy="59" r="0.8" fill="#ffffff"/>
+          <path d="M106 59 Q111 56 116 59" stroke="#1c120c" stroke-width="1.2" fill="none"/>
+
+          <ellipse cx="129" cy="60" rx="4.5" ry="3" fill="#ffffff"/>
+          <circle cx="128.5" cy="60" r="2.2" fill="#3d2719"/>
+          <circle cx="129.5" cy="59" r="0.8" fill="#ffffff"/>
+          <path d="M124 59 Q129 56 134 59" stroke="#1c120c" stroke-width="1.2" fill="none"/>
+
+          <!-- Нежный румянец на щечках -->
+          <circle cx="106" cy="67" r="4" fill="#f87171" opacity="0.35"/>
+          <circle cx="134" cy="67" r="4" fill="#f87171" opacity="0.35"/>
+
+          <!-- Аккуратный носик -->
+          <path d="M120 60 L119 66 Q120 68 122 67" stroke="#ea580c" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+
+          <!-- Приветливая улыбка -->
+          <path d="M115 72 Q120 76 125 72" stroke="#be123c" stroke-width="1.8" stroke-linecap="round" fill="none"/>
         `;
       } else {
+        // ========== ТАТАРСКИЙ МУЖЧИНА (АНАТОМИЯ И ЛИЦО) ==========
         layers += `
-          <rect x="70" y="210" width="26" height="75" fill="#334155"/>
-          <rect x="104" y="210" width="26" height="75" fill="#334155"/>
-          <polygon points="70,88 130,88 136,220 64,220" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
-          <line x1="100" y1="88" x2="100" y2="130" stroke="#047857" stroke-width="2"/>
+          <!-- Тень под манекеном -->
+          <ellipse cx="120" cy="366" rx="60" ry="8" fill="#e2e8f0"/>
+
+          <!-- Руки джигита -->
+          <path d="M68 104 C60 120, 56 170, 60 215 C62 225, 70 225, 72 215 C70 175, 74 130, 82 108 Z" fill="#fdba74" stroke="#fbbf24" stroke-width="0.5"/>
+          <path d="M172 104 C180 120, 184 170, 180 215 C178 225, 170 225, 168 215 C170 175, 166 130, 158 108 Z" fill="#fdba74" stroke="#fbbf24" stroke-width="0.5"/>
+
+          <!-- Традиционные широкие штаны «Ыштан» -->
+          <rect x="88" y="240" width="28" height="75" fill="#334155" stroke="#1e293b" stroke-width="1"/>
+          <rect x="124" y="240" width="28" height="75" fill="#334155" stroke="#1e293b" stroke-width="1"/>
+
+          <!-- Мужская длинная туникообразная рубаха Күлмәк -->
+          <polygon points="80,98 160,98 166,248 74,248" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+          <line x1="120" y1="98" x2="120" y2="148" stroke="#047857" stroke-width="2"/>
+          <rect x="114" y="98" width="12" height="6" fill="#047857"/>
+
+          <!-- Шея -->
+          <rect x="112" y="78" width="16" height="24" rx="2" fill="#fdba74"/>
+
+          <!-- Голова и уши -->
+          <ellipse cx="120" cy="62" rx="23" ry="26" fill="#fdba74"/>
+          <ellipse cx="96" cy="65" rx="3.5" ry="6" fill="#f97316"/>
+          <ellipse cx="144" cy="65" rx="3.5" ry="6" fill="#f97316"/>
+
+          <!-- Аккуратная мужская стрижка с висками -->
+          <path d="M96 58 C96 36, 144 36, 144 58 C140 42, 134 40, 120 40 C106 40, 100 42, 96 58 Z" fill="#1c1917"/>
+          <path d="M96 58 L96 68 L100 64 L100 54 Z" fill="#1c1917"/>
+          <path d="M144 58 L144 68 L140 64 L140 54 Z" fill="#1c1917"/>
+
+          <!-- ЛИЦО: Густые брови, открытые глаза, нос, улыбка, мужественный подбородок -->
+          <path d="M104 54 Q111 50 117 54" stroke="#1c1917" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+          <path d="M123 54 Q129 50 136 54" stroke="#1c1917" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+
+          <ellipse cx="111" cy="60" rx="4.5" ry="3.2" fill="#ffffff"/>
+          <circle cx="111.5" cy="60" r="2.2" fill="#292524"/>
+          <circle cx="112.5" cy="59" r="0.8" fill="#ffffff"/>
+          <path d="M106 59 Q111 57 116 59" stroke="#1c1917" stroke-width="1.4" fill="none"/>
+
+          <ellipse cx="129" cy="60" rx="4.5" ry="3.2" fill="#ffffff"/>
+          <circle cx="128.5" cy="60" r="2.2" fill="#292524"/>
+          <circle cx="129.5" cy="59" r="0.8" fill="#ffffff"/>
+          <path d="M124 59 Q129 57 134 59" stroke="#1c1917" stroke-width="1.4" fill="none"/>
+
+          <!-- Четкий нос -->
+          <path d="M120 58 L119 67 Q120 70 123 68" stroke="#c2410c" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+
+          <!-- Улыбка джигита -->
+          <path d="M114 74 Q120 78 126 74" stroke="#991b1b" stroke-width="2" stroke-linecap="round" fill="none"/>
         `;
       }
 
+      // ========== НАДЕВАЕМ ВЫБРАННЫЕ СЛОИ ПОВЕРХ МАНЕКЕНА ==========
       if (pickedVest) layers += pickedVest.draw;
       if (pickedAcc) layers += pickedAcc.draw;
       if (pickedShoes) layers += pickedShoes.draw;
@@ -1187,6 +1527,7 @@
 
       svg.innerHTML = layers;
     }
+
 
     function checkCostume() {
       const data = rawCostumeData[activeGender];
