@@ -1,0 +1,1767 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сокровища Татарстана — Традиции, Кухня, Костюм и Памятники</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- QR Code Generator -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            tatar: {
+              green: '#0E5C38',
+              darkgreen: '#073B22',
+              gold: '#D4AF37',
+              lightgold: '#FBF5DF',
+              ruby: '#B22222',
+              orange: '#EA580C',
+              cream: '#FCFAF5'
+            }
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+            display: ['"Cinzel"', 'serif'],
+            sans: ['"Inter"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #f5f2ea; }
+    ::-webkit-scrollbar-thumb { background: #0E5C38; border-radius: 4px; }
+
+    /* Tatar Tulip Ribbon Border Pattern */
+    .tatar-ribbon-border {
+      background-image: repeating-linear-gradient(45deg, 
+        #0E5C38 0, #0E5C38 12px, 
+        #D4AF37 12px, #D4AF37 16px, 
+        #B22222 16px, #B22222 24px, 
+        #EA580C 24px, #EA580C 28px);
+    }
+
+    .card-flip { perspective: 1200px; }
+    .card-flip-inner {
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .card-flip.is-flipped .card-flip-inner { transform: rotateY(180deg); }
+    .card-front, .card-back {
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+    }
+    .card-back { transform: rotateY(180deg); }
+
+    .pattern-bg {
+      background-color: #faf7f0;
+      background-image: radial-gradient(#d4af37 0.8px, transparent 0.8px), radial-gradient(#0e5c38 0.8px, #faf7f0 0.8px);
+      background-size: 28px 28px;
+      background-position: 0 0, 14px 14px;
+    }
+    .tab-btn.active {
+      background-color: #0E5C38;
+      color: #FBF5DF;
+      border-color: #D4AF37;
+    }
+    .cloth-svg-icon {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25));
+    }
+    .mannequin-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      transition: all 0.4s ease-in-out;
+    }
+  </style>
+</head>
+<body class="bg-stone-50 text-stone-800 font-sans antialiased selection:bg-amber-200">
+
+  <!-- TOP HEADER / NAV -->
+  <header class="sticky top-0 z-40 bg-tatar-green/95 backdrop-blur border-b-2 border-tatar-gold text-white shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <!-- Tatar Tulip SVG Motif -->
+        <svg class="w-9 h-9 text-tatar-gold fill-current drop-shadow" viewBox="0 0 24 24">
+          <path d="M12 2C10.5 4.5 7 8 7 12C7 15 9.5 17 12 17C14.5 17 17 15 17 12C17 8 13.5 4.5 12 2ZM5.5 8C4.5 10 3 13 3 15C3 17.5 5 19 7 19C8 19 8.5 18.5 9 17.8C7.5 16.5 6.5 14.5 6.5 12C6.5 10.5 6 9 5.5 8ZM18.5 8C18 9 17.5 10.5 17.5 12C17.5 14.5 16.5 16.5 15 17.8C15.5 18.5 16 19 17 19C19 19 21 17.5 21 15C21 13 19.5 10 18.5 8ZM12 18C10.5 18 9 20 9 22H15C15 20 13.5 18 12 18Z"/>
+        </svg>
+        <div>
+          <h1 class="font-serif font-bold text-lg md:text-xl tracking-wide text-amber-200">Татары • Мирас һәм Мәдәният</h1>
+          <p class="text-xs text-amber-100/80 hidden sm:block">Школьный конкурс «Народы России» • Мультимедийный стенд</p>
+        </div>
+      </div>
+
+      <nav class="flex items-center space-x-1 sm:space-x-3 text-xs sm:text-sm font-semibold">
+        <a href="#cuisine-section" class="hover:text-amber-300 transition py-1.5 px-2.5 rounded-lg">Кухня</a>
+        <a href="#sight-section" class="hover:text-amber-300 transition py-1.5 px-2.5 rounded-lg">Памятники</a>
+        <a href="#costume-section" class="hover:text-amber-300 transition py-1.5 px-2.5 rounded-lg">Костюм</a>
+        <a href="#qr-section" class="bg-amber-400 hover:bg-amber-300 text-stone-900 px-3 py-1.5 rounded-full font-bold shadow flex items-center gap-1.5 transition">
+          <i class="fa-solid fa-qrcode"></i> <span>QR-код</span>
+        </a>
+        <button id="soundToggleBtn" onclick="playTatarMelody()" title="Нажмите, чтобы включить татарскую народную мелодию" class="p-2 rounded-full border border-amber-300/50 text-amber-300 hover:bg-white/10 transition">
+          <i class="fa-solid fa-music"></i>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- TATAR ORNAMENT RIBBON STRIP -->
+  <div class="h-2 w-full tatar-ribbon-border shadow-inner"></div>
+
+  <!-- HERO SECTION -->
+  <section class="relative bg-gradient-to-b from-tatar-darkgreen via-tatar-green to-stone-900 text-white py-16 md:py-24 border-b-4 border-tatar-gold overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-400/20 text-amber-300 rounded-full border border-amber-400/40 text-xs sm:text-sm font-semibold tracking-wider uppercase mb-5">
+        <i class="fa-solid fa-crown"></i> Интерактивная энциклопедия татарской культуры
+      </div>
+      <h1 class="text-3xl sm:text-5xl md:text-6xl font-serif font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-100 via-amber-200 to-amber-400 leading-tight">
+        Душа и традиции татарского народа
+      </h1>
+      <p class="mt-4 text-stone-200 max-w-3xl mx-auto text-base sm:text-lg leading-relaxed font-serif">
+        Татары — второй по численности народ Российской Федерации, обладающий древней историей, неповторимым архитектурным наследием, ярким декоративным искусством и легендарным гостеприимством.
+      </p>
+
+      <!-- Quick Section Jump Tabs -->
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="#cuisine-section" class="bg-amber-400 hover:bg-amber-300 text-stone-900 font-bold px-5 py-3 rounded-2xl shadow transition flex items-center gap-2 text-sm">
+          <i class="fa-solid fa-utensils"></i> 1. Национальная кухня
+        </a>
+        <a href="#sight-section" class="bg-emerald-900/80 hover:bg-emerald-800 text-amber-200 border border-amber-400/50 font-semibold px-5 py-3 rounded-2xl transition flex items-center gap-2 text-sm">
+          <i class="fa-solid fa-mosque"></i> 2. Достопримечательности
+        </a>
+        <a href="#costume-section" class="bg-emerald-900/80 hover:bg-emerald-800 text-amber-200 border border-amber-400/50 font-semibold px-5 py-3 rounded-2xl transition flex items-center gap-2 text-sm">
+          <i class="fa-solid fa-vest"></i> 3. Национальный костюм
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 1: ТАТАРСКАЯ КУХНЯ & ИНТЕРАКТИВ «СОБЕРИ ЭЧПОЧМАК»
+       ======================================================== -->
+  <section id="cuisine-section" class="py-16 px-4 max-w-7xl mx-auto border-b border-stone-200">
+    <div class="text-center mb-12">
+      <span class="text-tatar-green font-bold text-xs uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">Раздел I</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 mt-2">Татарская кухня: Ашларыгыз тәмле булсын!</h2>
+      <div class="w-24 h-1 bg-tatar-gold mx-auto my-3 rounded-full"></div>
+      <p class="text-stone-600 max-w-2xl mx-auto text-sm sm:text-base font-serif">
+        Кликните на карточку любого из 5 блюд, чтобы перевернуть её и узнать секрет приготовления, граммовки и историю происхождения.
+      </p>
+    </div>
+
+    <!-- 5 Recipe Cards Flip Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="cuisineCardsContainer">
+      <!-- Rendered via JavaScript -->
+    </div>
+
+    <!-- Mini-Game: Собери Эчпочмак -->
+    <div class="mt-16 bg-white rounded-3xl shadow-xl border-2 border-tatar-gold/50 p-6 sm:p-10 pattern-bg">
+      <div class="text-center max-w-xl mx-auto mb-8">
+        <span class="bg-amber-100 text-amber-900 text-xs font-bold px-3 py-1 rounded-full uppercase">Интерактив раздела «Кухня»</span>
+        <h3 class="text-2xl sm:text-3xl font-serif font-bold text-stone-900 mt-2">Мастер-класс: «Собери настоящий Эчпочмак»</h3>
+        <p class="text-stone-600 text-xs sm:text-sm mt-1">Выберите только правильные ингредиенты старинной начинки и защипните знаменитый треугольник!</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <!-- Ingredients picker -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-stone-600 uppercase">Ингредиенты на кухонном столе:</span>
+            <span id="echpochmakScore" class="text-sm font-bold text-tatar-green">0 / 4 верно</span>
+          </div>
+          <div class="grid grid-cols-2 gap-2.5" id="gameIngredientsBox">
+            <!-- Rendered by JS -->
+          </div>
+          <button onclick="resetEchpochmakGame()" class="mt-4 text-xs font-semibold text-stone-500 hover:text-stone-800 underline">
+            <i class="fa-solid fa-arrow-rotate-left mr-1"></i> Очистить стол
+          </button>
+        </div>
+
+        <!-- Visual Triangle Shaping Area -->
+        <div class="bg-amber-50/90 rounded-2xl border-2 border-dashed border-amber-300 p-6 text-center">
+          <div class="w-40 h-40 mx-auto relative flex items-center justify-center">
+            <svg class="w-full h-full drop-shadow" viewBox="0 0 100 100">
+              <polygon points="50,15 90,85 10,85" fill="#fde68a" stroke="#b45309" stroke-width="4" stroke-linejoin="round"/>
+              <ellipse cx="50" cy="58" rx="8" ry="6" fill="#78350f" opacity="0.8"/>
+            </svg>
+            <div id="echpochmakFillingsTags" class="absolute inset-0 flex flex-wrap items-center justify-center p-4 text-[9px] font-bold text-amber-950 pointer-events-none">
+            </div>
+          </div>
+          <p id="echpochmakFeedback" class="text-xs sm:text-sm font-medium text-stone-700 mt-3 min-h-[40px]">
+            Нажмите на верные ингредиенты слева, чтобы отправить их в начинку!
+          </p>
+          <button id="echpochmakPinchBtn" onclick="pinchEchpochmak()" disabled class="mt-3 bg-stone-300 text-stone-500 px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm cursor-not-allowed transition">
+            <i class="fa-solid fa-hand-sparkles mr-1"></i> Защипнуть треугольник
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 2: ДОСТОПРИМЕЧАТЕЛЬНОСТИ & ИНТЕРАКТИВНЫЙ КВЕСТ
+       ======================================================== -->
+  <section id="sight-section" class="py-16 px-4 bg-stone-100 border-b border-stone-200">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="text-tatar-green font-bold text-xs uppercase tracking-widest bg-emerald-200/70 px-3 py-1 rounded-full">Раздел II</span>
+        <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 mt-2">Жемчужины архитектуры и истории</h2>
+        <div class="w-24 h-1 bg-tatar-gold mx-auto my-3 rounded-full"></div>
+        <p class="text-stone-600 max-w-2xl mx-auto text-sm sm:text-base font-serif">
+          Татарстан — земля древних цивилизаций Волжской Булгарии, Казанского ханства и гармоничного союза восточной и европейской культур.
+        </p>
+      </div>
+
+      <!-- Sights Interactive Carousel / Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="sightsContainer">
+        <!-- Rendered by JS -->
+      </div>
+
+      <!-- Sight Mini-Game: «Угадай тайну памятника» -->
+      <div class="mt-14 bg-white rounded-3xl shadow-xl border border-stone-200 overflow-hidden">
+        <div class="bg-gradient-to-r from-tatar-darkgreen to-tatar-green p-6 text-white flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <span class="bg-amber-400 text-stone-900 text-[10px] font-extrabold uppercase px-2.5 py-1 rounded-full">Интерактив раздела «Памятники»</span>
+            <h3 class="text-xl sm:text-2xl font-serif font-bold text-amber-200 mt-1">Квест-викторина: «Тайны и легенды Татарстана»</h3>
+          </div>
+          <div class="text-right">
+            <span class="text-xs text-amber-200 font-semibold uppercase">Счет квеста</span>
+            <div id="sightQuizScore" class="text-2xl font-extrabold text-amber-300">0</div>
+          </div>
+        </div>
+
+        <div class="p-6 sm:p-8" id="sightQuizContent">
+          <p id="sightQuizQuestion" class="text-base sm:text-lg font-serif font-bold text-stone-800 mb-5 min-h-[48px]">
+            Загрузка вопроса квеста...
+          </p>
+          <div id="sightQuizOptions" class="space-y-3">
+            <!-- Injected by JS -->
+          </div>
+          <div id="sightQuizExplain" class="hidden mt-4 p-4 rounded-xl bg-amber-50 border border-amber-300 text-xs sm:text-sm text-stone-800 leading-relaxed">
+          </div>
+          <div class="mt-6 flex justify-end">
+            <button id="sightQuizNextBtn" onclick="nextSightQuestion()" class="hidden bg-tatar-green hover:bg-tatar-darkgreen text-white font-bold px-6 py-2 rounded-xl text-sm transition">
+              Следующая тайна <i class="fa-solid fa-arrow-right ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 3: НАЦИОНАЛЬНЫЙ КОСТЮМ & ИНТЕРАКТИВНАЯ ПРИМЕРОЧНАЯ
+       ======================================================== -->
+  <section id="costume-section" class="py-16 px-4 max-w-7xl mx-auto border-b border-stone-200">
+    <div class="text-center mb-12">
+      <span class="text-tatar-green font-bold text-xs uppercase tracking-widest bg-emerald-100 px-3 py-1 rounded-full">Раздел III</span>
+      <h2 class="text-3xl sm:text-4xl font-serif font-bold text-stone-900 mt-2">Традиционный татарский костюм</h2>
+      <div class="w-24 h-1 bg-tatar-gold mx-auto my-3 rounded-full"></div>
+      <p class="text-stone-600 max-w-2xl mx-auto text-sm sm:text-base font-serif">
+        Симфония тонкой кожаной мозаики «читек», золотого шитья, шелковых платьев и рубах «күлмәк», бархатных камзолов и старинных серебряных украшений.
+      </p>
+    </div>
+
+    <!-- Costume Anatomy Overview with Detailed SVGs -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-14">
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-200 text-center hover:border-amber-400 transition flex flex-col items-center">
+        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+          <!-- Tatar Kalfak SVG -->
+          <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow">
+            <path d="M22 65 C22 35, 45 22, 70 26 C82 28, 86 42, 78 52 C70 60, 40 68, 22 65 Z" fill="#991B1B" stroke="#D4AF37" stroke-width="2.5"/>
+            <path d="M22 65 C35 72, 60 70, 78 52" fill="none" stroke="#D4AF37" stroke-width="3"/>
+            <path d="M42 38 Q50 30 58 38 Q66 46 58 52 Q50 56 42 50 Z" fill="#D4AF37"/>
+            <circle cx="50" cy="42" r="3" fill="#0E5C38"/>
+            <!-- Tassel -->
+            <path d="M78 52 C85 60, 88 72, 85 82" stroke="#D4AF37" stroke-width="2" fill="none"/>
+            <circle cx="85" cy="84" r="3.5" fill="#D4AF37"/>
+          </svg>
+        </div>
+        <h4 class="font-serif font-bold text-stone-900 text-sm">Калфак</h4>
+        <p class="text-[11px] text-stone-500 mt-1">Женский бархатный головной убор с золотой канителью и кистью</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-200 text-center hover:border-amber-400 transition flex flex-col items-center">
+        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+          <!-- Tatar Tubeteika SVG -->
+          <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow">
+            <ellipse cx="50" cy="38" rx="34" ry="14" fill="#047857" stroke="#D4AF37" stroke-width="2.5"/>
+            <path d="M16 38 L18 64 C18 76, 82 76, 82 64 L84 38 Z" fill="#065F46" stroke="#D4AF37" stroke-width="2.5"/>
+            <path d="M18 64 C18 76, 82 76, 82 64" fill="none" stroke="#D4AF37" stroke-width="3" stroke-dasharray="3 2"/>
+            <circle cx="50" cy="38" r="6" fill="#D4AF37"/>
+            <path d="M36 54 Q50 44 64 54" stroke="#D4AF37" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+        <h4 class="font-serif font-bold text-stone-900 text-sm">Тюбетейка</h4>
+        <p class="text-[11px] text-stone-500 mt-1">Түбәтәй — мужской конусовидный или плоский убор с орнаментом</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-200 text-center hover:border-amber-400 transition flex flex-col items-center">
+        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+          <!-- Tatar Kamzol SVG -->
+          <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow">
+            <path d="M26 22 L40 22 L50 44 L60 22 L74 22 L79 78 C65 84, 35 84, 21 78 Z" fill="#991B1B" stroke="#D4AF37" stroke-width="2"/>
+            <path d="M50 44 L50 82" stroke="#D4AF37" stroke-width="2.5"/>
+            <path d="M26 22 C34 40, 34 60, 21 78" stroke="#D4AF37" stroke-width="2" fill="none"/>
+            <path d="M74 22 C66 40, 66 60, 79 78" stroke="#D4AF37" stroke-width="2" fill="none"/>
+            <circle cx="50" cy="50" r="2.5" fill="#D4AF37"/>
+            <circle cx="50" cy="62" r="2.5" fill="#D4AF37"/>
+          </svg>
+        </div>
+        <h4 class="font-serif font-bold text-stone-900 text-sm">Камзол</h4>
+        <p class="text-[11px] text-stone-500 mt-1">Приталенный жилет из бархата с золотым позументом и тесьмой</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-200 text-center hover:border-amber-400 transition flex flex-col items-center">
+        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+          <!-- Tatar Chitek Boots SVG -->
+          <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow">
+            <path d="M30 18 L48 18 L48 55 L62 58 C68 62, 70 70, 64 74 L32 74 C26 70, 24 55, 24 45 L30 18 Z" fill="#047857" stroke="#D4AF37" stroke-width="2"/>
+            <!-- Leather mosaic insert -->
+            <path d="M34 26 Q44 34 38 48 Q30 54 36 64" fill="none" stroke="#B91C1C" stroke-width="4.5" stroke-linecap="round"/>
+            <path d="M34 26 Q44 34 38 48 Q30 54 36 64" fill="none" stroke="#D4AF37" stroke-width="1.2"/>
+            <path d="M28 74 L65 74" stroke="#78350F" stroke-width="3"/>
+          </svg>
+        </div>
+        <h4 class="font-serif font-bold text-stone-900 text-sm">Ичиги (Читек)</h4>
+        <p class="text-[11px] text-stone-500 mt-1">Сапоги из мягкого сафьяна с уникальной татарской кожаной мозаикой</p>
+      </div>
+
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-stone-200 text-center hover:border-amber-400 transition flex flex-col items-center">
+        <div class="w-16 h-16 mb-2 flex items-center justify-center">
+          <!-- Tatar Izu SVG -->
+          <svg viewBox="0 0 100 100" class="w-full h-full drop-shadow">
+            <path d="M30 20 L70 20 L62 68 C58 78, 42 78, 38 68 Z" fill="#065F46" stroke="#D4AF37" stroke-width="2"/>
+            <ellipse cx="50" cy="34" rx="14" ry="4" fill="#D4AF37"/>
+            <circle cx="42" cy="48" r="3.5" fill="#E5E7EB" stroke="#9CA3AF"/>
+            <circle cx="50" cy="48" r="4" fill="#E5E7EB" stroke="#9CA3AF"/>
+            <circle cx="58" cy="48" r="3.5" fill="#E5E7EB" stroke="#9CA3AF"/>
+            <circle cx="45" cy="62" r="3.5" fill="#DC2626"/>
+            <circle cx="55" cy="62" r="3.5" fill="#DC2626"/>
+          </svg>
+        </div>
+        <h4 class="font-serif font-bold text-stone-900 text-sm">Изү (Нагрудник)</h4>
+        <p class="text-[11px] text-stone-500 mt-1">Трапециевидное нагрудное украшение с монетами, кораллами и тесьмой</p>
+      </div>
+    </div>
+
+    <!-- Mini-Game: Интерактивная гардеробная -->
+    <div class="bg-stone-900 text-white rounded-3xl p-6 sm:p-10 shadow-2xl border-2 border-tatar-gold">
+      <div class="text-center max-w-2xl mx-auto mb-8">
+        <span class="bg-amber-400 text-stone-900 text-[10px] font-extrabold uppercase px-3 py-1 rounded-full">Интерактив раздела «Костюм»</span>
+        <h3 class="text-2xl sm:text-3xl font-serif font-bold text-amber-200 mt-2">Этнографическая гардеробная «Наряд на Сабантуй»</h3>
+        <p class="text-stone-300 text-xs sm:text-sm mt-1">
+          Выберите персонажа: <strong>Татарская женщина</strong> или <strong>Татарский мужчина</strong>. Для каждого элемента выберите именно татарский предмет из трех предложенных национальных вариантов!
+        </p>
+      </div>
+
+      <!-- Character selection -->
+      <div class="flex justify-center gap-3 mb-8">
+        <button id="genderFemaleBtn" onclick="selectGender('female')" class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-amber-400 text-stone-900 shadow-lg transition flex items-center gap-2">
+          <i class="fa-solid fa-person-dress"></i> Татарская женщина (Татар хатыны)
+        </button>
+        <button id="genderMaleBtn" onclick="selectGender('male')" class="px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-stone-800 text-stone-300 hover:text-white transition flex items-center gap-2">
+          <i class="fa-solid fa-person"></i> Татарский мужчина (Татар ире)
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Mannequin Character Preview Display (5 cols) -->
+        <div class="lg:col-span-5 bg-gradient-to-b from-stone-800 to-stone-950 rounded-2xl p-6 border-2 border-amber-400/40 text-center flex flex-col items-center justify-between min-h-[460px] relative overflow-hidden shadow-inner">
+          <div class="w-full flex justify-between items-center text-xs text-amber-200 font-serif pb-2 border-b border-stone-700">
+            <span id="mannequinCharName" class="font-bold">Татарская женщина</span>
+            <span class="text-[10px] bg-stone-700/80 px-2 py-0.5 rounded text-stone-300">Праздничный күлмәк</span>
+          </div>
+
+          <!-- Dynamic SVG Mannequin Layering Canvas -->
+          <div class="relative w-64 h-[380px] my-auto flex items-center justify-center">
+            <!-- BASE UNDERDRESS (FEMALE: KULMEK / MALE: LONG TUNIC & TROUSERS) -->
+            <div id="mannequinBaseCanvas" class="mannequin-layer">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- OVERLAY LAYERS -->
+            <div id="mannequinBootsCanvas" class="mannequin-layer"></div>
+            <div id="mannequinClothingCanvas" class="mannequin-layer"></div>
+            <div id="mannequinAccessoryCanvas" class="mannequin-layer"></div>
+            <div id="mannequinHeadwearCanvas" class="mannequin-layer"></div>
+          </div>
+
+          <!-- Outfit evaluation feedback note -->
+          <div id="outfitStatus" class="w-full p-3 bg-stone-800/90 rounded-xl text-xs font-serif text-amber-200 border border-stone-700">
+            На манекене надета традиционная основа — шелковое платье-рубаха «Күлмәк». Выберите праздничные элементы справа!
+          </div>
+        </div>
+
+        <!-- Controls / Wardrobe Rack (7 cols) -->
+        <div class="lg:col-span-7 space-y-5">
+          <!-- Step 1: Headwear -->
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <span class="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-crown text-[10px]"></i> 1. Головной убор:
+              </span>
+              <span id="badge-headwear" class="text-[10px] text-stone-400">не выбран</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" id="headwearOptions">
+              <!-- JS rendered -->
+            </div>
+          </div>
+
+          <!-- Step 2: Outerwear (Камзол) -->
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <span class="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-vest text-[10px]"></i> 2. Верхняя одежда (поверх күлмәка):
+              </span>
+              <span id="badge-clothing" class="text-[10px] text-stone-400">не выбран</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" id="clothingOptions">
+              <!-- JS rendered -->
+            </div>
+          </div>
+
+          <!-- Step 3: Boots (Читек / Обувь) -->
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <span class="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-shoe-prints text-[10px]"></i> 3. Традиционная обувь:
+              </span>
+              <span id="badge-boots" class="text-[10px] text-stone-400">не выбран</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" id="bootsOptions">
+              <!-- JS rendered -->
+            </div>
+          </div>
+
+          <!-- Step 4: Details / Accessories (Изү / Пояс) -->
+          <div>
+            <div class="flex justify-between items-center mb-1.5">
+              <span class="text-xs font-bold text-amber-300 uppercase tracking-wider flex items-center gap-1.5">
+                <i class="fa-solid fa-gem text-[10px]"></i> 4. Аксессуары и украшения:
+              </span>
+              <span id="badge-accessory" class="text-[10px] text-stone-400">не выбран</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" id="accessoryOptions">
+              <!-- JS rendered -->
+            </div>
+          </div>
+
+          <div class="pt-3 flex flex-wrap gap-3">
+            <button onclick="checkCompleteOutfit()" class="flex-1 min-w-[200px] bg-amber-400 hover:bg-amber-300 text-stone-900 font-bold py-3 rounded-xl text-xs sm:text-sm transition flex items-center justify-center gap-2 shadow-lg">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> Оценить праздничный образ
+            </button>
+            <button onclick="resetWardrobe()" class="px-5 py-3 bg-stone-800 hover:bg-stone-700 text-white rounded-xl text-xs transition border border-stone-700">
+              <i class="fa-solid fa-rotate-left mr-1"></i> Сбросить
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================================
+       SECTION 4: QR-КОД И МАТЕРИАЛЫ ДЛЯ ПРЕЗЕНТАЦИИ
+       ======================================================== -->
+  <section id="qr-section" class="py-16 bg-stone-900 text-white border-t-2 border-tatar-gold">
+    <div class="max-w-5xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+      <div>
+        <span class="text-amber-400 text-xs font-bold uppercase tracking-widest">Школьный стенд и жюри</span>
+        <h2 class="text-3xl font-serif font-bold text-amber-100 mt-2">QR-код для интерактивного доступа</h2>
+        <div class="w-16 h-1 bg-amber-400 my-4 rounded-full"></div>
+        <p class="text-stone-300 text-sm sm:text-base leading-relaxed mb-6 font-serif">
+          Распечатайте этот QR-код или прикрепите к презентации. Любой зритель или член жюри сможет навести камеру смартфона, чтобы открыть рецепты, сыграть в гардеробную и поучаствовать в викторине прямо со своего телефона!
+        </p>
+
+        <div class="flex flex-wrap gap-3">
+          <button onclick="window.print()" class="bg-amber-400 hover:bg-amber-300 text-stone-900 font-bold px-5 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-2">
+            <i class="fa-solid fa-print"></i> Распечатать страницу
+          </button>
+          <button onclick="copySiteLink()" class="bg-stone-800 hover:bg-stone-700 text-amber-200 border border-stone-600 font-semibold px-5 py-2.5 rounded-xl transition text-xs sm:text-sm flex items-center gap-2">
+            <i class="fa-solid fa-link"></i> <span id="copyLinkBtnText">Скопировать ссылку</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="bg-stone-800/90 p-8 rounded-3xl border-2 border-tatar-gold text-center flex flex-col items-center justify-center shadow-2xl">
+        <div class="bg-white p-4 rounded-2xl shadow-xl inline-block" id="qrcode"></div>
+        <p class="mt-4 text-xs text-amber-200 font-medium">Отсканируйте камерой смартфона</p>
+        <p class="text-[11px] text-stone-400 mt-1 max-w-xs break-all" id="currentUrlDisplay"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL: RECIPE DETAILS -->
+  <div id="recipeModal" class="fixed inset-0 z-50 bg-stone-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white max-w-2xl w-full rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col">
+      <div class="bg-tatar-green text-white p-5 flex items-center justify-between border-b-2 border-tatar-gold">
+        <div>
+          <h3 id="modalDishTitle" class="text-xl font-bold font-serif text-amber-200">Название блюда</h3>
+          <p id="modalDishTatarName" class="text-xs text-stone-300 italic font-serif">Татарское название</p>
+        </div>
+        <button onclick="closeRecipeModal()" class="text-white hover:text-amber-200 text-2xl font-bold px-2">&times;</button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-6 text-stone-700 text-xs sm:text-sm" id="modalDishContent"></div>
+      <div class="p-4 bg-stone-100 border-t border-stone-200 flex justify-between items-center">
+        <span class="text-xs text-stone-500 italic">Ашларыгыз тәмле булсын!</span>
+        <button onclick="closeRecipeModal()" class="bg-stone-800 hover:bg-stone-900 text-white text-xs font-semibold px-4 py-2 rounded-xl transition">Закрыть</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    /* ==========================================================
+       SVG ICONS DATABASE FOR ALL COSTUME OPTIONS
+       ========================================================== */
+    const costumeSVGs = {
+      // FEMALE HEADWEAR
+      kalfak: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <path d="M20 62 C20 32, 45 18, 72 22 C84 24, 88 40, 78 50 C70 58, 38 66, 20 62 Z" fill="#991B1B" stroke="#D4AF37" stroke-width="2.5"/>
+          <path d="M20 62 C34 70, 60 68, 78 50" fill="none" stroke="#D4AF37" stroke-width="3"/>
+          <path d="M40 36 Q50 26 60 36 Q68 46 58 52 Q50 56 40 48 Z" fill="#D4AF37"/>
+          <circle cx="50" cy="40" r="3" fill="#0E5C38"/>
+          <path d="M78 50 C86 58, 90 70, 86 82" stroke="#D4AF37" stroke-width="2" fill="none"/>
+          <circle cx="86" cy="84" r="3.5" fill="#D4AF37"/>
+        </svg>`,
+      kokoshnik: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <path d="M18 72 C12 25, 88 25, 82 72 C70 65, 30 65, 18 72 Z" fill="#DC2626" stroke="#D4AF37" stroke-width="2.5"/>
+          <path d="M30 66 C35 40, 65 40, 70 66" fill="#F87171" stroke="#D4AF37" stroke-width="1.5"/>
+          <circle cx="50" cy="36" r="4" fill="#FFFFFF"/>
+          <circle cx="38" cy="44" r="3" fill="#FFFFFF"/>
+          <circle cx="62" cy="44" r="3" fill="#FFFFFF"/>
+          <!-- Ryasny pearls -->
+          <path d="M20 72 L18 88 M80 72 L82 88" stroke="#E5E7EB" stroke-width="2.5" stroke-dasharray="2 2"/>
+        </svg>`,
+      kashmau: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Bashkir cap with tail and coins -->
+          <path d="M28 35 C28 20, 72 20, 72 35 L70 56 C60 62, 40 62, 30 56 Z" fill="#991B1B" stroke="#B45309" stroke-width="2"/>
+          <circle cx="50" cy="30" r="4" fill="#EF4444"/>
+          <circle cx="40" cy="44" r="3" fill="#D1D5DB"/>
+          <circle cx="50" cy="46" r="3.5" fill="#D1D5DB"/>
+          <circle cx="60" cy="44" r="3" fill="#D1D5DB"/>
+          <!-- Long back ribbon with coins -->
+          <path d="M42 58 L40 90 L60 90 L58 58 Z" fill="#7F1D1D" stroke="#D4AF37" stroke-width="1.5"/>
+          <circle cx="50" cy="68" r="2.5" fill="#F3F4F6"/>
+          <circle cx="50" cy="78" r="2.5" fill="#F3F4F6"/>
+        </svg>`,
+
+      // MALE HEADWEAR
+      tubeteika: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <ellipse cx="50" cy="38" rx="34" ry="14" fill="#047857" stroke="#D4AF37" stroke-width="2.5"/>
+          <path d="M16 38 L18 64 C18 76, 82 76, 82 64 L84 38 Z" fill="#065F46" stroke="#D4AF37" stroke-width="2.5"/>
+          <path d="M18 64 C18 76, 82 76, 82 64" fill="none" stroke="#D4AF37" stroke-width="2.5" stroke-dasharray="3 2"/>
+          <circle cx="50" cy="38" r="6" fill="#D4AF37"/>
+          <path d="M34 52 Q50 42 66 52" stroke="#D4AF37" stroke-width="2" fill="none"/>
+        </svg>`,
+      papaha: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Caucasian high fur hat -->
+          <path d="M24 68 C16 45, 20 22, 50 20 C80 22, 84 45, 76 68 C68 76, 32 76, 24 68 Z" fill="#374151" stroke="#1F2937" stroke-width="2.5"/>
+          <!-- Fur texture strokes -->
+          <path d="M30 35 Q35 45 28 55 M50 28 Q54 42 48 60 M70 35 Q65 48 72 58 M40 40 Q44 52 38 65" stroke="#9CA3AF" stroke-width="2" fill="none"/>
+        </svg>`,
+      doppa: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Uzbek four-sided black-white doppa -->
+          <polygon points="50,22 84,40 50,56 16,40" fill="#111827" stroke="#E5E7EB" stroke-width="2"/>
+          <path d="M16 40 L16 66 L50 78 L84 66 L84 40 Z" fill="#1F2937" stroke="#E5E7EB" stroke-width="2"/>
+          <!-- Kalampir white almond motif -->
+          <path d="M30 46 Q38 38 42 46 Q38 52 30 46 Z" fill="#F9FAFB"/>
+          <path d="M70 46 Q62 38 58 46 Q62 52 70 46 Z" fill="#F9FAFB"/>
+        </svg>`,
+
+      // FEMALE OUTERWEAR (OVER KULMEK)
+      female_kamzol: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <path d="M24 20 L38 20 L50 44 L62 20 L76 20 L80 80 C65 86, 35 86, 20 80 Z" fill="#065F46" stroke="#D4AF37" stroke-width="2.5"/>
+          <path d="M50 44 L50 82" stroke="#D4AF37" stroke-width="2.5"/>
+          <path d="M24 20 C34 40, 34 60, 20 80" stroke="#D4AF37" stroke-width="2" fill="none"/>
+          <path d="M76 20 C66 40, 66 60, 80 80" stroke="#D4AF37" stroke-width="2" fill="none"/>
+          <circle cx="50" cy="52" r="2.5" fill="#D4AF37"/>
+          <circle cx="50" cy="64" r="2.5" fill="#D4AF37"/>
+        </svg>`,
+      sarafan: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Russian peasant sarafan -->
+          <path d="M36 20 L44 20 L44 38 L30 84 L70 84 L56 38 L56 20 L64 20 L60 38 L76 86 L24 86 L40 38 Z" fill="#B91C1C" stroke="#7F1D1D" stroke-width="2"/>
+          <path d="M50 38 L50 86" stroke="#D4AF37" stroke-width="3"/>
+          <circle cx="50" cy="48" r="2.5" fill="#FBBF24"/>
+          <circle cx="50" cy="60" r="2.5" fill="#FBBF24"/>
+          <circle cx="50" cy="72" r="2.5" fill="#FBBF24"/>
+        </svg>`,
+      shupar: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Chuvash white canvas robe with geometric patterns -->
+          <path d="M22 22 L40 22 L50 38 L60 22 L78 22 L82 82 L18 82 Z" fill="#F9FAFB" stroke="#991B1B" stroke-width="2.5"/>
+          <path d="M50 38 L50 82" stroke="#991B1B" stroke-width="2"/>
+          <rect x="24" y="26" width="10" height="8" fill="#991B1B"/>
+          <rect x="66" y="26" width="10" height="8" fill="#991B1B"/>
+          <path d="M22 76 L78 76" stroke="#991B1B" stroke-width="3" stroke-dasharray="4 2"/>
+        </svg>`,
+
+      // MALE OUTERWEAR (OVER KULMEK)
+      male_kamzol: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <path d="M22 20 L38 20 L50 44 L62 20 L78 20 L82 82 C65 86, 35 86, 18 82 Z" fill="#991B1B" stroke="#D4AF37" stroke-width="2.5"/>
+          <path d="M50 44 L50 82" stroke="#D4AF37" stroke-width="2.5"/>
+          <!-- Broad woven sash (кушак) with metal clasp -->
+          <rect x="20" y="52" width="60" height="9" fill="#047857" stroke="#D4AF37" stroke-width="1.5"/>
+          <ellipse cx="50" cy="56.5" rx="6" ry="5" fill="#D4AF37" stroke="#78350F" stroke-width="1.5"/>
+          <!-- Borders -->
+          <path d="M22 20 C30 40, 30 65, 18 82" stroke="#D4AF37" stroke-width="2" fill="none"/>
+          <path d="M78 20 C70 40, 70 65, 82 82" stroke="#D4AF37" stroke-width="2" fill="none"/>
+        </svg>`,
+      cherkeska: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Caucasian cherkeska with gazyri cartridges on chest -->
+          <path d="M20 20 L38 20 L50 50 L62 20 L80 20 L84 86 L16 86 Z" fill="#1F2937" stroke="#111827" stroke-width="2"/>
+          <path d="M50 50 L50 86" stroke="#4B5563" stroke-width="2"/>
+          <!-- Gazyri pouches on both chest sides -->
+          <rect x="22" y="34" width="16" height="6" fill="#D1D5DB" stroke="#111827" stroke-width="1"/>
+          <rect x="62" y="34" width="16" height="6" fill="#D1D5DB" stroke="#111827" stroke-width="1"/>
+          <path d="M25 34 L25 40 M29 34 L29 40 M33 34 L33 40 M65 34 L65 40 M69 34 L69 40 M73 34 L73 40" stroke="#111827" stroke-width="1"/>
+          <!-- Thin metal-accent belt -->
+          <rect x="18" y="54" width="64" height="4" fill="#9CA3AF"/>
+        </svg>`,
+      kosovorotka: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Russian kosovorotka tunic with skewed collar -->
+          <path d="M22 24 L42 24 L42 34 L34 34 L34 46 L42 46 L42 82 L78 82 L78 24 Z" fill="#DC2626" stroke="#991B1B" stroke-width="2"/>
+          <!-- Side opening with embroidery on the left -->
+          <path d="M34 24 L34 46" stroke="#FBBF24" stroke-width="3"/>
+          <rect x="22" y="76" width="56" height="6" fill="#B91C1C" stroke="#FBBF24" stroke-width="1.5"/>
+          <!-- Thin woven cord belt with side tassel -->
+          <path d="M20 54 L80 54" stroke="#FBBF24" stroke-width="2"/>
+          <path d="M28 54 L26 74" stroke="#FBBF24" stroke-width="2"/>
+          <circle cx="26" cy="76" r="3" fill="#FBBF24"/>
+        </svg>`,
+
+      // FOOTWEAR
+      chitek_female: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- High mosaic soft morocco boots -->
+          <path d="M30 16 L50 16 L50 56 L64 60 C70 64, 72 72, 64 76 L30 76 C24 72, 22 56, 22 46 L30 16 Z" fill="#047857" stroke="#D4AF37" stroke-width="2"/>
+          <!-- Red & Gold floral leather mosaic ornament -->
+          <path d="M32 26 Q46 36 38 50 Q30 58 38 68" fill="none" stroke="#DC2626" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M32 26 Q46 36 38 50 Q30 58 38 68" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+          <path d="M28 76 L66 76" stroke="#78350F" stroke-width="3"/>
+        </svg>`,
+      ichigi_male: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Male solid morocco boots with neat mosaic toe & upper cuff -->
+          <path d="M28 16 L52 16 L52 56 L66 60 C72 64, 74 74, 66 78 L28 78 C22 74, 20 56, 20 46 L28 16 Z" fill="#78350F" stroke="#D4AF37" stroke-width="2"/>
+          <!-- Gold & Green mosaic stitch -->
+          <path d="M28 16 L52 16" stroke="#047857" stroke-width="4"/>
+          <path d="M38 56 Q52 64 62 70" stroke="#D4AF37" stroke-width="2.5" fill="none"/>
+          <path d="M26 78 L68 78" stroke="#1F2937" stroke-width="3"/>
+        </svg>`,
+      lapti: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Russian woven bast shoes with leg wraps (онучи) -->
+          <path d="M32 16 L48 16 L48 50 L68 56 C74 62, 74 72, 62 76 L32 76 C24 72, 24 58, 24 46 L32 16 Z" fill="#FDE68A" stroke="#B45309" stroke-width="2"/>
+          <!-- Criss-cross woven texture -->
+          <path d="M32 24 L48 36 M32 36 L48 48 M48 24 L32 36 M48 36 L32 48 M34 60 L62 68 M40 54 L52 74" stroke="#92400E" stroke-width="1.5"/>
+        </svg>`,
+      chuvyaki: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Caucasian raw leather low soft slip-ons without heels -->
+          <path d="M22 62 C22 46, 52 46, 76 56 C82 62, 80 74, 70 76 L28 76 C22 74, 20 68, 22 62 Z" fill="#4B5563" stroke="#1F2937" stroke-width="2"/>
+          <path d="M34 52 Q50 60 66 58" stroke="#1F2937" stroke-width="1.5" fill="none"/>
+        </svg>`,
+
+      // ACCESSORIES & JEWELRY
+      izu: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Tatar chest cover with coins & ribbons -->
+          <path d="M28 20 L72 20 L62 70 C58 80, 42 80, 38 70 Z" fill="#047857" stroke="#D4AF37" stroke-width="2"/>
+          <ellipse cx="50" cy="32" rx="16" ry="5" fill="#D4AF37"/>
+          <circle cx="40" cy="46" r="4" fill="#E5E7EB" stroke="#9CA3AF"/>
+          <circle cx="50" cy="46" r="4.5" fill="#E5E7EB" stroke="#9CA3AF"/>
+          <circle cx="60" cy="46" r="4" fill="#E5E7EB" stroke="#9CA3AF"/>
+          <circle cx="44" cy="60" r="4" fill="#DC2626"/>
+          <circle cx="56" cy="60" r="4" fill="#DC2626"/>
+          <circle cx="50" cy="72" r="3" fill="#D4AF37"/>
+        </svg>`,
+      tatar_kushak: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Tatar broad silk embroidered sash with silver buckle (каптырма) -->
+          <rect x="14" y="42" width="72" height="16" fill="#047857" stroke="#D4AF37" stroke-width="2"/>
+          <path d="M14 46 L86 46 M14 54 L86 54" stroke="#DC2626" stroke-width="1.5"/>
+          <!-- Ornate silver floral buckle (каптырма) -->
+          <ellipse cx="44" cy="50" rx="7" ry="6" fill="#E5E7EB" stroke="#6B7280" stroke-width="1.5"/>
+          <ellipse cx="56" cy="50" rx="7" ry="6" fill="#E5E7EB" stroke="#6B7280" stroke-width="1.5"/>
+          <circle cx="50" cy="50" r="2.5" fill="#D4AF37"/>
+        </svg>`,
+      slavic_monisto: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Multi-tier red Slavic coral beads -->
+          <path d="M26 28 Q50 48 74 28" fill="none" stroke="#DC2626" stroke-width="4.5" stroke-dasharray="1 3"/>
+          <path d="M22 36 Q50 62 78 36" fill="none" stroke="#B91C1C" stroke-width="5" stroke-dasharray="1 4"/>
+          <path d="M20 46 Q50 78 80 46" fill="none" stroke="#991B1B" stroke-width="5.5" stroke-dasharray="1 4"/>
+        </svg>`,
+      northern_rosette: `
+        <svg viewBox="0 0 100 100" class="cloth-svg-icon">
+          <!-- Northern beaded sun rosette (солнышко) -->
+          <circle cx="50" cy="50" r="24" fill="#1E3A8A" stroke="#60A5FA" stroke-width="2"/>
+          <circle cx="50" cy="50" r="14" fill="#FFFFFF"/>
+          <circle cx="50" cy="50" r="6" fill="#DC2626"/>
+          <!-- Bead rays -->
+          <path d="M50 20 L50 26 M50 74 L50 80 M20 50 L26 50 M74 50 L80 50" stroke="#FBBF24" stroke-width="3"/>
+          <path d="M28 28 L33 33 M67 67 L72 72 M28 72 L33 67 M67 33 L72 28" stroke="#FBBF24" stroke-width="3"/>
+        </svg>`
+    };
+
+    /* ==========================================================
+       WARDROBE DATA & ETHNOGRAPHIC EXPLANATIONS
+       ========================================================== */
+    const wardrobeData = {
+      female: {
+        characterName: "Татарская женщина (Татар хатыны)",
+        underdressDesc: "Шелковое платье Күлмәк с оборками на подоле",
+        slots: {
+          headwear: [
+            { 
+              id: 'kalfak', 
+              name: 'Татарский бархатный Калфак', 
+              desc: 'Расшит золотой канителью, пайетками и увенчан кистью', 
+              iconKey: 'kalfak', 
+              correct: true 
+            },
+            { 
+              id: 'kokoshnik', 
+              name: 'Русский праздничный Кокошник', 
+              desc: 'Полукруглый венец с жемчужной поднизью (славянская традиция)', 
+              iconKey: 'kokoshnik', 
+              correct: false, 
+              ethnicNote: 'Кокошник — традиционный старинный головной убор русских замужних женщин.' 
+            },
+            { 
+              id: 'kashmau', 
+              name: 'Башкирский Кашмау', 
+              desc: 'Чепец с монетным очельем и длинной наспинной лентой', 
+              iconKey: 'kashmau', 
+              correct: false, 
+              ethnicNote: 'Кашмау с кораллово-серебряной лентой принадлежит культуре башкирского народа.' 
+            }
+          ],
+          clothing: [
+            { 
+              id: 'female_kamzol', 
+              name: 'Татарский бархатный Камзол', 
+              desc: 'Приталенный жилет с золотым позументом поверх платья күлмәк', 
+              iconKey: 'female_kamzol', 
+              correct: true 
+            },
+            { 
+              id: 'sarafan', 
+              name: 'Русский косоклинный Сарафан', 
+              desc: 'Традиционное крестьянское платье на широких лямках', 
+              iconKey: 'sarafan', 
+              correct: false, 
+              ethnicNote: 'Сарафан — классический элемент традиционного женского костюма восточных славян.' 
+            },
+            { 
+              id: 'shupar', 
+              name: 'Чувашский Шупар', 
+              desc: 'Белый распашной холщовый кафтан с геометрической вышивкой', 
+              iconKey: 'shupar', 
+              correct: false, 
+              ethnicNote: 'Шупар — это традиционная обрядовая одежда верховых и низовых чувашей.' 
+            }
+          ],
+          boots: [
+            { 
+              id: 'chitek_female', 
+              name: 'Сафьяновые сапожки Читек', 
+              desc: 'Ичиги из цветной кожи с татарской мозаикой и швом «в тачку»', 
+              iconKey: 'chitek_female', 
+              correct: true 
+            },
+            { 
+              id: 'lapti', 
+              name: 'Плетеные лыковые Лапти', 
+              desc: 'Крестьянская обувь из березового или липового лыка', 
+              iconKey: 'lapti', 
+              correct: false, 
+              ethnicNote: 'Лапти — древняя крестьянская обувь славянских и финно-угорских народов России.' 
+            },
+            { 
+              id: 'chuvyaki', 
+              name: 'Кожаные Чувяки', 
+              desc: 'Мягкие бесподошвенные туфли из сыромяти (Кавказ)', 
+              iconKey: 'chuvyaki', 
+              correct: false, 
+              ethnicNote: 'Чувяки — легкая кожаная обувь народов Северного Кавказа и Закавказья.' 
+            }
+          ],
+          accessory: [
+            { 
+              id: 'izu', 
+              name: 'Татарский нагрудник Изү', 
+              desc: 'Трапециевидное нагрудное украшение с монетами и кораллами', 
+              iconKey: 'izu', 
+              correct: true 
+            },
+            { 
+              id: 'slavic_monisto', 
+              name: 'Славянские коралловые бусы', 
+              desc: 'Ярусные ожерелья-мониста из натурального красного коралла', 
+              iconKey: 'slavic_monisto', 
+              correct: false, 
+              ethnicNote: 'Коралловые многорядные бусы характерны для южнорусского и украинского костюмов.' 
+            },
+            { 
+              id: 'northern_rosette', 
+              name: 'Северная бисерная розетка', 
+              desc: 'Орнаментальный солярный медальон коренных народов Севера', 
+              iconKey: 'northern_rosette', 
+              correct: false, 
+              ethnicNote: 'Круглые бисерные розетки «солнышко» создают мастерицы народов Крайнего Севера.' 
+            }
+          ]
+        }
+      },
+      male: {
+        characterName: "Татарский мужчина (Татар ире)",
+        underdressDesc: "Широкая туникообразная рубаха Күлмәк и штаны ыштан",
+        slots: {
+          headwear: [
+            { 
+              id: 'tubeteika', 
+              name: 'Татарская бархатная Тюбетейка (Түбәтәй)', 
+              desc: 'Шапочка с плоским верхом и тонким растительным золотым шитьем', 
+              iconKey: 'tubeteika', 
+              correct: true 
+            },
+            { 
+              id: 'papaha', 
+              name: 'Кавказская Папаха', 
+              desc: 'Высокая овечья или каракулевая горская шапка', 
+              iconKey: 'papaha', 
+              correct: false, 
+              ethnicNote: 'Папаха — символ мужского достоинства и чести у народов Кавказа.' 
+            },
+            { 
+              id: 'doppa', 
+              name: 'Узбекская чустская Доппа', 
+              desc: 'Черная четырехгранная тюбетейка с белым узором перца (калампир)', 
+              iconKey: 'doppa', 
+              correct: false, 
+              ethnicNote: 'Чустская тюбетейка со стручками жгучего перца — традиционный убор в Узбекистане.' 
+            }
+          ],
+          clothing: [
+            { 
+              id: 'male_kamzol', 
+              name: 'Татарский мужской Камзол с кушаком', 
+              desc: 'Длинный бархатный приталенный жилет с расшитым поясом', 
+              iconKey: 'male_kamzol', 
+              correct: true 
+            },
+            { 
+              id: 'cherkeska', 
+              name: 'Горская Черкеска с газырями', 
+              desc: 'Однобортный кафтан с карманами под пороховые заряды-газыри', 
+              iconKey: 'cherkeska', 
+              correct: false, 
+              ethnicNote: 'Черкеска — традиционный боевой и праздничный костюм народов Кавказа и казаков.' 
+            },
+            { 
+              id: 'kosovorotka', 
+              name: 'Русская Косоворотка', 
+              desc: 'Рубаха с косым вышитым воротом-стойкой и подпояской', 
+              iconKey: 'kosovorotka', 
+              correct: false, 
+              ethnicNote: 'Косоворотка — исконная мужская рубаха русского народа с разрезом сбоку.' 
+            }
+          ],
+          boots: [
+            { 
+              id: 'ichigi_male', 
+              name: 'Мужские кожаные сапоги Ичиги', 
+              desc: 'Сапоги из мягкого сафьяна на гибкой подошве с мозаичным носком', 
+              iconKey: 'ichigi_male', 
+              correct: true 
+            },
+            { 
+              id: 'lapti', 
+              name: 'Лыковые лапти', 
+              desc: 'Крестьянская плетеная обувь с льняными онучами', 
+              iconKey: 'lapti', 
+              correct: false, 
+              ethnicNote: 'Лапти не носили татарские горожане и купцы; татары предпочитали сапоги-ичиги.' 
+            },
+            { 
+              id: 'chuvyaki', 
+              name: 'Кавказские чувяки', 
+              desc: 'Легкая бесподошвенная горская обувь', 
+              iconKey: 'chuvyaki', 
+              correct: false, 
+              ethnicNote: 'Чувяки характерны для костюмов горцев Дагестана, Чечни, Грузии и Адыгеи.' 
+            }
+          ],
+          accessory: [
+            { 
+              id: 'tatar_kushak', 
+              name: 'Татарский тканый Кушак с каптырмой', 
+              desc: 'Широкий шелковый пояс с филигранной серебряной пряжкой-замком', 
+              iconKey: 'tatar_kushak', 
+              correct: true 
+            },
+            { 
+              id: 'slavic_monisto', 
+              name: 'Женские бусы', 
+              desc: 'Ожерелье (не надевалось татарскими мужчинами)', 
+              iconKey: 'slavic_monisto', 
+              correct: false, 
+              ethnicNote: 'Ожерелья и бусы не относятся к традиционному мужскому гардеробу татар.' 
+            },
+            { 
+              id: 'northern_rosette', 
+              name: 'Бисерный нагрудный знак', 
+              desc: 'Амулет народов тайги и тундры', 
+              iconKey: 'northern_rosette', 
+              correct: false, 
+              ethnicNote: 'Бисерные нагрудные обереги принадлежат культурам эвенков, чукчей и ненцев.' 
+            }
+          ]
+        }
+      }
+    };
+
+    let currentGender = 'female';
+    let outfitState = { headwear: null, clothing: null, boots: null, accessory: null };
+
+    // Function to shuffle arrays (keeps options well-mixed)
+    function shuffleArray(arr) {
+      const copy = [...arr];
+      for (let i = copy.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [copy[i], copy[j]] = [copy[j], copy[i]];
+      }
+      return copy;
+    }
+
+    function selectGender(gender) {
+      currentGender = gender;
+      document.getElementById('genderFemaleBtn').className = gender === 'female' 
+        ? "px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-amber-400 text-stone-900 shadow-lg transition flex items-center gap-2"
+        : "px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-stone-800 text-stone-300 hover:text-white transition flex items-center gap-2";
+      
+      document.getElementById('genderMaleBtn').className = gender === 'male'
+        ? "px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-amber-400 text-stone-900 shadow-lg transition flex items-center gap-2"
+        : "px-6 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-stone-800 text-stone-300 hover:text-white transition flex items-center gap-2";
+
+      document.getElementById('mannequinCharName').textContent = wardrobeData[gender].characterName;
+      resetWardrobe();
+    }
+
+    function renderWardrobeOptions() {
+      const slotsData = wardrobeData[currentGender].slots;
+
+      ['headwear', 'clothing', 'boots', 'accessory'].forEach(slot => {
+        const options = slotsData[slot];
+        const container = document.getElementById(`${slot}Options`);
+        const badge = document.getElementById(`badge-${slot}`);
+
+        const currentSelected = options.find(o => o.id === outfitState[slot]);
+        if (currentSelected) {
+          badge.textContent = currentSelected.correct ? 'выбран ✓' : 'выбран (ошибка)';
+          badge.className = currentSelected.correct ? 'text-[10px] text-emerald-400 font-bold' : 'text-[10px] text-red-400 font-bold';
+        } else {
+          badge.textContent = 'не выбран';
+          badge.className = 'text-[10px] text-stone-400';
+        }
+
+        container.innerHTML = options.map(item => {
+          const isSelected = outfitState[slot] === item.id;
+          return `
+            <button onclick="wearItem('${slot}', '${item.id}')" class="p-2.5 rounded-xl border text-left text-xs flex flex-col justify-between transition-all group ${
+              isSelected 
+                ? (item.correct ? 'border-emerald-400 bg-emerald-950/70 text-amber-200 ring-2 ring-emerald-400/50 shadow-md' : 'border-red-500 bg-red-950/60 text-red-200 ring-2 ring-red-500/50')
+                : 'border-stone-700 bg-stone-800/90 hover:border-amber-400/80 hover:bg-stone-700/80 text-stone-300'
+            }">
+              <div class="flex items-center space-x-2.5 mb-1.5">
+                ${costumeSVGs[item.iconKey] || ''}
+                <div class="leading-tight">
+                  <div class="font-bold text-[11px] text-amber-100 group-hover:text-amber-300 transition">${item.name}</div>
+                  <div class="text-[9.5px] text-stone-400 leading-snug mt-0.5">${item.desc}</div>
+                </div>
+              </div>
+              ${isSelected ? `<span class="text-[9px] font-semibold mt-1 self-end ${item.correct ? 'text-emerald-400' : 'text-red-300'}">${item.correct ? '● Татарский выбор' : '▲ Другой народ'}</span>` : ''}
+            </button>
+          `;
+        }).join('');
+      });
+    }
+
+    function wearItem(slot, id) {
+      outfitState[slot] = id;
+      renderWardrobeOptions();
+      updateMannequinDisplay();
+    }
+
+    /* ==========================================================
+       SVG MANNEQUIN RENDERING (AUTHENTIC KULMEK + OVERLAY LAYERS)
+       ========================================================== */
+    function updateMannequinDisplay() {
+      const baseCanvas = document.getElementById('mannequinBaseCanvas');
+      const headCanvas = document.getElementById('mannequinHeadwearCanvas');
+      const clothCanvas = document.getElementById('mannequinClothingCanvas');
+      const bootsCanvas = document.getElementById('mannequinBootsCanvas');
+      const accCanvas = document.getElementById('mannequinAccessoryCanvas');
+
+      if (currentGender === 'female') {
+        // Base: Tatar Woman with full authentic silk Külmək (Dress with tiered ruffles & puff sleeves)
+        baseCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Shadow -->
+            <ellipse cx="100" cy="340" rx="46" ry="10" fill="#0c0a09" opacity="0.6"/>
+            <!-- Female Body Silhouette & Underdress (Külmək) -->
+            <!-- Head & Neck -->
+            <circle cx="100" cy="52" r="18" fill="#FBD5B5"/>
+            <!-- Hair braids -->
+            <path d="M82 52 C80 82, 86 110, 88 135" stroke="#451A03" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <path d="M118 52 C120 82, 114 110, 112 135" stroke="#451A03" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+            <!-- Silk Külmək Dress Body (Emerald green / saffron gold trims) -->
+            <path d="M84 72 L116 72 L128 135 L145 285 C145 285, 100 292, 55 285 L72 135 Z" fill="#047857" stroke="#D4AF37" stroke-width="1.5"/>
+            <!-- Tiered Ruffles on dress hem (оборочные воланы) -->
+            <path d="M55 285 C75 293, 125 293, 145 285 L148 305 C125 315, 75 315, 52 305 Z" fill="#065F46" stroke="#D4AF37" stroke-width="1.2"/>
+            <path d="M52 305 C75 315, 125 315, 148 305 L152 322 C125 332, 75 332, 48 322 Z" fill="#047857" stroke="#D4AF37" stroke-width="1.2"/>
+            <!-- Flared Puffed Sleeves with cuff ruffles -->
+            <path d="M84 74 L60 120 C56 128, 64 135, 70 130 L84 100" fill="#047857" stroke="#D4AF37" stroke-width="1.2"/>
+            <path d="M116 74 L140 120 C144 128, 136 135, 130 130 L116 100" fill="#047857" stroke="#D4AF37" stroke-width="1.2"/>
+            <!-- Soft Hands -->
+            <circle cx="64" cy="132" r="5" fill="#FBD5B5"/>
+            <circle cx="136" cy="132" r="5" fill="#FBD5B5"/>
+          </svg>
+        `;
+      } else {
+        // Base: Tatar Man with knee-length tunic shirt (Külmək) & loose trousers (Ыштан)
+        baseCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Shadow -->
+            <ellipse cx="100" cy="340" rx="46" ry="10" fill="#0c0a09" opacity="0.6"/>
+            <!-- Male Head & Neck -->
+            <circle cx="100" cy="50" r="19" fill="#FBD5B5"/>
+            <!-- Trousers (Ыштан) -->
+            <path d="M78 210 L70 318 L94 318 L100 230 L106 318 L130 318 L122 210 Z" fill="#1E293B" stroke="#0F172A" stroke-width="1.5"/>
+            <!-- Long White Tunic Shirt (Күлмәк) down to knees -->
+            <path d="M76 72 L124 72 L134 220 C115 224, 85 224, 66 220 Z" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.8"/>
+            <!-- Wide Long Sleeves -->
+            <path d="M76 74 L52 135 C50 142, 58 146, 64 140 L80 110" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+            <path d="M124 74 L148 135 C150 142, 142 146, 136 140 L120 110" fill="#F8FAFC" stroke="#CBD5E1" stroke-width="1.5"/>
+            <circle cx="58" cy="142" r="5.5" fill="#FBD5B5"/>
+            <circle cx="142" cy="142" r="5.5" fill="#FBD5B5"/>
+            <!-- Traditional Neck Cut with embroidery trim -->
+            <path d="M100 72 L100 102" stroke="#B91C1C" stroke-width="2.5"/>
+            <path d="M96 74 L104 74" stroke="#D4AF37" stroke-width="2"/>
+          </svg>
+        `;
+      }
+
+      // 1. BOOTS LAYER
+      if (outfitState.boots === 'chitek_female' || outfitState.boots === 'ichigi_male') {
+        bootsCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Tatar Mosaic Boots (Читек) on mannequin legs -->
+            <path d="M70 286 L88 286 L88 334 L97 337 C99 342, 92 344, 80 344 L66 344 C63 342, 65 328, 65 316 L70 286 Z" fill="#065F46" stroke="#D4AF37" stroke-width="1.5"/>
+            <path d="M112 286 L130 286 L135 316 C135 328, 137 342, 134 344 L120 344 C108 344, 101 342, 103 337 L112 334 Z" fill="#065F46" stroke="#D4AF37" stroke-width="1.5"/>
+            <!-- Leather mosaic swirl details -->
+            <path d="M72 300 Q80 310 74 324 M126 300 Q118 310 124 324" stroke="#DC2626" stroke-width="2.5" fill="none"/>
+            <path d="M72 300 Q80 310 74 324 M126 300 Q118 310 124 324" stroke="#D4AF37" stroke-width="1" fill="none"/>
+          </svg>`;
+      } else if (outfitState.boots) {
+        bootsCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Generic / other footwear -->
+            <rect x="68" y="328" width="22" height="15" rx="4" fill="#B45309"/>
+            <rect x="110" y="328" width="22" height="15" rx="4" fill="#B45309"/>
+          </svg>`;
+      } else {
+        bootsCanvas.innerHTML = '';
+      }
+
+      // 2. CLOTHING (KAMZOL) LAYER
+      if (outfitState.clothing === 'female_kamzol') {
+        clothCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Female Fitted Velvet Kamzol with gold galloon border -->
+            <path d="M82 72 L94 72 L100 112 L106 72 L118 72 L128 205 C115 212, 85 212, 72 205 Z" fill="#991B1B" stroke="#D4AF37" stroke-width="2"/>
+            <path d="M100 112 L100 208" stroke="#D4AF37" stroke-width="2.5"/>
+            <circle cx="100" cy="130" r="2.5" fill="#FBBF24"/>
+            <circle cx="100" cy="155" r="2.5" fill="#FBBF24"/>
+            <circle cx="100" cy="180" r="2.5" fill="#FBBF24"/>
+            <!-- Gold galloon sides -->
+            <path d="M82 72 C90 120, 90 165, 74 204" stroke="#D4AF37" stroke-width="1.8" fill="none"/>
+            <path d="M118 72 C110 120, 110 165, 126 204" stroke="#D4AF37" stroke-width="1.8" fill="none"/>
+          </svg>`;
+      } else if (outfitState.clothing === 'male_kamzol') {
+        clothCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Male Long Kamzol with broad green sash (Кушак) -->
+            <path d="M78 72 L92 72 L100 118 L108 72 L122 72 L132 230 C114 235, 86 235, 68 230 Z" fill="#991B1B" stroke="#D4AF37" stroke-width="2"/>
+            <path d="M100 118 L100 232" stroke="#D4AF37" stroke-width="2.2"/>
+            <!-- Wide sash across waist -->
+            <rect x="71" y="152" width="58" height="14" fill="#047857" stroke="#D4AF37" stroke-width="1.5"/>
+            <ellipse cx="100" cy="159" rx="7" ry="5.5" fill="#E5E7EB" stroke="#D4AF37" stroke-width="1.5"/>
+          </svg>`;
+      } else if (outfitState.clothing) {
+        clothCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Non-tatar garment overlay sketch -->
+            <path d="M74 72 L126 72 L136 215 L64 215 Z" fill="#3B82F6" opacity="0.8" stroke="#1D4ED8" stroke-width="2"/>
+          </svg>`;
+      } else {
+        clothCanvas.innerHTML = '';
+      }
+
+      // 3. ACCESSORIES / IZU LAYER
+      if (outfitState.accessory === 'izu') {
+        accCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Tatar Izu bib pinned on chest -->
+            <path d="M90 78 L110 78 L106 122 C103 128, 97 128, 94 122 Z" fill="#047857" stroke="#D4AF37" stroke-width="1.5"/>
+            <circle cx="100" cy="88" r="2.5" fill="#E5E7EB" stroke="#9CA3AF"/>
+            <circle cx="96" cy="98" r="2.2" fill="#E5E7EB"/>
+            <circle cx="104" cy="98" r="2.2" fill="#E5E7EB"/>
+            <circle cx="100" cy="108" r="2.5" fill="#DC2626"/>
+            <circle cx="100" cy="118" r="2" fill="#FBBF24"/>
+          </svg>`;
+      } else if (outfitState.accessory === 'tatar_kushak') {
+        accCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Male Silver Kaptyrma buckle shiny overlay -->
+            <ellipse cx="94" cy="159" rx="5" ry="4.5" fill="#F3F4F6" stroke="#4B5563" stroke-width="1"/>
+            <ellipse cx="106" cy="159" rx="5" ry="4.5" fill="#F3F4F6" stroke="#4B5563" stroke-width="1"/>
+            <circle cx="100" cy="159" r="2" fill="#D4AF37"/>
+          </svg>`;
+      } else if (outfitState.accessory) {
+        accCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <ellipse cx="100" cy="92" rx="15" ry="8" fill="none" stroke="#DC2626" stroke-width="3"/>
+          </svg>`;
+      } else {
+        accCanvas.innerHTML = '';
+      }
+
+      // 4. HEADWEAR LAYER
+      if (outfitState.headwear === 'kalfak') {
+        headCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Kalfak gracefully tilted on woman's head -->
+            <path d="M88 42 C88 28, 98 22, 112 24 C118 25, 120 32, 116 38 C112 43, 98 46, 88 42 Z" fill="#991B1B" stroke="#D4AF37" stroke-width="1.8"/>
+            <circle cx="104" cy="32" r="2" fill="#D4AF37"/>
+            <!-- Golden tassel falling onto shoulder -->
+            <path d="M116 38 C120 44, 123 52, 121 62" stroke="#D4AF37" stroke-width="1.8" fill="none"/>
+            <circle cx="121" cy="63" r="2" fill="#D4AF37"/>
+          </svg>`;
+      } else if (outfitState.headwear === 'tubeteika') {
+        headCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <!-- Tubeteika sitting snugly on man's head -->
+            <ellipse cx="100" cy="36" rx="19" ry="7" fill="#047857" stroke="#D4AF37" stroke-width="1.5"/>
+            <path d="M81 36 L82 48 C82 54, 118 54, 118 48 L119 36 Z" fill="#065F46" stroke="#D4AF37" stroke-width="1.5"/>
+            <circle cx="100" cy="36" r="3" fill="#D4AF37"/>
+          </svg>`;
+      } else if (outfitState.headwear) {
+        headCanvas.innerHTML = `
+          <svg viewBox="0 0 200 360" class="w-full h-full">
+            <rect x="80" y="24" width="40" height="20" rx="4" fill="#64748B" stroke="#334155" stroke-width="1.5"/>
+          </svg>`;
+      } else {
+        headCanvas.innerHTML = '';
+      }
+
+      // Quick feedback text
+      const currentSelectedItems = Object.values(outfitState).filter(Boolean);
+      const statusBox = document.getElementById('outfitStatus');
+      if (currentSelectedItems.length === 0) {
+        statusBox.innerHTML = `На манекене надета традиционная основа — <strong>${wardrobeData[currentGender].underdressDesc}</strong>. Выберите праздничные элементы справа!`;
+      } else {
+        const errorItems = [];
+        const slotsData = wardrobeData[currentGender].slots;
+        for (const slotKey in outfitState) {
+          const id = outfitState[slotKey];
+          if (id) {
+            const found = slotsData[slotKey].find(x => x.id === id);
+            if (found && !found.correct) errorItems.push(found);
+          }
+        }
+        if (errorItems.length > 0) {
+          const firstErr = errorItems[0];
+          statusBox.innerHTML = `<span class="text-amber-300 font-semibold">Внимание:</span> «${firstErr.name}» — <span class="text-stone-300">${firstErr.ethnicNote || 'не относится к татарскому костюму.'}</span> Замените этот элемент!`;
+        } else if (currentSelectedItems.length === 4) {
+          statusBox.innerHTML = `<span class="text-emerald-400 font-bold">★ Превосходно!</span> Все 4 элемента татарского наряда выбраны верно! Нажмите «Оценить праздничный образ»!`;
+        } else {
+          statusBox.innerHTML = `Выбрано элементов: <strong>${currentSelectedItems.length} из 4</strong>. Все текущие детали — подлинно татарские!`;
+        }
+      }
+    }
+
+    function checkCompleteOutfit() {
+      const slotsData = wardrobeData[currentGender].slots;
+      const statusBox = document.getElementById('outfitStatus');
+
+      const missingSlots = ['headwear', 'clothing', 'boots', 'accessory'].filter(s => !outfitState[s]);
+      if (missingSlots.length > 0) {
+        statusBox.innerHTML = `<span class="text-amber-400 font-bold">Не все элементы выбраны!</span> Пожалуйста, подберите все 4 детали костюма из разделов справа.`;
+        return;
+      }
+
+      const mistakes = [];
+      ['headwear', 'clothing', 'boots', 'accessory'].forEach(slot => {
+        const selectedId = outfitState[slot];
+        const item = slotsData[slot].find(x => x.id === selectedId);
+        if (item && !item.correct) {
+          mistakes.push(`<strong>${item.name}</strong> (${item.ethnicNote || 'культура другого народа'})`);
+        }
+      });
+
+      if (mistakes.length === 0) {
+        if (typeof confetti === 'function') confetti({ particleCount: 75, spread: 80, origin: { y: 0.65 } });
+        statusBox.innerHTML = `
+          <div class="text-emerald-300 font-bold">
+            ✨ Камил! Истинное национальное совершенство!
+            <p class="text-stone-200 font-normal text-[11px] mt-1">
+              Вы безупречно воссоздали праздничный комплекс татарского костюма для Сабантуя: шелковый күлмәк, бархатный камзол с золотым шитьем, мягкие мозаичные сапоги читек и аутентичные украшения.
+            </p>
+          </div>
+        `;
+      } else {
+        statusBox.innerHTML = `
+          <div class="text-red-300">
+            <strong>Костюм не является полностью татарским:</strong>
+            <ul class="list-disc list-inside mt-1 text-[11px] text-stone-200">
+              ${mistakes.map(m => `<li>${m}</li>`).join('')}
+            </ul>
+            <p class="mt-1 text-amber-300 text-[11px]">Попробуйте заменить эти вещи на аутентичные татарские варианты!</p>
+          </div>
+        `;
+      }
+    }
+
+    function resetWardrobe() {
+      outfitState = { headwear: null, clothing: null, boots: null, accessory: null };
+      // Randomly re-shuffle each slot's items so options don't stay in predictable positions
+      const g = wardrobeData[currentGender].slots;
+      g.headwear = shuffleArray(g.headwear);
+      g.clothing = shuffleArray(g.clothing);
+      g.boots = shuffleArray(g.boots);
+      g.accessory = shuffleArray(g.accessory);
+
+      renderWardrobeOptions();
+      updateMannequinDisplay();
+    }
+    ];
+
+    function renderCuisineCards() {
+      const container = document.getElementById('cuisineCardsContainer');
+      container.innerHTML = dishes.map(dish => `
+        <div class="card-flip h-[360px] select-none cursor-pointer group" onclick="this.classList.toggle('is-flipped')">
+          <div class="card-flip-inner relative w-full h-full duration-500 rounded-3xl shadow-lg border-2 border-tatar-gold/50">
+            <!-- Front -->
+            <div class="card-front absolute inset-0 bg-white rounded-3xl p-6 flex flex-col justify-between border-t-8 border-tatar-green">
+              <div>
+                <div class="flex items-center justify-between text-xs text-stone-500 mb-2">
+                  <span class="bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded-full">${dish.cal}</span>
+                  <span class="text-tatar-green font-semibold"><i class="fa-regular fa-clock mr-1"></i>${dish.time}</span>
+                </div>
+                <h3 class="text-2xl font-serif font-bold text-stone-900 group-hover:text-tatar-green transition">${dish.title}</h3>
+                <p class="text-xs text-tatar-green font-semibold italic mb-3 font-serif">${dish.tatarTitle}</p>
+                <p class="text-xs text-stone-600 leading-relaxed font-serif">${dish.desc}</p>
+                <div class="mt-4 p-3 bg-amber-50 rounded-xl border border-amber-200/60 text-[11px] text-amber-950">
+                  <strong>Секрет:</strong> ${dish.note}
+                </div>
+              </div>
+              <div class="pt-3 border-t border-stone-100 flex items-center justify-between">
+                <span class="text-xs text-stone-400">Нажмите, чтобы перевернуть</span>
+                <span class="text-xs bg-tatar-green text-white px-3 py-1.5 rounded-xl font-bold">Рецепт &rarr;</span>
+              </div>
+            </div>
+
+            <!-- Back -->
+            <div class="card-back absolute inset-0 bg-gradient-to-br from-stone-900 via-tatar-darkgreen to-stone-900 text-white rounded-3xl p-6 flex flex-col justify-between border-t-8 border-tatar-gold">
+              <div>
+                <div class="flex justify-between items-center mb-2 pb-2 border-b border-amber-400/40">
+                  <h4 class="font-serif font-bold text-amber-200 text-lg">${dish.title}</h4>
+                  <span class="text-[10px] text-amber-300 font-mono">РЕЦЕПТ</span>
+                </div>
+                <h5 class="text-[11px] font-bold text-amber-300 uppercase tracking-wider mb-1">Ингредиенты:</h5>
+                <p class="text-xs text-stone-200 mb-3">${dish.ingredients.join(', ')}</p>
+                <h5 class="text-[11px] font-bold text-amber-300 uppercase tracking-wider mb-1">Особенности:</h5>
+                <p class="text-xs text-stone-300 leading-relaxed font-serif italic">${dish.note}</p>
+              </div>
+              <button onclick="event.stopPropagation(); openFullRecipe('${dish.id}')" class="w-full bg-amber-400 hover:bg-amber-300 text-stone-900 font-bold py-2 rounded-xl text-xs transition">
+                Открыть пошаговые шаги
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openFullRecipe(id) {
+      const dish = dishes.find(d => d.id === id);
+      if (!dish) return;
+      document.getElementById('modalDishTitle').textContent = dish.title;
+      document.getElementById('modalDishTatarName').textContent = dish.tatarTitle;
+      document.getElementById('modalDishContent').innerHTML = `
+        <div class="p-3 bg-amber-50 rounded-xl border-l-4 border-tatar-gold">
+          <strong>Традиция:</strong> ${dish.note}
+        </div>
+        <div>
+          <h4 class="font-bold text-stone-900 mb-2">Ингредиенты:</h4>
+          <div class="flex flex-wrap gap-1.5">
+            ${dish.ingredients.map(i => `<span class="bg-stone-100 border px-2 py-1 rounded text-xs">${i}</span>`).join('')}
+          </div>
+        </div>
+        <div>
+          <h4 class="font-bold text-stone-900 mb-2">Этапы приготовления:</h4>
+          <ol class="space-y-2">
+            ${dish.steps.map((s, idx) => `<li class="flex gap-2"><span class="w-5 h-5 bg-tatar-green text-amber-200 rounded-full flex items-center justify-center font-bold text-xs flex-shrink-0">${idx+1}</span><span>${s}</span></li>`).join('')}
+          </ol>
+        </div>
+      `;
+      document.getElementById('recipeModal').classList.remove('hidden');
+    }
+
+    function closeRecipeModal() {
+      document.getElementById('recipeModal').classList.add('hidden');
+    }
+
+    /* ==========================================================
+       MINI-GAME 1: СОБЕРИ ЭЧПОЧМАК
+       ========================================================== */
+    const echpochmakItems = [
+      { id: "meat", name: "Рубленое мясо (говядина)", correct: true, icon: "🥩" },
+      { id: "potato", name: "Сырой картофель кубиком", correct: true, icon: "🥔" },
+      { id: "onion", name: "Много сочного лука", correct: true, icon: "🧅" },
+      { id: "broth", name: "Горячий мясной бульон", correct: true, icon: "🥣" },
+      { id: "cabbage", name: "Квашеная капуста", correct: false, icon: "🥬" },
+      { id: "mayo", name: "Майонез", correct: false, icon: "🥫" },
+      { id: "sugar", name: "Сахарный песок", correct: false, icon: "🍬" },
+      { id: "rice", name: "Вареный рис", correct: false, icon: "🍚" }
+    ];
+
+    let chosenEchpochmak = new Set();
+
+    function renderGameIngredients() {
+      const container = document.getElementById('gameIngredientsBox');
+      container.innerHTML = echpochmakItems.map(item => {
+        const active = chosenEchpochmak.has(item.id);
+        return `
+          <button onclick="toggleEchpochmakItem('${item.id}')" class="p-2.5 rounded-xl border text-left flex items-center space-x-2 text-xs transition ${
+            active ? 'border-tatar-green bg-emerald-50 text-tatar-green font-bold shadow-sm' : 'border-stone-200 bg-white hover:border-amber-400 text-stone-700'
+          }">
+            <span class="text-base">${item.icon}</span>
+            <span class="leading-tight">${item.name}</span>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function toggleEchpochmakItem(id) {
+      if (chosenEchpochmak.has(id)) chosenEchpochmak.delete(id);
+      else chosenEchpochmak.add(id);
+
+      renderGameIngredients();
+      const tagsBox = document.getElementById('echpochmakFillingsTags');
+      tagsBox.innerHTML = Array.from(chosenEchpochmak).map(i => {
+        const item = echpochmakItems.find(x => x.id === i);
+        return `<span class="bg-amber-200/90 text-amber-950 px-1 py-0.5 rounded m-0.5 text-[8px]">${item.name.split(' ')[0]}</span>`;
+      }).join('');
+
+      const correctCount = Array.from(chosenEchpochmak).filter(id => echpochmakItems.find(x => x.id === id).correct).length;
+      const incorrectCount = Array.from(chosenEchpochmak).filter(id => !echpochmakItems.find(x => x.id === id).correct).length;
+
+      document.getElementById('echpochmakScore').textContent = `${correctCount} / 4 верно`;
+      const feedback = document.getElementById('echpochmakFeedback');
+      const pinchBtn = document.getElementById('echpochmakPinchBtn');
+
+      if (incorrectCount > 0) {
+        feedback.innerHTML = `<span class="text-red-600 font-bold">Осторожно! В классический эчпочмак этот ингредиент не кладут!</span>`;
+        pinchBtn.disabled = true;
+        pinchBtn.className = "mt-3 bg-stone-300 text-stone-500 px-6 py-2.5 rounded-xl font-bold text-xs cursor-not-allowed";
+      } else if (correctCount === 4) {
+        feedback.innerHTML = `<span class="text-tatar-green font-bold">Идеальный традиционный состав! Теперь защипните треугольник!</span>`;
+        pinchBtn.disabled = false;
+        pinchBtn.className = "mt-3 bg-amber-400 hover:bg-amber-300 text-stone-900 px-6 py-2.5 rounded-xl font-bold text-xs cursor-pointer shadow-lg animate-pulse";
+      } else {
+        feedback.textContent = `Добавлено верных ингредиентов: ${correctCount} из 4. Добавьте остальные!`;
+        pinchBtn.disabled = true;
+        pinchBtn.className = "mt-3 bg-stone-300 text-stone-500 px-6 py-2.5 rounded-xl font-bold text-xs cursor-not-allowed";
+      }
+    }
+
+    function pinchEchpochmak() {
+      if (typeof confetti === 'function') confetti({ particleCount: 70, spread: 60, origin: { y: 0.6 } });
+      document.getElementById('echpochmakFeedback').innerHTML = `
+        <div class="bg-emerald-100 text-emerald-900 border border-emerald-400 p-2.5 rounded-xl font-bold animate-bounce text-xs">
+          🎉 Машаллах! Вы слепили безупречный треугольник с отверстием для вливания бульона!
+        </div>
+      `;
+    }
+
+    function resetEchpochmakGame() {
+      chosenEchpochmak.clear();
+      renderGameIngredients();
+      document.getElementById('echpochmakFillingsTags').innerHTML = '';
+      document.getElementById('echpochmakScore').textContent = '0 / 4 верно';
+      document.getElementById('echpochmakFeedback').textContent = 'Нажмите на верные ингредиенты слева, чтобы отправить их в начинку!';
+      const pinchBtn = document.getElementById('echpochmakPinchBtn');
+      pinchBtn.disabled = true;
+      pinchBtn.className = "mt-3 bg-stone-300 text-stone-500 px-6 py-2.5 rounded-xl font-bold text-xs cursor-not-allowed";
+    }
+
+    /* ==========================================================
+       DATA & SECTION 2: ДОСТОПРИМЕЧАТЕЛЬНОСТИ И КВЕСТ
+       ========================================================== */
+    const sights = [
+      {
+        title: "Казанский Кремль и Мечеть Кул-Шариф",
+        badge: "ЮНЕСКО",
+        period: "XVI – XXI вв.",
+        desc: "Сердце столицы Татарстана. Белокаменная крепость, где рядом гармонично высятся бирюзовые минареты мечети Кул-Шариф и купола Благовещенского собора.",
+        fact: "Кул-Шариф вмещает около 1500 человек внутри и до 10 000 на площади перед мечетью."
+      },
+      {
+        title: "Башня Сююмбике",
+        badge: "«Падающая» башня",
+        period: "XVII век",
+        desc: "Семь ярусов из красного кирпича и знаменитый наклон: шпиль отклонен от вертикали почти на 2 метра. Названа в честь легендарной казанской правительницы Сююмбике.",
+        fact: "По народному поверью, если прикоснуться к кирпичам башни и загадать доброе желание, оно сбудется."
+      },
+      {
+        title: "Древний город Болгар",
+        badge: "Исток ислама",
+        period: "X – XIV вв.",
+        desc: "Столица Волжской Булгарии на берегу Волги, где в 922 году предки татар официально приняли ислам. Здесь хранится самый большой в мире печатный Коран весом 800 кг.",
+        fact: "Белая Мечеть в Болгаре часто поэтично именуется «Северным Тадж-Махалом»."
+      }
+    ];
+
+    function renderSights() {
+      const container = document.getElementById('sightsContainer');
+      container.innerHTML = sights.map(s => `
+        <div class="bg-white rounded-3xl p-6 shadow-md border border-stone-200 flex flex-col justify-between hover:shadow-xl transition">
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="bg-emerald-100 text-emerald-900 font-bold text-[10px] uppercase px-2.5 py-1 rounded-full">${s.badge}</span>
+              <span class="text-xs text-stone-500 font-serif font-semibold">${s.period}</span>
+            </div>
+            <h3 class="text-xl font-serif font-bold text-stone-900 mb-2">${s.title}</h3>
+            <p class="text-xs text-stone-600 leading-relaxed font-serif mb-4">${s.desc}</p>
+          </div>
+          <div class="p-3 bg-amber-50 rounded-xl border border-amber-200/60 text-[11px] text-amber-950">
+            <strong>Интересный факт:</strong> ${s.fact}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    const sightQuizData = [
+      {
+        q: "Какая уникальная архитектурная особенность делает Башню Сююмбике всемирно известной?",
+        options: [
+          "Она построена из чистого хрусталя",
+          "Она имеет выраженный наклон (отклонение шпиля почти на 2 метра)",
+          "В ней нет ни одной двери",
+          "Она целиком сложена из бревен лиственницы"
+        ],
+        correct: 1,
+        explain: "Башня Сююмбике относится к знаменитым «падающим» башням мира: отклонение её шпиля составляет около 1,98 метра от вертикали!"
+      },
+      {
+        q: "Какое эпохальное событие произошло в Великом Болгаре в 922 году?",
+        options: [
+          "Открытие первого в Европе университета",
+          "Официальное добровольное принятие ислама предками казанских татар",
+          "Строительство первого каменного маяка на Волге",
+          "Изобретение рецепта чак-чака"
+        ],
+        correct: 1,
+        explain: "В 922 году посольство из Багдада прибыло в Волжскую Булгарию, и ислам был провозглашен государственной религией предков татар."
+      },
+      {
+        q: "Какой рекорд занесен в Книгу рекордов Гиннесса в музее Древнего Болгара?",
+        options: [
+          "Самая длинная крепостная стена",
+          "Самый большой в мире печатный священный Коран (весом 800 кг)",
+          "Самый старый действующий колодец в Евразии",
+          "Самый большой самовар"
+        ],
+        correct: 1,
+        explain: "В Музее ислама в Болгаре хранится священная книга Коран весом 800 кг, переплет которой украшен малахитом, полудрагоценными камнями и золотом."
+      }
+    ];
+
+    let currentSightIndex = 0;
+    let sightScore = 0;
+    let sightAnswered = false;
+
+    function loadSightQuestion() {
+      sightAnswered = false;
+      const q = sightQuizData[currentSightIndex];
+      document.getElementById('sightQuizQuestion').textContent = q.q;
+      const container = document.getElementById('sightQuizOptions');
+      container.innerHTML = q.options.map((opt, i) => `
+        <button onclick="answerSightQuiz(${i})" id="sq-opt-${i}" class="w-full text-left p-3.5 rounded-xl border border-stone-200 bg-stone-50 hover:bg-amber-50 text-xs sm:text-sm font-medium transition flex items-center justify-between">
+          <span>${opt}</span>
+          <span class="w-5 h-5 rounded-full border border-stone-300 flex items-center justify-center text-[10px] text-stone-500">${['A','Б','В','Г'][i]}</span>
+        </button>
+      `).join('');
+      document.getElementById('sightQuizExplain').classList.add('hidden');
+      document.getElementById('sightQuizNextBtn').classList.add('hidden');
+    }
+
+    function answerSightQuiz(idx) {
+      if (sightAnswered) return;
+      sightAnswered = true;
+      const q = sightQuizData[currentSightIndex];
+      const selected = document.getElementById(`sq-opt-${idx}`);
+      const correct = document.getElementById(`sq-opt-${q.correct}`);
+
+      if (idx === q.correct) {
+        sightScore++;
+        document.getElementById('sightQuizScore').textContent = sightScore;
+        selected.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900', 'font-bold');
+        if (typeof confetti === 'function') confetti({ particleCount: 40, spread: 50 });
+      } else {
+        selected.classList.add('bg-red-100', 'border-red-500', 'text-red-900');
+        correct.classList.add('bg-emerald-100', 'border-emerald-500', 'text-emerald-900', 'font-bold');
+      }
+
+      const exp = document.getElementById('sightQuizExplain');
+      exp.innerHTML = `<strong>Справка:</strong> ${q.explain}`;
+      exp.classList.remove('hidden');
+      document.getElementById('sightQuizNextBtn').classList.remove('hidden');
+    }
+
+    function nextSightQuestion() {
+      currentSightIndex = (currentSightIndex + 1) % sightQuizData.length;
+      loadSightQuestion();
+    }
+
+    /* ==========================================================
+       SECTION 3: ИНТЕРАКТИВНАЯ ГАРДЕРОБНАЯ
+       ========================================================== */
+    let currentGender = 'female';
+    let outfitState = { headwear: null, clothing: null, boots: null };
+
+    const wardrobeData = {
+      female: {
+        headwear: [
+          { id: 'kalfak', name: 'Бархатный Калфак с золотой вышивкой', icon: '👑', correct: true },
+          { id: 'fur_hat', name: 'Зимняя ушанка (не подходит на лето)', icon: '❄️', correct: false }
+        ],
+        clothing: [
+          { id: 'kamzol_dress', name: 'Платье Кулмэк + Изумрудный Камзол', icon: '👗', correct: true },
+          { id: 'tshirt', name: 'Джинсовая куртка', icon: '🧥', correct: false }
+        ],
+        boots: [
+          { id: 'chitek', name: 'Кожаные сапожки «Читек» (мозаика)', icon: '👢', correct: true },
+          { id: 'sneakers', name: 'Кроссовки', icon: '👟', correct: false }
+        ]
+      },
+      male: {
+        headwear: [
+          { id: 'tubeteika', name: 'Расшитая Тюбетейка (Түбәтәй)', icon: '🧢', correct: true },
+          { id: 'baseball_cap', name: 'Бейсболка', icon: '🧢', correct: false }
+        ],
+        clothing: [
+          { id: 'male_kamzol', name: 'Белая рубаха с воротником + Бордовый Камзол', icon: '🦺', correct: true },
+          { id: 'hoodie', name: 'Худи с капюшоном', icon: '👕', correct: false }
+        ],
+        boots: [
+          { id: 'ichigi', name: 'Мужские кожаные ичиги с мягкой подошвой', icon: '🥾', correct: true },
+          { id: 'sandals', name: 'Пляжные сланцы', icon: '🩴', correct: false }
+        ]
+      }
+    };
+
+    function selectGender(gender) {
+      currentGender = gender;
+      document.getElementById('genderFemaleBtn').className = gender === 'female' 
+        ? "px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-400 text-stone-900 transition"
+        : "px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-stone-800 text-stone-300 hover:text-white transition";
+      
+      document.getElementById('genderMaleBtn').className = gender === 'male'
+        ? "px-5 py-2 rounded-xl text-xs sm:text-sm font-bold bg-amber-400 text-stone-900 transition"
+        : "px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-stone-800 text-stone-300 hover:text-white transition";
+
+      resetWardrobe();
+    }
+
+    function renderWardrobeOptions() {
+      const g = wardrobeData[currentGender];
+
+      document.getElementById('headwearOptions').innerHTML = g.headwear.map(item => `
+        <button onclick="wearItem('headwear', '${item.id}')" class="p-2 rounded-xl border border-stone-700 bg-stone-800 hover:border-amber-400 text-left text-xs flex items-center space-x-2 transition ${outfitState.headwear === item.id ? 'border-amber-400 bg-stone-700 font-bold' : ''}">
+          <span class="text-base">${item.icon}</span>
+          <span class="leading-tight">${item.name}</span>
+        </button>
+      `).join('');
+
+      document.getElementById('clothingOptions').innerHTML = g.clothing.map(item => `
+        <button onclick="wearItem('clothing', '${item.id}')" class="p-2 rounded-xl border border-stone-700 bg-stone-800 hover:border-amber-400 text-left text-xs flex items-center space-x-2 transition ${outfitState.clothing === item.id ? 'border-amber-400 bg-stone-700 font-bold' : ''}">
+          <span class="text-base">${item.icon}</span>
+          <span class="leading-tight">${item.name}</span>
+        </button>
+      `).join('');
+
+      document.getElementById('bootsOptions').innerHTML = g.boots.map(item => `
+        <button onclick="wearItem('boots', '${item.id}')" class="p-2 rounded-xl border border-stone-700 bg-stone-800 hover:border-amber-400 text-left text-xs flex items-center space-x-2 transition ${outfitState.boots === item.id ? 'border-amber-400 bg-stone-700 font-bold' : ''}">
+          <span class="text-base">${item.icon}</span>
+          <span class="leading-tight">${item.name}</span>
+        </button>
+      `).join('');
+    }
+
+    function wearItem(slot, id) {
+      outfitState[slot] = id;
+      renderWardrobeOptions();
+      updateFigureView();
+    }
+
+    function updateFigureView() {
+      const g = wardrobeData[currentGender];
+      const head = g.headwear.find(x => x.id === outfitState.headwear);
+      const cloth = g.clothing.find(x => x.id === outfitState.clothing);
+      const boot = g.boots.find(x => x.id === outfitState.boots);
+
+      document.getElementById('slotHeadwear').innerHTML = head ? `<span class="text-4xl animate-bounce">${head.icon}</span>` : `<span class="opacity-40 text-stone-500 text-xs italic">Головной убор</span>`;
+      document.getElementById('slotTorso').innerHTML = cloth ? `<span class="text-6xl">${cloth.icon}</span>` : `<span class="opacity-40 text-stone-500 text-xs italic">Камзол / Рубаха</span>`;
+      document.getElementById('slotBoots').innerHTML = boot ? `<span class="text-4xl">${boot.icon}</span>` : `<span class="opacity-40 text-stone-500 text-xs italic">Обувь Читек</span>`;
+    }
+
+    function checkCompleteOutfit() {
+      const g = wardrobeData[currentGender];
+      const head = g.headwear.find(x => x.id === outfitState.headwear);
+      const cloth = g.clothing.find(x => x.id === outfitState.clothing);
+      const boot = g.boots.find(x => x.id === outfitState.boots);
+
+      const statusBox = document.getElementById('outfitStatus');
+
+      if (!head || !cloth || !boot) {
+        statusBox.innerHTML = `<span class="text-amber-400">Пожалуйста, выберите все три элемента костюма!</span>`;
+        return;
+      }
+
+      if (head.correct && cloth.correct && boot.correct) {
+        if (typeof confetti === 'function') confetti({ particleCount: 60, spread: 70 });
+        statusBox.innerHTML = `<span class="text-emerald-400 font-bold">✨ Блестяще! Вы собрали подлинный праздничный костюм для Сабантуя с каноническими узорами и деталями!</span>`;
+      } else {
+        statusBox.innerHTML = `<span class="text-red-400">В наряде есть неподходящие современные вещи! Замените их на традиционные элементы татарского гардероба.</span>`;
+      }
+    }
+
+    function resetWardrobe() {
+      outfitState = { headwear: null, clothing: null, boots: null };
+      renderWardrobeOptions();
+      updateFigureView();
+      document.getElementById('outfitStatus').textContent = 'Наряд еще не собран. Выберите элементы справа!';
+    }
+
+    /* ==========================================================
+       FOLK MUSIC SYNTHESIZER (WEB AUDIO API PENTATONIC CHORD)
+       ========================================================== */
+    function playTatarMelody() {
+      try {
+        const AudioCtx = window.AudioContext || window.webkitAudioContext;
+        if (!AudioCtx) return;
+        const ctx = new AudioCtx();
+        // Tatar folk pentatonic scale notes: F4, G4, Bb4, C5, Eb5, F5
+        const tatarScale = [349.23, 392.00, 466.16, 523.25, 622.25, 698.46];
+        const tuneSequence = [0, 2, 3, 4, 3, 2, 5, 4, 3, 2, 0];
+
+        tuneSequence.forEach((noteIdx, step) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(tatarScale[noteIdx], ctx.currentTime + step * 0.22);
+          
+          gain.gain.setValueAtTime(0, ctx.currentTime + step * 0.22);
+          gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + step * 0.22 + 0.04);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + step * 0.22 + 0.35);
+
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(ctx.currentTime + step * 0.22);
+          osc.stop(ctx.currentTime + step * 0.22 + 0.38);
+        });
+      } catch (e) {
+        console.log("Audio not supported", e);
+      }
+    }
+
+    /* ==========================================================
+       QR CODE & CLIPBOARD
+       ========================================================== */
+    function initQR() {
+      const target = document.getElementById('qrcode');
+      target.innerHTML = '';
+      const url = window.location.href || "https://tatar-culture-school.edu";
+      document.getElementById('currentUrlDisplay').textContent = url;
+      new QRCode(target, {
+        text: url,
+        width: 170,
+        height: 170,
+        colorDark: "#073B22",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+      });
+    }
+
+    function copySiteLink() {
+      const url = window.location.href;
+      const btn = document.getElementById('copyLinkBtnText');
+      const temp = document.createElement('input');
+      temp.value = url;
+      document.body.appendChild(temp);
+      temp.select();
+      try {
+        document.execCommand('copy');
+        btn.textContent = 'Ссылка скопирована!';
+        setTimeout(() => { btn.textContent = 'Скопировать ссылку'; }, 2000);
+      } catch (e) {
+        btn.textContent = 'Не удалось скопировать';
+      }
+      document.body.removeChild(temp);
+    }
+
+    /* INIT */
+    window.onload = function() {
+      renderCuisineCards();
+      renderGameIngredients();
+      renderSights();
+      loadSightQuestion();
+      renderWardrobeOptions();
+      initQR();
+    };
+  </script>
+</body>
+</html>
