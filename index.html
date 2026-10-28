@@ -3,897 +3,1498 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Культура и традиции татарского народа | Школьный проект</title>
+  <title>Халкым минем — Портал татарской культуры</title>
   <style>
     :root {
-      --primary: #065f46;
-      --primary-dark: #022c22;
+      --primary: #064e3b;
+      --primary-mid: #047857;
       --primary-light: #10b981;
       --gold: #d97706;
+      --gold-dark: #b45309;
       --gold-light: #fef3c7;
-      --accent-red: #dc2626;
-      --bg-cream: #faf8f5;
-      --card-bg: #ffffff;
-      --text-main: #1f2937;
+      --accent-red: #b91c1c;
+      --accent-blue: #0284c7;
+      --bg-cream: #faf7f2;
+      --surface: #ffffff;
+      --text: #1f2937;
       --text-muted: #4b5563;
-      --border: #e5e7eb;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0,0,0,0.08), 0 8px 10px -6px rgba(0,0,0,0.05);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: Georgia, 'Times New Roman', serif;
       background-color: var(--bg-cream);
-      color: var(--text-main);
+      color: var(--text);
       line-height: 1.6;
     }
 
     header {
-      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+      background: radial-gradient(circle at top right, #047857, #064e3b 70%, #022c22);
       color: #fff;
-      padding: 2.5rem 1rem 1.5rem;
+      padding: 3rem 1.5rem 2rem;
       text-align: center;
       position: relative;
-      border-bottom: 5px solid var(--gold);
+      border-bottom: 6px solid var(--gold);
     }
     header h1 {
-      font-size: 2.2rem;
+      font-size: 2.5rem;
       color: #fef08a;
-      letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
       margin-bottom: 0.5rem;
     }
     header p {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #e2e8f0;
-      max-width: 800px;
-      margin: 0 auto;
+      max-width: 850px;
+      margin: 0 auto 1.5rem;
     }
+
+    .audio-bar {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(255,255,255,0.3);
+      cursor: pointer;
+      color: #fef08a;
+      font-size: 0.95rem;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+    .audio-bar:hover { background: rgba(255,255,255,0.25); transform: scale(1.03); }
 
     .tatar-ribbon {
-      width: 100%;
-      height: 16px;
-      background: repeating-linear-gradient(45deg, var(--primary), var(--primary) 15px, var(--gold) 15px, var(--gold) 30px, var(--accent-red) 30px, var(--accent-red) 45px, #fff 45px, #fff 60px);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      height: 14px;
+      background: repeating-linear-gradient(45deg, #064e3b, #064e3b 16px, #d97706 16px, #d97706 32px, #dc2626 32px, #dc2626 48px, #fff 48px, #fff 64px);
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
     }
 
+    /* Навигация в строгом порядке: 1. Достопримечательности, 2. Костюм, 3. Кухня, 4. QR-код */
     .nav-tabs {
       display: flex;
       justify-content: center;
-      gap: 0.75rem;
-      padding: 1rem;
-      background: #fff;
+      gap: 0.8rem;
+      padding: 1.1rem 1rem;
+      background: #ffffff;
       border-bottom: 1px solid var(--border);
       position: sticky;
       top: 0;
-      z-index: 50;
-      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      z-index: 100;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.06);
       flex-wrap: wrap;
     }
     .nav-btn {
-      padding: 0.65rem 1.4rem;
-      font-size: 1.05rem;
+      padding: 0.75rem 1.6rem;
+      font-size: 1.1rem;
       font-family: inherit;
       border: 2px solid var(--primary);
-      background: transparent;
+      background: #fff;
       color: var(--primary);
       cursor: pointer;
       border-radius: 9999px;
       font-weight: bold;
-      transition: all 0.2s ease;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     .nav-btn:hover, .nav-btn.active {
       background: var(--primary);
       color: #fff;
-      transform: translateY(-1px);
-      box-shadow: 0 4px 10px rgba(6,95,70,0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(6,78,59,0.3);
     }
 
     main {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      max-width: 1220px;
+      margin: 2.5rem auto;
+      padding: 0 1.25rem;
     }
 
     .section-title {
       text-align: center;
-      font-size: 2rem;
-      color: var(--primary-dark);
-      margin-bottom: 0.5rem;
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 0.4rem;
     }
     .section-subtitle {
       text-align: center;
       color: var(--text-muted);
-      margin-bottom: 2rem;
-      font-size: 1.05rem;
+      margin-bottom: 2.5rem;
+      font-size: 1.1rem;
     }
 
     .tab-content { display: none; }
-    .tab-content.active { display: block; animation: fadeIn 0.3s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .tab-content.active { display: block; animation: tabFade 0.35s ease; }
+    @keyframes tabFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Карточки блюд */
-    .dishes-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
-      margin-bottom: 3rem;
-    }
-    .dish-card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      border-top: 4px solid var(--gold);
-    }
-    .dish-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      border-bottom: 1px dashed var(--gold);
-      padding-bottom: 0.5rem;
-      margin-bottom: 0.8rem;
-    }
-    .dish-name { font-size: 1.4rem; color: var(--primary-dark); font-weight: bold; }
-    .dish-tatar { font-size: 0.95rem; color: var(--gold); font-style: italic; }
-    .dish-desc { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem; }
-    .dish-details {
-      background: #f8fafc;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      margin-bottom: 1rem;
-    }
-    .dish-details ul { padding-left: 1.2rem; }
-    .recipe-steps {
-      font-size: 0.9rem;
-      color: var(--text-main);
-      margin-bottom: 1rem;
-    }
-    .recipe-steps ol { padding-left: 1.2rem; }
-    .recipe-steps li { margin-bottom: 0.35rem; }
-
-    /* Интерактив 1: Собери Эчпочмак */
-    .interactive-box {
-      background: #fff;
-      border: 2px solid var(--gold);
-      border-radius: 16px;
-      padding: 2rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-      margin-bottom: 3rem;
-    }
-    .interactive-box h3 {
-      color: var(--primary-dark);
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-    .ingredients-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      justify-content: center;
-      margin: 1.5rem 0;
-    }
-    .ing-btn {
-      padding: 0.6rem 1.2rem;
-      border-radius: 9999px;
-      border: 1px solid #cbd5e1;
-      background: #f8fafc;
-      font-family: inherit;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-    .ing-btn.selected {
-      background: var(--gold-light);
-      border-color: var(--gold);
-      color: #92400e;
-      font-weight: bold;
-    }
-    .action-btn {
-      display: block;
-      margin: 1rem auto;
-      padding: 0.75rem 2rem;
-      background: var(--primary);
-      color: #fff;
-      font-size: 1.1rem;
-      font-family: inherit;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-    .action-btn:hover { background: var(--primary-dark); }
-    .game-result {
-      text-align: center;
-      margin-top: 1rem;
-      font-size: 1.1rem;
-      font-weight: bold;
-      min-height: 2rem;
-    }
-
-    /* Достопримечательности */
+    /* --- РАЗДЕЛ 1: ДОСТОПРИМЕЧАТЕЛЬНОСТИ --- */
     .sights-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
       margin-bottom: 3rem;
     }
     .sight-card {
-      background: #fff;
-      border-radius: 12px;
+      background: var(--surface);
+      border-radius: 16px;
+      overflow: hidden;
       border: 1px solid var(--border);
-      padding: 1.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-    }
-    .sight-card h4 { font-size: 1.3rem; color: var(--primary-dark); margin-bottom: 0.4rem; }
-    .sight-loc { color: var(--gold); font-size: 0.9rem; font-weight: bold; margin-bottom: 0.8rem; }
-
-    /* Квест */
-    .quiz-question {
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: var(--primary-dark);
-      margin-bottom: 1.2rem;
-      text-align: center;
-    }
-    .quiz-options {
+      box-shadow: var(--shadow);
       display: flex;
       flex-direction: column;
-      gap: 0.75rem;
-      max-width: 600px;
-      margin: 0 auto;
     }
-    .quiz-btn {
-      padding: 0.85rem 1.2rem;
+    .sight-svg-wrap {
+      width: 100%;
+      height: 200px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 2px solid var(--gold);
+    }
+    .sight-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .sight-body h3 { color: var(--primary); font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .sight-loc { color: var(--gold-dark); font-size: 0.95rem; font-weight: bold; margin-bottom: 0.75rem; }
+
+    /* Квест по достопримечательностям */
+    .game-box {
+      background: #fff;
+      border: 2px solid var(--gold);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 3rem;
+    }
+    .game-box-title {
+      text-align: center;
+      color: var(--primary);
+      font-size: 1.7rem;
+      margin-bottom: 0.5rem;
+    }
+    .quest-opts {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.85rem;
+      max-width: 650px;
+      margin: 1.5rem auto;
+    }
+    .quest-btn {
+      padding: 1rem 1.4rem;
       border: 1px solid var(--border);
+      border-radius: 10px;
       background: #f8fafc;
-      border-radius: 8px;
       text-align: left;
-      font-size: 1rem;
       font-family: inherit;
+      font-size: 1.05rem;
       cursor: pointer;
       transition: all 0.2s;
     }
-    .quiz-btn:hover { background: #e2e8f0; }
-    .quiz-btn.correct { background: #dcfce7; border-color: #22c55e; color: #166534; font-weight: bold; }
-    .quiz-btn.incorrect { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
-    .quiz-feedback { text-align: center; margin-top: 1rem; font-weight: bold; min-height: 1.5rem; }
+    .quest-btn:hover { background: #e2e8f0; border-color: #cbd5e1; }
+    .quest-btn.correct { background: #dcfce7; border-color: #22c55e; color: #15803d; font-weight: bold; }
+    .quest-btn.wrong { background: #fee2e2; border-color: #ef4444; color: #b91c1c; }
 
-    /* Национальный костюм */
-    .char-toggle {
+    /* --- РАЗДЕЛ 2: НАЦИОНАЛЬНЫЙ КОСТЮМ (ИГРОВАЯ ПРИМЕРКА) --- */
+    .char-picker {
+      display: flex;
+      justify-content: center;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .wardrobe-arena {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 2.5rem;
+      background: #fff;
+      border-radius: 20px;
+      border: 2px solid #e5e7eb;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+    @media (max-width: 900px) {
+      .wardrobe-arena { grid-template-columns: 1fr; }
+    }
+    .avatar-podium {
+      background: linear-gradient(180deg, #f0fdf4 0%, #ecfdf5 100%);
+      border: 2px dashed var(--gold);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar-frame {
+      width: 240px;
+      height: 380px;
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: inset 0 2px 10px rgba(0,0,0,0.06);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .avatar-svg { width: 100%; height: 100%; }
+
+    .wardrobe-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .wardrobe-cat h4 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: 0.6rem;
+      border-bottom: 2px solid var(--gold-light);
+      padding-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .items-trio {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.85rem;
+    }
+    @media (max-width: 600px) {
+      .items-trio { grid-template-columns: 1fr; }
+    }
+    .item-chip {
+      background: #fff;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 0.85rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .item-chip:hover { border-color: var(--primary-light); transform: translateY(-3px); }
+    .item-chip.selected { border-color: var(--primary); background: #ecfdf5; box-shadow: 0 4px 10px rgba(6,78,59,0.15); }
+    .item-chip.wrong-pick { border-color: var(--accent-red); background: #fef2f2; }
+    .item-chip-icon { width: 56px; height: 56px; margin-bottom: 0.5rem; }
+    .item-chip-name { font-size: 0.9rem; font-weight: bold; color: var(--text); }
+    .item-chip-culture { font-size: 0.75rem; color: #64748b; margin-top: 0.2rem; }
+
+    /* --- РАЗДЕЛ 3: КУХНЯ (РЕЦЕПТЫ + ИНТЕРАКТИВНОЕ ПРИГОТОВЛЕНИЕ) --- */
+    .dishes-shelf {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    .food-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+    }
+    .food-art-wrap {
+      width: 100%;
+      height: 220px;
+      background: #fffbeb;
+      border-bottom: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .food-info { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+    .food-info h3 { color: var(--primary); font-size: 1.45rem; }
+    .food-tatar { color: var(--gold-dark); font-style: italic; font-size: 0.95rem; margin-bottom: 0.6rem; }
+    .food-stats {
+      background: #f8fafc;
+      padding: 0.6rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin: 0.8rem 0;
+      display: flex;
+      justify-content: space-between;
+    }
+    .food-ing-box { font-size: 0.9rem; margin-bottom: 1rem; }
+    .food-ing-box ul { padding-left: 1.2rem; }
+    .food-steps { font-size: 0.88rem; color: #334155; }
+    .food-steps ol { padding-left: 1.2rem; }
+    .food-steps li { margin-bottom: 0.4rem; }
+
+    /* ИГРА С ПРИГОТОВЛЕНИЕМ ЭЧПОЧМАКА */
+    .cook-stage {
+      background: #fff;
+      border-radius: 20px;
+      border: 2px solid var(--gold);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      margin-bottom: 3rem;
+    }
+    .cook-bench {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+    @media (max-width: 850px) {
+      .cook-bench { grid-template-columns: 1fr; }
+    }
+    .ingredients-table {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+    .ing-card {
+      background: #f8fafc;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 1rem 0.5rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .ing-card:hover { border-color: var(--gold); transform: scale(1.04); }
+    .ing-card.added {
+      background: #ecfdf5;
+      border-color: var(--primary);
+      box-shadow: 0 4px 10px rgba(6,78,59,0.15);
+    }
+    .ing-icon { width: 50px; height: 50px; margin: 0 auto 0.4rem; }
+    .ing-name { font-size: 0.9rem; font-weight: bold; }
+
+    .pie-preview-board {
+      background: radial-gradient(circle, #fef3c7 0%, #fff7ed 100%);
+      border: 3px dashed var(--gold);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      min-height: 320px;
+      text-align: center;
+      position: relative;
+    }
+    .pan-svg { width: 180px; height: 180px; transition: transform 0.4s ease; }
+
+    .cook-actions {
       display: flex;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
     }
-    .wardrobe-ui {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-      background: #fff;
-      border-radius: 16px;
-      border: 1px solid var(--border);
-      padding: 2rem;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    }
-    @media (max-width: 768px) {
-      .wardrobe-ui { grid-template-columns: 1fr; }
-    }
-    .mannequin-col {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      background: #f8fafc;
-      border-radius: 12px;
-      padding: 1.5rem;
-      border: 1px dashed var(--gold);
-    }
-    .mannequin-display {
-      width: 100%;
-      max-width: 280px;
-      min-height: 380px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.05);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      padding: 1.5rem;
-    }
-    .mannequin-slot {
-      width: 100%;
-      text-align: center;
-      padding: 0.5rem;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      background: #f1f5f9;
-      color: #64748b;
-    }
-    .mannequin-slot.active {
-      background: var(--gold-light);
-      color: #92400e;
-      font-weight: bold;
-      border: 1px solid var(--gold);
-    }
-    .options-col { display: flex; flex-direction: column; gap: 1.5rem; }
-    .slot-group h5 { font-size: 1.1rem; color: var(--primary-dark); margin-bottom: 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.3rem; }
-    .options-row { display: flex; flex-direction: column; gap: 0.5rem; }
-    .item-card-btn {
-      padding: 0.75rem 1rem;
-      border: 1px solid #cbd5e1;
-      border-radius: 8px;
-      background: #fff;
-      text-align: left;
+    .cook-btn {
+      padding: 0.85rem 1.8rem;
+      font-size: 1.1rem;
       font-family: inherit;
+      border-radius: 9999px;
+      border: none;
+      background: var(--primary);
+      color: #fff;
+      font-weight: bold;
       cursor: pointer;
+      box-shadow: 0 4px 12px rgba(6,78,59,0.25);
       transition: all 0.2s;
     }
-    .item-card-btn:hover { border-color: var(--primary); background: #f0fdf4; }
-    .item-card-btn.selected { border: 2px solid var(--primary); background: #ecfdf5; font-weight: bold; }
-    .item-card-btn.wrong-picked { border: 2px solid var(--accent-red); background: #fef2f2; }
+    .cook-btn:hover { background: var(--primary-mid); transform: translateY(-2px); }
+    .cook-btn.secondary { background: #64748b; }
 
-    /* QR код футер */
-    footer {
-      background: var(--primary-dark);
-      color: #fff;
-      padding: 3rem 1rem 2rem;
-      text-align: center;
-      margin-top: 4rem;
-      border-top: 5px solid var(--gold);
-    }
-    .qr-container {
+    /* --- РАЗДЕЛ 4: QR-КОД --- */
+    .qr-card-wrap {
+      max-width: 500px;
+      margin: 0 auto;
       background: #fff;
-      color: #000;
-      padding: 1.5rem;
-      display: inline-block;
-      border-radius: 12px;
-      margin: 1rem 0;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      border: 3px solid var(--gold);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      box-shadow: var(--shadow);
     }
-    .qr-container p { font-size: 0.9rem; color: #475569; margin-top: 0.5rem; }
+
+    footer {
+      background: #022c22;
+      color: #94a3b8;
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border-top: 5px solid var(--gold);
+      margin-top: 4rem;
+    }
   </style>
 </head>
 <body>
 
   <header>
     <h1>Халкым минем — Культура и традиции татарского народа</h1>
-    <p>Интерактивный школьный проект: национальная кулинария, архитектурное наследие и костюмный комплекс</p>
+    <p>Интерактивный школьный проект: архитектурные святыни, национальный костюм и кулинарное искусство</p>
+    <div class="audio-bar" onclick="toggleTatarMelody()">
+      <span id="music-icon">🎵</span>
+      <span id="music-text">Включить татарскую мелодию (курай/баян)</span>
+    </div>
   </header>
   <div class="tatar-ribbon"></div>
 
+  <!-- НАВИГАЦИЯ В СТРОГОМ ПОРЯДКЕ -->
   <nav class="nav-tabs">
-    <button class="nav-btn active" onclick="switchTab('cuisine')">🍲 Татарская кухня</button>
-    <button class="nav-btn" onclick="switchTab('sights')">🏛 Достопримечательности</button>
-    <button class="nav-btn" onclick="switchTab('costume')">👘 Национальный костюм</button>
-    <button class="nav-btn" onclick="switchTab('qr')">📱 QR-код проекта</button>
+    <button class="nav-btn active" onclick="showTab('sights')">🏛 1. Достопримечательности</button>
+    <button class="nav-btn" onclick="showTab('costume')">👘 2. Национальный костюм</button>
+    <button class="nav-btn" onclick="showTab('cuisine')">🍲 3. Татарская кухня</button>
+    <button class="nav-btn" onclick="showTab('qr')">📱 4. QR-код стенда</button>
   </nav>
 
   <main>
-    <!-- РАЗДЕЛ 1: КУХНЯ -->
-    <section id="tab-cuisine" class="tab-content active">
-      <h2 class="section-title">Татарская кухня (Татар ашлары)</h2>
-      <p class="section-subtitle">Славное гостеприимство, сытная выпечка и вековые традиции застолья</p>
-
-      <div class="dishes-grid" id="dishes-container"></div>
-
-      <!-- Интерактив: Собери Эчпочмак -->
-      <div class="interactive-box">
-        <h3>🥟 Интерактив: «Собери правильный Эчпочмак»</h3>
-        <p style="text-align:center; color: var(--text-muted);">
-          Выберите классические ингредиенты для настоящей начинки татарского треугольника и нажмите «Защипнуть треугольник»:
-        </p>
-        <div class="ingredients-cloud" id="ingredients-cloud"></div>
-        <button class="action-btn" onclick="checkEchpochmak()">Защипнуть треугольник 🥟</button>
-        <div class="game-result" id="ech-result"></div>
-      </div>
-    </section>
-
-    <!-- РАЗДЕЛ 2: ДОСТОПРИМЕЧАТЕЛЬНОСТИ -->
-    <section id="tab-sights" class="tab-content">
+    <!-- ========================================== -->
+    <!-- 1. ДОСТОПРИМЕЧАТЕЛЬНОСТИ ПЕРВЫЕ             -->
+    <!-- ========================================== -->
+    <section id="tab-sights" class="tab-content active">
       <h2 class="section-title">Жемчужины Татарстана</h2>
-      <p class="section-subtitle">Памятники ЮНЕСКО, древняя история и архитектурное великолепие</p>
+      <p class="section-subtitle">Памятники всемирного наследия ЮНЕСКО, духовные центры и архитектурная слава</p>
 
-      <div class="sights-grid" id="sights-container"></div>
-
-      <!-- Интерактив: Квест-викторина -->
-      <div class="interactive-box">
-        <h3>🏛 Квест: «Тайны и легенды Татарстана»</h3>
-        <p style="text-align:center; color: var(--text-muted); margin-bottom: 1.5rem;" id="quiz-progress">Вопрос 1 из 3</p>
-        <div class="quiz-question" id="quiz-question-text">Загрузка вопроса...</div>
-        <div class="quiz-options" id="quiz-options-container"></div>
-        <div class="quiz-feedback" id="quiz-feedback"></div>
-        <button class="action-btn" id="quiz-next-btn" style="display:none;" onclick="nextQuestion()">Следующий вопрос →</button>
-      </div>
-    </section>
-
-    <!-- РАЗДЕЛ 3: КОСТЮМ -->
-    <section id="tab-costume" class="tab-content">
-      <h2 class="section-title">Традиционный костюмный комплекс</h2>
-      <p class="section-subtitle">Богатство бархата, золотое шитье и кожаная мозаика</p>
-
-      <div class="char-toggle">
-        <button class="nav-btn active" id="btn-char-woman" onclick="selectGender('woman')">Татарская женщина (Татар хатыны)</button>
-        <button class="nav-btn" id="btn-char-man" onclick="selectGender('man')">Татарский мужчина (Татар ире)</button>
-      </div>
-
-      <div class="wardrobe-ui">
-        <div class="mannequin-col">
-          <h4 style="margin-bottom: 1rem; color: var(--primary-dark);" id="mannequin-title">Праздничный наряд</h4>
-          <div class="mannequin-display">
-            <div class="mannequin-slot" id="slot-head">Головной убор не выбран</div>
-            <div class="mannequin-slot" id="slot-vest">Камзол не выбран</div>
-            <div class="mannequin-slot" id="slot-acc">Украшение/Пояс не выбраны</div>
-            <div class="mannequin-slot" id="slot-shoes">Обувь не выбрана</div>
+      <div class="sights-grid">
+        <!-- Мечеть Кул-Шариф -->
+        <div class="sight-card">
+          <div class="sight-svg-wrap">
+            <svg viewBox="0 0 240 140" width="220" height="130">
+              <path d="M0 130 Q120 120 240 130 L240 140 L0 140 Z" fill="#94a3b8"/>
+              <!-- Основание Кремля -->
+              <rect x="50" y="80" width="140" height="50" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+              <!-- Минареты -->
+              <polygon points="40,130 46,30 52,130" fill="#f8fafc" stroke="#0284c7" stroke-width="2"/>
+              <polygon points="43,30 46,12 49,30" fill="#0284c7"/>
+              <polygon points="188,130 194,30 200,130" fill="#f8fafc" stroke="#0284c7" stroke-width="2"/>
+              <polygon points="191,30 194,12 197,30" fill="#0284c7"/>
+              <!-- Главный купол в виде казанской шапки -->
+              <path d="M85 80 Q120 25 155 80 Z" fill="#0284c7"/>
+              <path d="M100 80 Q120 45 140 80 Z" fill="#38bdf8"/>
+              <circle cx="120" cy="23" r="3" fill="#fbbf24"/>
+              <line x1="120" y1="23" x2="120" y2="15" stroke="#fbbf24" stroke-width="2"/>
+              <path d="M117 17 Q120 14 123 17" fill="none" stroke="#fbbf24" stroke-width="1.5"/>
+              <!-- Окна со стрельчатыми арками -->
+              <path d="M105 105 A6 6 0 0 1 117 105 L117 125 L105 125 Z" fill="#0369a1"/>
+              <path d="M123 105 A6 6 0 0 1 135 105 L135 125 L123 125 Z" fill="#0369a1"/>
+            </svg>
           </div>
-          <p id="wardrobe-status" style="margin-top: 1rem; font-weight: bold; color: var(--primary); text-align: center;">Соберите полный национальный комплект!</p>
+          <div class="sight-body">
+            <div>
+              <h3>Мечеть Кул-Шариф</h3>
+              <p class="sight-loc">Казанский Кремль • Объект ЮНЕСКО</p>
+              <p style="color:var(--text-muted); font-size:0.95rem;">Главная соборная мечеть Казани с бирюзовыми куполами, воссозданная в память об обороне города 1552 года. Внутри мрамор украшен персидскими коврами и витражами.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="options-col" id="wardrobe-options">
-          <!-- Группы элементов генерируются через JS -->
+        <!-- Башня Сююмбике -->
+        <div class="sight-card">
+          <div class="sight-svg-wrap">
+            <svg viewBox="0 0 240 140" width="220" height="130">
+              <!-- Наклонная башня (transform rotate) -->
+              <g transform="rotate(3.5, 120, 130)">
+                <rect x="90" y="95" width="60" height="35" fill="#b45309" stroke="#78350f" stroke-width="2"/>
+                <path d="M105 130 A15 15 0 0 1 135 130 Z" fill="#451a03"/>
+                <rect x="96" y="68" width="48" height="27" fill="#c2410c"/>
+                <rect x="102" y="46" width="36" height="22" fill="#d97706"/>
+                <!-- Октагон и шпиль -->
+                <polygon points="106,46 114,28 126,28 134,46" fill="#065f46"/>
+                <polygon points="117,28 120,6 123,28" fill="#047857"/>
+                <circle cx="120" cy="5" r="3" fill="#fbbf24"/>
+              </g>
+              <line x1="120" y1="130" x2="120" y2="10" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3"/>
+              <text x="130" y="20" font-size="10" fill="#dc2626" font-family="sans-serif">Ось наклона 2.08 м</text>
+            </svg>
+          </div>
+          <div class="sight-body">
+            <div>
+              <h3>Башня Сююмбике</h3>
+              <p class="sight-loc">Казанский Кремль • Высота 58 м</p>
+              <p style="color:var(--text-muted); font-size:0.95rem;">Семиярусная дозорная башня, имеющая заметный наклон верхушки относительно основания более чем на два метра. Овеяна романтической легендой о мудрой правительнице Сююмбике.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Древний город Болгар -->
+        <div class="sight-card">
+          <div class="sight-svg-wrap">
+            <svg viewBox="0 0 240 140" width="220" height="130">
+              <path d="M0 130 Q120 125 240 130 L240 140 L0 140 Z" fill="#e2e8f0"/>
+              <!-- Белая мечеть Болгара -->
+              <rect x="60" y="85" width="120" height="45" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5"/>
+              <polygon points="50,130 55,40 60,130" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+              <polygon points="180,130 185,40 190,130" fill="#f1f5f9" stroke="#64748b" stroke-width="1.5"/>
+              <circle cx="55" cy="38" r="3" fill="#d97706"/>
+              <circle cx="185" cy="38" r="3" fill="#d97706"/>
+              <!-- Центральный купол -->
+              <path d="M95 85 Q120 40 145 85 Z" fill="#ffffff" stroke="#94a3b8" stroke-width="2"/>
+              <line x1="120" y1="40" x2="120" y2="30" stroke="#d97706" stroke-width="2"/>
+              <circle cx="120" cy="28" r="2.5" fill="#d97706"/>
+              <!-- Аркада -->
+              <circle cx="120" cy="105" r="10" fill="#047857"/>
+            </svg>
+          </div>
+          <div class="sight-body">
+            <div>
+              <h3>Древний Болгар</h3>
+              <p class="sight-loc">Спасский район • Объект ЮНЕСКО</p>
+              <p style="color:var(--text-muted); font-size:0.95rem;">Историческая родина волжских булгар, где в 922 году был официально принят ислам. Здесь расположен памятный знак с крупнейшим печатным Кораном в мире (800 кг).</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ИНТЕРАКТИВНЫЙ КВЕСТ -->
+      <div class="game-box">
+        <h3 class="game-box-title">🏆 Интерактивный квест: «Хранители тайн Казани»</h3>
+        <p style="text-align:center; color:var(--text-muted); font-size:1.05rem;" id="q-stage-label">Вопрос 1 из 3</p>
+        <div style="font-size: 1.25rem; font-weight: bold; text-align: center; margin: 1.2rem 0; color: var(--primary);" id="q-text">
+          Загрузка вопроса...
+        </div>
+        <div class="quest-opts" id="q-options"></div>
+        <div id="q-feedback" style="text-align:center; font-weight:bold; min-height: 2.5rem; font-size:1.1rem; margin-top:1rem;"></div>
+        <div style="text-align:center;">
+          <button class="cook-btn" id="q-next-btn" style="display:none; margin: 1rem auto;" onclick="nextQuestStep()">Следующий вопрос →</button>
         </div>
       </div>
     </section>
 
-    <!-- РАЗДЕЛ 4: QR-КОД -->
-    <section id="tab-qr" class="tab-content">
-      <h2 class="section-title">QR-код школьного проекта</h2>
-      <p class="section-subtitle">Отсканируйте камерой телефона для просмотра на стенде или распечатайте для жюри</p>
-      
-      <div style="text-align: center;">
-        <div class="qr-container">
-          <svg width="220" height="220" viewBox="0 0 29 29" style="display: block; margin: 0 auto; shape-rendering: crispEdges;">
-            <!-- SVG QR Matrix -->
-            <rect width="29" height="29" fill="#ffffff"/>
-            <!-- Top-Left Finder Pattern -->
-            <rect x="2" y="2" width="7" height="7" fill="#065f46"/>
-            <rect x="3" y="3" width="5" height="5" fill="#ffffff"/>
-            <rect x="4" y="4" width="3" height="3" fill="#065f46"/>
-            <!-- Top-Right Finder Pattern -->
-            <rect x="20" y="2" width="7" height="7" fill="#065f46"/>
-            <rect x="21" y="3" width="5" height="5" fill="#ffffff"/>
-            <rect x="22" y="4" width="3" height="3" fill="#065f46"/>
-            <!-- Bottom-Left Finder Pattern -->
-            <rect x="2" y="20" width="7" height="7" fill="#065f46"/>
-            <rect x="3" y="21" width="5" height="5" fill="#ffffff"/>
-            <rect x="4" y="22" width="3" height="3" fill="#065f46"/>
-            <!-- Data Bits Pattern -->
-            <g fill="#065f46">
-              <rect x="10" y="2" width="1" height="2"/>
-              <rect x="12" y="2" width="2" height="1"/>
-              <rect x="15" y="2" width="1" height="3"/>
-              <rect x="17" y="3" width="2" height="1"/>
-              <rect x="10" y="5" width="2" height="2"/>
-              <rect x="13" y="6" width="3" height="1"/>
-              <rect x="17" y="5" width="1" height="3"/>
-              <rect x="2" y="10" width="2" height="2"/>
-              <rect x="5" y="11" width="3" height="1"/>
-              <rect x="9" y="9" width="2" height="2"/>
-              <rect x="12" y="10" width="1" height="3"/>
-              <rect x="14" y="9" width="3" height="1"/>
-              <rect x="18" y="10" width="2" height="2"/>
-              <rect x="21" y="10" width="3" height="1"/>
-              <rect x="25" y="11" width="2" height="2"/>
-              <rect x="10" y="13" width="3" height="2"/>
-              <rect x="14" y="14" width="2" height="2"/>
-              <rect x="17" y="13" width="3" height="1"/>
-              <rect x="9" y="17" width="2" height="2"/>
-              <rect x="12" y="16" width="2" height="3"/>
-              <rect x="15" y="18" width="3" height="1"/>
-              <rect x="19" y="17" width="2" height="2"/>
-              <rect x="10" y="21" width="2" height="1"/>
-              <rect x="13" y="22" width="3" height="2"/>
-              <rect x="17" y="20" width="2" height="2"/>
-              <rect x="20" y="21" width="3" height="1"/>
-              <rect x="24" y="22" width="2" height="2"/>
-              <rect x="10" y="25" width="3" height="2"/>
-              <rect x="14" y="24" width="2" height="2"/>
-              <rect x="17" y="25" width="3" height="2"/>
-              <rect x="21" y="24" width="2" height="2"/>
-              <rect x="25" y="25" width="2" height="2"/>
-            </g>
-          </svg>
-          <p><strong>tatar-culture-project.github.io</strong></p>
+    <!-- ========================================== -->
+    <!-- 2. НАЦИОНАЛЬНЫЙ КОСТЮМ (ИГРОВОЕ ОТОБРАЖЕНИЕ) -->
+    <!-- ========================================== -->
+    <section id="tab-costume" class="tab-content">
+      <h2 class="section-title">Татарский традиционный костюм</h2>
+      <p class="section-subtitle">Интерактивная гардеробная: наденьте аутентичные предметы одежды на персонажа</p>
+
+      <div class="char-picker">
+        <button class="nav-btn active" id="btn-char-w" onclick="setAvatarGender('woman')">Татарская женщина (Татар хатыны)</button>
+        <button class="nav-btn" id="btn-char-m" onclick="setAvatarGender('man')">Татарский мужчина (Татар ире)</button>
+      </div>
+
+      <div class="wardrobe-arena">
+        <!-- Подиум манекена с живым обновлением одежды -->
+        <div class="avatar-podium">
+          <h4 id="avatar-label" style="color:var(--primary); font-size:1.25rem; margin-bottom:0.75rem;">Татарская женщина</h4>
+          <div class="avatar-frame">
+            <svg class="avatar-svg" viewBox="0 0 200 320" id="avatar-canvas">
+              <!-- Манекен рендерится через JavaScript с точными слоями -->
+            </svg>
+          </div>
+          <div id="costume-verdict" style="margin-top:1rem; text-align:center; font-weight:bold; font-size:0.95rem; color:var(--primary);">
+            Выберите элементы праздничного наряда!
+          </div>
         </div>
-        <p style="color: var(--text-muted); max-width: 500px; margin: 1rem auto;">
-          Этот QR-код ведет прямо на интерактивную презентацию проекта. Распечатайте его для выставочного стенда конкурса!
+
+        <!-- Интерактивные варианты примерки -->
+        <div class="wardrobe-controls" id="wardrobe-groups-box">
+          <!-- Генерируются 4 категории по 3 карточки с пиктограммами -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 3. ТАТАРСКАЯ КУХНЯ И ПРИГОТОВЛЕНИЕ         -->
+    <!-- ========================================== -->
+    <section id="tab-cuisine" class="tab-content">
+      <h2 class="section-title">Татарская кухня (Татар ашлары)</h2>
+      <p class="section-subtitle">Пять жемчужин национальной кулинарии и интерактивное приготовление эчпочмака</p>
+
+      <!-- ИГРА: СОБЕРИ И ИСПЕКИ ЭЧПОЧМАК -->
+      <div class="cook-stage">
+        <h3 class="game-box-title">👨‍🍳 Интерактивная мастерская: «Слепи и испеки свой Эчпочмак»</h3>
+        <p style="text-align:center; color:var(--text-muted);">
+          Кликайте по продуктам на разделочной доске, чтобы положить их в начинку. Остерегайтесь продуктов, чуждых татарской кухне!
+        </p>
+
+        <div class="cook-bench">
+          <!-- Продукты на выбор -->
+          <div class="ingredients-table" id="kitchen-ingredients"></div>
+
+          <!-- Интерактивная сковорода / противень -->
+          <div class="pie-preview-board">
+            <svg class="pan-svg" viewBox="0 0 160 160" id="echpochmak-visual">
+              <!-- Отрисовка теста, начинки и защипа -->
+              <circle cx="80" cy="80" r="70" fill="#fde68a" stroke="#d97706" stroke-width="3" id="dough-base"/>
+              <g id="filling-layers"></g>
+            </svg>
+            <p id="cook-status-text" style="margin-top:0.75rem; font-weight:bold; color:var(--primary); font-size:1.05rem;">
+              Основа: раскатанный кругляш теста
+            </p>
+          </div>
+        </div>
+
+        <div class="cook-actions">
+          <button class="cook-btn" onclick="pinchEchpochmak()">1. Защипнуть треугольником 🥟</button>
+          <button class="cook-btn" onclick="bakeAndBroth()">2. В печь и долить бульон ♨️</button>
+          <button class="cook-btn secondary" onclick="resetKitchen()">Сбросить и начать заново ↺</button>
+        </div>
+        <div id="cook-verdict" style="text-align:center; font-weight:bold; font-size:1.15rem; margin-top:1rem; min-height:2rem;"></div>
+      </div>
+
+      <!-- 5 КАРТОЧЕК БЛЮД С КАРТИНКАМИ -->
+      <div class="dishes-shelf" id="dishes-shelf-box">
+        <!-- Генерируется из JavaScript -->
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 4. QR-КОД ПРОЕКТА                          -->
+    <!-- ========================================== -->
+    <section id="tab-qr" class="tab-content">
+      <h2 class="section-title">QR-код проекта для стенда</h2>
+      <p class="section-subtitle">Отсканируйте камерой смартфона для перехода на интерактивный портал</p>
+      
+      <div class="qr-card-wrap">
+        <svg width="220" height="220" viewBox="0 0 29 29" style="shape-rendering: crispEdges; margin: 0 auto; display:block;">
+          <rect width="29" height="29" fill="#ffffff"/>
+          <!-- Крупные угловые метки -->
+          <rect x="2" y="2" width="7" height="7" fill="#064e3b"/>
+          <rect x="3" y="3" width="5" height="5" fill="#ffffff"/>
+          <rect x="4" y="4" width="3" height="3" fill="#064e3b"/>
+
+          <rect x="20" y="2" width="7" height="7" fill="#064e3b"/>
+          <rect x="21" y="3" width="5" height="5" fill="#ffffff"/>
+          <rect x="22" y="4" width="3" height="3" fill="#064e3b"/>
+
+          <rect x="2" y="20" width="7" height="7" fill="#064e3b"/>
+          <rect x="3" y="21" width="5" height="5" fill="#ffffff"/>
+          <rect x="4" y="22" width="3" height="3" fill="#064e3b"/>
+
+          <!-- Мозаика данных -->
+          <g fill="#064e3b">
+            <rect x="10" y="2" width="1" height="2"/>
+            <rect x="12" y="2" width="2" height="1"/>
+            <rect x="15" y="2" width="1" height="3"/>
+            <rect x="17" y="3" width="2" height="1"/>
+            <rect x="10" y="5" width="2" height="2"/>
+            <rect x="13" y="6" width="3" height="1"/>
+            <rect x="17" y="5" width="1" height="3"/>
+            <rect x="2" y="10" width="2" height="2"/>
+            <rect x="5" y="11" width="3" height="1"/>
+            <rect x="9" y="9" width="2" height="2"/>
+            <rect x="12" y="10" width="1" height="3"/>
+            <rect x="14" y="9" width="3" height="1"/>
+            <rect x="18" y="10" width="2" height="2"/>
+            <rect x="21" y="10" width="3" height="1"/>
+            <rect x="25" y="11" width="2" height="2"/>
+            <rect x="10" y="13" width="3" height="2"/>
+            <rect x="14" y="14" width="2" height="2"/>
+            <rect x="17" y="13" width="3" height="1"/>
+            <rect x="9" y="17" width="2" height="2"/>
+            <rect x="12" y="16" width="2" height="3"/>
+            <rect x="15" y="18" width="3" height="1"/>
+            <rect x="19" y="17" width="2" height="2"/>
+            <rect x="10" y="21" width="2" height="1"/>
+            <rect x="13" y="22" width="3" height="2"/>
+            <rect x="17" y="20" width="2" height="2"/>
+            <rect x="20" y="21" width="3" height="1"/>
+            <rect x="24" y="22" width="2" height="2"/>
+            <rect x="10" y="25" width="3" height="2"/>
+            <rect x="14" y="24" width="2" height="2"/>
+            <rect x="17" y="25" width="3" height="2"/>
+            <rect x="21" y="24" width="2" height="2"/>
+            <rect x="25" y="25" width="2" height="2"/>
+          </g>
+        </svg>
+        <p style="font-size:1.15rem; font-weight:bold; color:var(--primary); margin-top:1rem;">
+          tatar-culture-contest.github.io
+        </p>
+        <p style="color:var(--text-muted); font-size:0.9rem; margin-top:0.4rem;">
+          Распечатайте эту страницу или вставьте код на конкурсный стенд!
         </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>Школьный конкурс «Народы России: Традиции и современность»</p>
-    <p style="font-size: 0.9rem; color: #cbd5e1; margin-top: 0.5rem;">Выполнила исследовательская группа по культуре татарского народа</p>
+    <p>Школьный конкурс «Народы России: Единство в многообразии»</p>
+    <p style="font-size:0.9rem; margin-top:0.3rem;">Исследовательский проект: Татарский этнос и традиции</p>
   </footer>
 
   <script>
+    // --- ЗВУКОВОЙ СИНТЕЗАТОР ПЕНТАТОНИКИ (WEB AUDIO API) ---
+    let audioCtx = null;
+    let isPlaying = false;
+    let melodyTimer = null;
+    const tatarPenta = [293.66, 329.63, 392.00, 440.00, 523.25, 587.33]; // D, E, G, A, C, D
+
+    function toggleTatarMelody() {
+      if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      
+      const icon = document.getElementById('music-icon');
+      const txt = document.getElementById('music-text');
+
+      if (isPlaying) {
+        clearInterval(melodyTimer);
+        isPlaying = false;
+        icon.innerText = "🎵";
+        txt.innerText = "Включить татарскую мелодию (курай/баян)";
+      } else {
+        isPlaying = true;
+        icon.innerText = "🔊";
+        txt.innerText = "Звучит народный мотив (нажмите, чтобы выключить)";
+        let step = 0;
+        const notesSeq = [0, 1, 2, 4, 3, 2, 1, 0, 2, 3, 4, 5, 4, 3, 2, 0];
+        melodyTimer = setInterval(() => {
+          playNote(tatarPenta[notesSeq[step % notesSeq.length]]);
+          step++;
+        }, 320);
+      }
+    }
+
+    function playNote(freq) {
+      if (!audioCtx) return;
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.52);
+    }
+
     // --- ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК ---
-    function switchTab(tabId) {
+    function showTab(tabId) {
       document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
       document.querySelectorAll('.nav-btn').forEach(el => el.classList.remove('active'));
       
-      const target = document.getElementById('tab-' + tabId);
-      if (target) target.classList.add('active');
-      
+      const sec = document.getElementById('tab-' + tabId);
+      if (sec) sec.classList.add('active');
+
       const btns = Array.from(document.querySelectorAll('.nav-tabs .nav-btn'));
-      const activeBtn = btns.find(b => b.getAttribute('onclick').includes(tabId));
-      if (activeBtn) activeBtn.classList.add('active');
+      const found = btns.find(b => b.getAttribute('onclick').includes(tabId));
+      if (found) found.classList.add('active');
+      window.scrollTo({ top: 180, behavior: 'smooth' });
     }
 
-    // --- ДАННЫЕ 1: БЛЮДА ---
-    const dishes = [
+    // ==========================================
+    // КВЕСТ ПО ДОСТОПРИМЕЧАТЕЛЬНОСТЯМ
+    // ==========================================
+    const questData = [
       {
-        name: "Эчпочмак",
-        tatar: "Өчпочмак (Треугольник)",
-        desc: "Знаменитый печеный пирожок треугольной формы с отверстием по центру для доливания ароматного мясного бульона.",
-        time: "1,5 часа",
-        cal: "280 ккал / шт",
-        ing: ["Говядина / жирная баранина — 400 г", "Картофель сырой — 400 г", "Лук репчатый — 300 г", "Тесто на кефире и масле — 600 г", "Мясной бульон для доливки"],
-        steps: ["Мясо, сырой картофель и лук нарезать одинаковыми мелкими кубиками со стороной 5–7 мм.", "Раскатать круглое тесто, выложить сочную начинку, защипнуть в форме треугольника с отверстием.", "Выпекать при 180°C 35 минут, затем влить в отверстия по 2–3 ложки горячего бульона и допечь 20 минут."]
-      },
-      {
-        name: "Чак-чак",
-        tatar: "Чәкчәк (Медовое солнце)",
-        desc: "Главный праздничный и свадебный десерт из воздушных полосок обжаренного теста, залитых натуральным душистым медовым сиропом.",
-        time: "1 час",
-        cal: "410 ккал / 100 г",
-        ing: ["Мука пшеничная — 350 г", "Яйца отборные — 3 шт", "Мед цветочный натуральный — 180 г", "Сахарный песок — 100 г", "Масло для фритюра — 500 мл"],
-        steps: ["Замесить нежное яичное тесто, раскатать и нарезать тонкой лапшой длиной 2–3 см.", "Обжарить во фритюре до золотистого цвета 2–3 минуты, остудить на бумажных салфетках.", "Уварить мед с сахаром до пробы на мягкий шарик, залить соломку и руками в воде сформировать горку."]
-      },
-      {
-        name: "Перемяч",
-        tatar: "Пәрәмәч (Жареный пирожок)",
-        desc: "Круглый сочный пирожок из дрожжевого теста с открытым мясным центром, обжаренный в кипящем масле до хрустящей корочки.",
-        time: "1 час",
-        cal: "310 ккал / шт",
-        ing: ["Мясной фарш с луком — 400 г", "Дрожжевое сдобное тесто — 500 г", "Черный перец и соль — по вкусу", "Масло для жарки — 300 мл"],
-        steps: ["Раскатать круглые лепешки, выложить в центр шарик сочного фарша с репчатым луком.", "Собрать края теста красивой гармошкой («плиссировкой»), оставив центр открытым.", "Опускать в масло отверстием вниз, обжарить до румянца, перевернуть и влить в центр ложку кипящего масла."]
-      },
-      {
-        name: "Кыстыбый",
-        tatar: "Кыстыбый (Кузикмяк)",
-        desc: "Нежнейшая тонкая пресная лепешка, обжаренная на сухой сковороде и сложенная пополам со сливочным картофельным пюре.",
-        time: "45 минут",
-        cal: "190 ккал / шт",
-        ing: ["Пресное тесто на молоке — 400 г", "Картофельное пюре со сливочным маслом и луком — 500 г", "Сливочное топленое масло для обильной смазки — 100 г"],
-        steps: ["Раскатать очень тонкие круглые сочни и обжарить на сухой раскаленной сковороде без капли масла.", "На одну половину горячей лепешки выложить теплое картофельное пюре с пассерованным луком.", "Сложить пополам и щедро смазать с обеих сторон растопленным домашним сливочным маслом."]
-      },
-      {
-        name: "Зур Бэлиш",
-        tatar: "Зур бәлеш (Большой пирог)",
-        desc: "Венец семейного застолья: высокий закрытый пирог в чугунной сковороде с мясом, картофелем и защипанным съемным «пупочком».",
-        time: "2,5 часа",
-        cal: "340 ккал / 100 г",
-        ing: ["Говядина / утка крупным кубиком — 700 г", "Картофель — 800 г", "Лук — 400 г", "Пресное сдобное тесто — 900 г", "Бульон наваристый — 300 мл"],
-        steps: ["Выстелить дно глубокой формы тестом, выложить богатую начинку горкой, накрыть крышкой из теста.", "В центре сделать отверстие и закрыть его шариком из теста («пупочком»).", "Томить в духовке 2–2,5 часа, периодически открывая «пупочек» и доливая крепкий бульон."]
-      }
-    ];
-
-    function renderDishes() {
-      const cont = document.getElementById('dishes-container');
-      cont.innerHTML = dishes.map(d => `
-        <div class="dish-card">
-          <div>
-            <div class="dish-header">
-              <span class="dish-name">${d.name}</span>
-              <span class="dish-tatar">${d.tatar}</span>
-            </div>
-            <p class="dish-desc">${d.desc}</p>
-            <div class="dish-details">
-              <p>⏱ <strong>Время:</strong> ${d.time} | ⚖️ <strong>Калорийность:</strong> ${d.cal}</p>
-              <p style="margin-top:0.4rem;"><strong>Ингредиенты:</strong></p>
-              <ul>${d.ing.map(i => `<li>${i}</li>`).join('')}</ul>
-            </div>
-          </div>
-          <div class="recipe-steps">
-            <p><strong>Приготовление:</strong></p>
-            <ol>${d.steps.map(s => `<li>${s}</li>`).join('')}</ol>
-          </div>
-        </div>
-      `).join('');
-    }
-
-    // --- ИНТЕРАКТИВ 1: ЭЧПОЧМАК ---
-    const allIngredients = [
-      { name: "Говядина / Баранина кубиком", correct: true },
-      { name: "Сырой картофель кубиком", correct: true },
-      { name: "Репчатый лук", correct: true },
-      { name: "Горячий мясной бульон", correct: true },
-      { name: "Майонез", correct: false },
-      { name: "Белокочанная капуста", correct: false },
-      { name: "Сахарный песок", correct: false },
-      { name: "Грибы шампиньоны", correct: false }
-    ];
-    let selectedIngs = new Set();
-
-    function renderIngredients() {
-      const cloud = document.getElementById('ingredients-cloud');
-      cloud.innerHTML = allIngredients.map((item, idx) => `
-        <button class="ing-btn ${selectedIngs.has(idx) ? 'selected' : ''}" onclick="toggleIngredient(${idx})">
-          ${item.name}
-        </button>
-      `).join('');
-    }
-
-    function toggleIngredient(idx) {
-      if (selectedIngs.has(idx)) selectedIngs.delete(idx);
-      else selectedIngs.add(idx);
-      renderIngredients();
-    }
-
-    function checkEchpochmak() {
-      const res = document.getElementById('ech-result');
-      const correctIndices = allIngredients.map((item, idx) => item.correct ? idx : null).filter(i => i !== null);
-      
-      const allCorrectSelected = correctIndices.every(i => selectedIngs.has(i));
-      const noWrongSelected = Array.from(selectedIngs).every(i => allIngredients[i].correct);
-
-      if (allCorrectSelected && noWrongSelected) {
-        res.innerHTML = "🎉 Рәхмәт! Вы собрали безупречный классический эчпочмак! Настоящий мастер татарской кулинарии!";
-        res.style.color = "var(--primary)";
-      } else {
-        res.innerHTML = "❌ Ошибка в рецепте! Традиционный эчпочмак требует только рубленого мяса, сырого картофеля, лука и бульона. Лишние продукты нарушат вкус!";
-        res.style.color = "var(--accent-red)";
-      }
-    }
-
-    // --- ДАННЫЕ 2: ДОСТОПРИМЕЧАТЕЛЬНОСТИ ---
-    const sights = [
-      {
-        name: "Казанский Кремль и Мечеть Кул-Шариф",
-        loc: "г. Казань | Объект ЮНЕСКО",
-        desc: "Сердце Татарстана, где бок о бок на протяжении веков гармонично стоят мечеть Кул-Шариф с бирюзовыми куполами и православный Благовещенский собор."
-      },
-      {
-        name: "Наклонная башня Сююмбике",
-        loc: "Казанский Кремль",
-        desc: "Жемчужина архитектуры высотой 58 метров. Башня имеет заметный наклон (отклонение от оси более 2 метров) и овеяна поэтическими легендами о царице Сююмбике."
-      },
-      {
-        name: "Древний город Болгар",
-        loc: "Спасский район | Объект ЮНЕСКО",
-        desc: "Колыбель ислама в Поволжье, где в 922 году предки татар волжские булгары официально приняли ислам. Здесь хранится самый большой в мире печатный Коран."
-      }
-    ];
-
-    function renderSights() {
-      const cont = document.getElementById('sights-container');
-      cont.innerHTML = sights.map(s => `
-        <div class="sight-card">
-          <h4>${s.name}</h4>
-          <p class="sight-loc">${s.loc}</p>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">${s.desc}</p>
-        </div>
-      `).join('');
-    }
-
-    // --- ИНТЕРАКТИВ 2: КВЕСТ-ВИКТОРИНА ---
-    const quizData = [
-      {
-        q: "Какое отклонение от вертикальной оси имеет знаменитая башня Сююмбике в Казани?",
-        options: ["Около 0.5 метра", "Более 2 метров (падающая башня)", "Она строго вертикальна"],
+        q: "На сколько метров отклоняется от вертикали наклонная башня Сююмбике?",
+        opts: ["Менее чем на 30 см", "Более 2 метров (падающая башня)", "Она строго вертикальна"],
         correct: 1,
-        fact: "Верно! Башня Сююмбике отклоняется от вертикали почти на 2,1 метра, входя в число знаменитых «падающих» башен мира."
+        fact: "Правильно! Верхушка башни Сююмбике отклонена от оси на 2,08 метра, что делает её одной из самых знаменитых падающих башен Евразии."
       },
       {
-        q: "В каком году в древнем городе Болгар предками казанских татар был официально принят ислам?",
-        options: ["В 922 году", "В 1147 году", "В 1552 году"],
+        q: "Какое знаковое событие произошло в Великом Болгаре в 922 году?",
+        opts: ["Официальное принятие ислама предками татар", "Основание Казанского университета", "Строительство Свияжской крепости"],
         correct: 0,
-        fact: "Абсолютно верно! В 922 году в Великом Болгаре состоялось официальное посольство из Багдада и принятие ислама."
+        fact: "Абсолютно точно! В 922 году волжские булгары официально приняли ислам при багдадском посольстве Ибн Фадлана."
       },
       {
-        q: "Какое уникальное сокровище весом 800 кг хранится в Музее Корана в Болгаре?",
-        options: ["Золотой сафьяновый сундук", "Самый большой в мире печатный Коран", "Древнейшая каменная летопись"],
+        q: "Какой редкий рекорд зафиксирован в Музее Корана в Болгаре?",
+        opts: ["Самая высокая колокольня", "Самый большой в мире печатный Коран (800 кг)", "Крупнейший деревянный мост"],
         correct: 1,
-        fact: "Точно! Этот уникальный Коран украшен малахитом, яшмой и сусальным золотом и занесен в Книгу рекордов Гиннесса."
+        fact: "Верно! Этот колоссальный Коран инкрустирован драгоценными камнями, золотом и весит 800 кг."
       }
     ];
 
     let currentQ = 0;
-    function renderQuiz() {
-      const item = quizData[currentQ];
-      document.getElementById('quiz-progress').innerText = `Вопрос ${currentQ + 1} из ${quizData.length}`;
-      document.getElementById('quiz-question-text').innerText = item.q;
-      document.getElementById('quiz-feedback').innerText = "";
-      document.getElementById('quiz-next-btn').style.display = "none";
+    function renderQuest() {
+      const q = questData[currentQ];
+      document.getElementById('q-stage-label').innerText = `Вопрос ${currentQ + 1} из ${questData.length}`;
+      document.getElementById('q-text').innerText = q.q;
+      document.getElementById('q-feedback').innerHTML = "";
+      document.getElementById('q-next-btn').style.display = "none";
 
-      const optCont = document.getElementById('quiz-options-container');
-      optCont.innerHTML = item.options.map((opt, idx) => `
-        <button class="quiz-btn" onclick="answerQuiz(${idx})">${opt}</button>
+      const optBox = document.getElementById('q-options');
+      optBox.innerHTML = q.opts.map((opt, idx) => `
+        <button class="quest-btn" onclick="checkQuestAnswer(${idx})">${opt}</button>
       `).join('');
     }
 
-    function answerQuiz(idx) {
-      const item = quizData[currentQ];
-      const btns = document.querySelectorAll('.quiz-options .quiz-btn');
-      btns.forEach((btn, i) => {
-        btn.disabled = true;
-        if (i === item.correct) btn.classList.add('correct');
-        else if (i === idx) btn.classList.add('incorrect');
+    function checkQuestAnswer(idx) {
+      const q = questData[currentQ];
+      const btns = document.querySelectorAll('.quest-opts .quest-btn');
+      btns.forEach((b, i) => {
+        b.disabled = true;
+        if (i === q.correct) b.classList.add('correct');
+        else if (i === idx) b.classList.add('wrong');
       });
 
-      const feed = document.getElementById('quiz-feedback');
-      if (idx === item.correct) {
-        feed.innerHTML = `✅ ${item.fact}`;
-        feed.style.color = "#166534";
+      const feed = document.getElementById('q-feedback');
+      if (idx === q.correct) {
+        feed.innerHTML = `🎉 Отлично! ${q.fact}`;
+        feed.style.color = "var(--primary)";
       } else {
-        feed.innerHTML = `❌ Не совсем так. Правильный ответ: <strong>${item.options[item.correct]}</strong>.<br>${item.fact}`;
-        feed.style.color = "#991b1b";
+        feed.innerHTML = `❌ Неверно. Правильно: <b>${q.opts[q.correct]}</b>.<br>${q.fact}`;
+        feed.style.color = "var(--accent-red)";
       }
 
-      if (currentQ < quizData.length - 1) {
-        document.getElementById('quiz-next-btn').style.display = "block";
+      if (currentQ < questData.length - 1) {
+        document.getElementById('q-next-btn').style.display = "block";
       } else {
-        feed.innerHTML += "<br><br>🏆 <strong>Поздравляем! Вы успешно завершили исторический квест по Татарстану!</strong>";
+        feed.innerHTML += "<br><span style='color:var(--gold-dark); font-size:1.2rem;'>🏆 Браво! Вы блестяще знаете историю и архитектуру Татарстана!</span>";
       }
     }
 
-    function nextQuestion() {
+    function nextQuestStep() {
       currentQ++;
-      renderQuiz();
+      renderQuest();
     }
 
-    // --- ДАННЫЕ 3: КОСТЮМЫ ---
-    const costumeData = {
+    // ==========================================
+    // ИГРОВОЙ ГАРДЕРОБ КОСТЮМА (ПИКТОГРАММЫ И СЛОИ)
+    // ==========================================
+    const wardrobeItems = {
       woman: {
         title: "Татарская женщина (Татар хатыны)",
         head: [
-          { name: "Бархатный калфак с золотым вензелем и кисточкой", correct: true, culture: "Татарский" },
-          { name: "Высокий жемчужный кокошник", correct: false, culture: "Русский" },
-          { name: "Коралловый чепец кашмау со шлейфом", correct: false, culture: "Башкирский" }
+          {
+            name: "Бархатный Калфак",
+            culture: "Татарский (подлинный)",
+            correct: true,
+            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="20" rx="16" ry="10" fill="#047857"/><path d="M9 20 L25 38 L41 20 Z" fill="#065f46"/><circle cx="25" cy="38" r="3" fill="#fbbf24"/><path d="M18 20 Q25 28 32 20" stroke="#fbbf24" stroke-width="2" fill="none"/></svg>`
+          },
+          {
+            name: "Жемчужный Кокошник",
+            culture: "Русский традиционный",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M10 40 Q25 5 40 40 Z" fill="#dc2626"/><circle cx="25" cy="18" r="3" fill="#ffffff"/><circle cx="18" cy="26" r="2.5" fill="#ffffff"/><circle cx="32" cy="26" r="2.5" fill="#ffffff"/></svg>`
+          },
+          {
+            name: "Чепец Кашмау с кораллами",
+            culture: "Башкирский наряд",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="18" rx="14" ry="10" fill="#b91c1c"/><rect x="20" y="24" width="10" height="22" fill="#991b1b"/><circle cx="23" cy="28" r="1.5" fill="#fbbf24"/><circle cx="27" cy="34" r="1.5" fill="#fbbf24"/></svg>`
+          }
         ],
         vest: [
-          { name: "Бархатный приталенный камзол с позументом", correct: true, culture: "Татарский" },
-          { name: "Косоклинный крестьянский сарафан", correct: false, culture: "Русский" },
-          { name: "Белый холщовый шупар с вышивкой", correct: false, culture: "Чувашский" }
+          {
+            name: "Бархатный Камзол",
+            culture: "Татарский (подлинный)",
+            correct: true,
+            icon: `<svg viewBox="0 0 50 50"><path d="M12 10 L38 10 L44 44 L6 44 Z" fill="#064e3b"/><path d="M25 10 L25 44" stroke="#fbbf24" stroke-width="2"/><path d="M18 18 Q25 24 32 18" stroke="#fbbf24" stroke-width="1.5" fill="none"/></svg>`
+          },
+          {
+            name: "Крестьянский Сарафан",
+            culture: "Русский народный",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M18 10 L32 10 L42 45 L8 45 Z" fill="#b91c1c"/><line x1="25" y1="10" x2="25" y2="45" stroke="#fff" stroke-width="2"/></svg>`
+          },
+          {
+            name: "Холщовый Шупар",
+            culture: "Чувашский халат",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M14 10 L36 10 L40 45 L10 45 Z" fill="#f8fafc" stroke="#cbd5e1"/><line x1="25" y1="10" x2="25" y2="45" stroke="#b91c1c" stroke-width="2"/></svg>`
+          }
         ],
         acc: [
-          { name: "Нагрудник «Изү» с чеканными монетами и тесьмой", correct: true, culture: "Татарский" },
-          { name: "Многорядные янтарные славянские бусы", correct: false, culture: "Славянский" },
-          { name: "Северная меховая розетка «Солнышко»", correct: false, culture: "Эвенкийский" }
+          {
+            name: "Нагрудник «Изү»",
+            culture: "Татарский с монетами",
+            correct: true,
+            icon: `<svg viewBox="0 0 50 50"><polygon points="15,12 35,12 25,42" fill="#047857"/><circle cx="25" cy="20" r="2.5" fill="#fbbf24"/><circle cx="21" cy="26" r="2" fill="#fbbf24"/><circle cx="29" cy="26" r="2" fill="#fbbf24"/><circle cx="25" cy="32" r="2" fill="#fbbf24"/></svg>`
+          },
+          {
+            name: "Многорядные янтарные бусы",
+            culture: "Славянское украшение",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M12 15 Q25 32 38 15" stroke="#d97706" stroke-width="3" fill="none"/><path d="M15 20 Q25 40 35 20" stroke="#d97706" stroke-width="2.5" fill="none"/></svg>`
+          },
+          {
+            name: "Бисерная розетка «Солнце»",
+            culture: "Народы Севера",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><circle cx="25" cy="25" r="14" fill="#0284c7"/><circle cx="25" cy="25" r="7" fill="#ffffff"/><circle cx="25" cy="25" r="3" fill="#dc2626"/></svg>`
+          }
         ],
         shoes: [
-          { name: "Сафьяновые узорные сапожки «Читек» (ичиги)", correct: true, culture: "Татарский" },
-          { name: "Берестяные плетеные лапти", correct: false, culture: "Русский" },
-          { name: "Мягкие бескаблучные чувяки", correct: false, culture: "Кавказский" }
+          {
+            name: "Мозаичные Читек (ичиги)",
+            culture: "Татарские сафьяновые",
+            correct: true,
+            icon: `<svg viewBox="0 0 50 50"><path d="M12 10 L24 10 L24 38 L36 40 L34 46 L8 46 L10 36 Z" fill="#047857"/><path d="M14 20 Q20 28 14 36" stroke="#fbbf24" stroke-width="2" fill="none"/><path d="M26 10 L38 10 L38 38 L48 40 L46 46 L22 46 L24 36 Z" fill="#b91c1c"/></svg>`
+          },
+          {
+            name: "Плетеные лыковые лапти",
+            culture: "Русские крестьянские",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="35" rx="18" ry="8" fill="#d97706"/><line x1="12" y1="35" x2="38" y2="35" stroke="#78350f" stroke-width="1.5"/></svg>`
+          },
+          {
+            name: "Мягкие чувяки",
+            culture: "Кавказские кожаные",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M10 32 Q25 24 40 32 L38 42 L12 42 Z" fill="#475569"/></svg>`
+          }
         ]
       },
       man: {
         title: "Татарский мужчина (Татар ире)",
         head: [
-          { name: "Бархатная тюбетейка (Түбәтәй) с золотым шитьем", correct: true, culture: "Татарский" },
-          { name: "Высокая овечья папаха", correct: false, culture: "Кавказский" },
-          { name: "Остроконечный войлочный колпак", correct: false, culture: "Казахский" }
+          {
+            name: "Тюбетейка (Түбәтәй)",
+            culture: "Татарская с золотым шитьем",
+            correct: true,
+            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="30" rx="16" ry="6" fill="#065f46"/><path d="M9 30 L12 18 L38 18 L41 30 Z" fill="#047857"/><path d="M18 24 Q25 18 32 24" stroke="#fbbf24" stroke-width="2" fill="none"/></svg>`
+          },
+          {
+            name: "Овечья Папаха",
+            culture: "Кавказский головной убор",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M12 36 L14 14 Q25 8 36 14 L38 36 Z" fill="#334155"/><circle cx="25" cy="24" r="10" fill="#475569"/></svg>`
+          },
+          {
+            name: "Белый войлочный Колпак",
+            culture: "Казахский национальный",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><polygon points="25,6 10,40 40,40" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/><path d="M16 34 Q25 28 34 34" stroke="#0284c7" stroke-width="2" fill="none"/></svg>`
+          }
         ],
         vest: [
-          { name: "Длинный бархатный камзол прямого покроя", correct: true, culture: "Татарский" },
-          { name: "Черкеска с суконными газырями", correct: false, culture: "Кавказский" },
-          { name: "Красная косоворотка с косым воротом", correct: false, culture: "Русский" }
+          {
+            name: "Мужской длинный Камзол",
+            culture: "Татарский бархатный",
+            correct: true,
+            icon: `<svg viewBox="0 0 50 50"><path d="M10 8 L40 8 L44 46 L6 46 Z" fill="#064e3b"/><line x1="25" y1="8" x2="25" y2="46" stroke="#fbbf24" stroke-width="2"/></svg>`
+          },
+          {
+            name: "Черкеска с газырями",
+            culture: "Кавказский костюм",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M12 8 L38 8 L42 46 L8 46 Z" fill="#1e293b"/><rect x="14" y="16" width="8" height="4" fill="#fbbf24"/><rect x="28" y="16" width="8" height="4" fill="#fbbf24"/></svg>`
+          },
+          {
+            name: "Косоворотка с косым воротом",
+            culture: "Русская народная рубаха",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M12 10 L38 10 L40 44 L10 44 Z" fill="#dc2626"/><line x1="18" y1="10" x2="18" y2="24" stroke="#fff" stroke-width="2"/></svg>`
+          }
         ],
         acc: [
-          { name: "Широкий пояс-кушак с серебряной пряжкой «Каптырма»", correct: true, culture: "Татарский" },
-          { name: "Узкий ремень с металлическими подвесками", correct: false, culture: "Степной кочевой" },
-          { name: "Плетеный шнурок-гашник", correct: false, culture: "Славянский" }
+          {
+            name: "Широкий кушак с пряжкой",
+            culture: "Татарский с «Каптырма»",
+            correct: true,
+            icon: `<svg viewBox="0 0 50 50"><rect x="6" y="20" width="38" height="10" fill="#047857"/><circle cx="25" cy="25" r="5" fill="#fbbf24"/><circle cx="25" cy="25" r="2.5" fill="#d97706"/></svg>`
+          },
+          {
+            name: "Ремень с наборными бляшками",
+            culture: "Степной кочевой",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><rect x="6" y="22" width="38" height="6" fill="#451a03"/><circle cx="15" cy="25" r="2" fill="#cbd5e1"/><circle cx="25" cy="25" r="2" fill="#cbd5e1"/><circle cx="35" cy="25" r="2" fill="#cbd5e1"/></svg>`
+          },
+          {
+            name: "Тканый шнур-гашник",
+            culture: "Славянский поясок",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M6 25 Q25 20 44 25" stroke="#b91c1c" stroke-width="3" fill="none"/></svg>`
+          }
         ],
         shoes: [
-          { name: "Кожаные сапоги «Ичиги» с мягкой подошвой", correct: true, culture: "Татарский" },
-          { name: "Грубые юфтевые сапоги на подковах", correct: false, culture: "Солдатский" },
-          { name: "Лыковые лапти с онучами", correct: false, culture: "Русский крестьянский" }
+          {
+            name: "Кожаные мягкие Ичиги",
+            culture: "Татарские сапоги",
+            correct: true,
+            icon: `<svg viewBox="0 0 50 50"><path d="M10 8 L22 8 L22 38 L32 40 L30 46 L8 46 Z" fill="#064e3b"/><path d="M26 8 L38 8 L38 38 L48 40 L46 46 L24 46 Z" fill="#064e3b"/></svg>`
+          },
+          {
+            name: "Юфтевые сапоги на подковах",
+            culture: "Служилый костюм",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><path d="M10 8 L22 8 L22 40 L34 42 L32 48 L8 48 Z" fill="#0f172a"/><path d="M26 8 L38 8 L38 40 L50 42 L48 48 L24 48 Z" fill="#0f172a"/></svg>`
+          },
+          {
+            name: "Лапти с онучами",
+            culture: "Русские крестьянские",
+            correct: false,
+            icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="36" rx="16" ry="8" fill="#ca8a04"/><line x1="12" y1="20" x2="25" y2="36" stroke="#94a3b8" stroke-width="2"/></svg>`
+          }
         ]
       }
     };
 
-    let currentGender = 'woman';
-    let chosenSlots = { head: null, vest: null, acc: null, shoes: null };
+    let activeGender = 'woman';
+    let userWardrobe = { head: null, vest: null, acc: null, shoes: null };
 
-    function selectGender(gender) {
-      currentGender = gender;
-      document.getElementById('btn-char-woman').classList.toggle('active', gender === 'woman');
-      document.getElementById('btn-char-man').classList.toggle('active', gender === 'man');
-      document.getElementById('mannequin-title').innerText = costumeData[gender].title;
-      chosenSlots = { head: null, vest: null, acc: null, shoes: null };
-      renderWardrobeUI();
-      updateMannequin();
+    function setAvatarGender(gender) {
+      activeGender = gender;
+      document.getElementById('btn-char-w').classList.toggle('active', gender === 'woman');
+      document.getElementById('btn-char-m').classList.toggle('active', gender === 'man');
+      document.getElementById('avatar-label').innerText = wardrobeItems[gender].title;
+      userWardrobe = { head: null, vest: null, acc: null, shoes: null };
+      renderWardrobeControls();
+      updateAvatarSvg();
     }
 
-    function renderWardrobeUI() {
-      const data = costumeData[currentGender];
-      const cont = document.getElementById('wardrobe-options');
-      
-      const sections = [
-        { id: 'head', title: '1. Головной убор', items: data.head },
-        { id: 'vest', title: '2. Традиционная одежда', items: data.vest },
-        { id: 'acc', title: '3. Нагрудник или Пояс', items: data.acc },
-        { id: 'shoes', title: '4. Национальная обувь', items: data.shoes }
+    function renderWardrobeControls() {
+      const box = document.getElementById('wardrobe-groups-box');
+      const data = wardrobeItems[activeGender];
+
+      const groups = [
+        { id: 'head', title: '1. Традиционный головной убор', list: data.head },
+        { id: 'vest', title: '2. Традиционная одежда', list: data.vest },
+        { id: 'acc', title: '3. Нагрудник или Пояс', list: data.acc },
+        { id: 'shoes', title: '4. Традиционная обувь', list: data.shoes }
       ];
 
-      cont.innerHTML = sections.map(sec => `
-        <div class="slot-group">
-          <h5>${sec.title}</h5>
-          <div class="options-row">
-            ${sec.items.map((item, idx) => `
-              <button class="item-card-btn ${chosenSlots[sec.id] === idx ? (item.correct ? 'selected' : 'wrong-picked') : ''}" 
-                      onclick="pickItem('${sec.id}', ${idx})">
-                ${item.name} <span style="font-size:0.8rem; color:#64748b;">(${item.culture})</span>
-              </button>
+      box.innerHTML = groups.map(g => `
+        <div class="wardrobe-cat">
+          <h4>${g.title}</h4>
+          <div class="items-trio">
+            ${g.list.map((item, idx) => `
+              <div class="item-chip ${userWardrobe[g.id] === idx ? (item.correct ? 'selected' : 'wrong-pick') : ''}"
+                   onclick="chooseWardrobeItem('${g.id}', ${idx})">
+                <div class="item-chip-icon">${item.icon}</div>
+                <div class="item-chip-name">${item.name}</div>
+                <div class="item-chip-culture">${item.culture}</div>
+              </div>
             `).join('')}
           </div>
         </div>
       `).join('');
     }
 
-    function pickItem(slot, idx) {
-      chosenSlots[slot] = idx;
-      renderWardrobeUI();
-      updateMannequin();
+    function chooseWardrobeItem(slot, idx) {
+      userWardrobe[slot] = idx;
+      renderWardrobeControls();
+      updateAvatarSvg();
     }
 
-    function updateMannequin() {
-      const data = costumeData[currentGender];
-      const slots = ['head', 'vest', 'acc', 'shoes'];
-      const slotLabels = { head: "Головной убор", vest: "Камзол", acc: "Аксессуар", shoes: "Обувь" };
-      
-      let allCorrect = true;
-      let filledCount = 0;
+    function updateAvatarSvg() {
+      const svg = document.getElementById('avatar-canvas');
+      const data = wardrobeItems[activeGender];
+      const isWoman = activeGender === 'woman';
 
-      slots.forEach(slotKey => {
-        const pickedIdx = chosenSlots[slotKey];
-        const slotEl = document.getElementById('slot-' + slotKey);
-        
-        if (pickedIdx !== null) {
-          filledCount++;
-          const item = data[slotKey][pickedIdx];
-          slotEl.innerText = (item.correct ? '✔ ' : '✖ ') + item.name;
-          slotEl.className = 'mannequin-slot active';
-          if (!item.correct) {
-            allCorrect = false;
-            slotEl.style.background = "#fee2e2";
-            slotEl.style.color = "#991b1b";
-            slotEl.style.borderColor = "#ef4444";
+      // Проверка правильности
+      const pickedHead = userWardrobe.head !== null ? data.head[userWardrobe.head] : null;
+      const pickedVest = userWardrobe.vest !== null ? data.vest[userWardrobe.vest] : null;
+      const pickedAcc = userWardrobe.acc !== null ? data.acc[userWardrobe.acc] : null;
+      const pickedShoes = userWardrobe.shoes !== null ? data.shoes[userWardrobe.shoes] : null;
+
+      let layers = '';
+
+      // Базовый манекен человека
+      // 1. Тело и голова
+      layers += `
+        <!-- Голова и шея -->
+        <circle cx="100" cy="55" r="22" fill="#fed7aa"/>
+        <rect x="94" y="74" width="12" height="16" fill="#fdba74"/>
+        <!-- Руки -->
+        <rect x="42" y="90" width="16" height="110" rx="8" fill="#fdba74"/>
+        <rect x="142" y="90" width="16" height="110" rx="8" fill="#fdba74"/>
+      `;
+
+      // 2. Базовая рубаха (Кульмяк)
+      if (isWoman) {
+        layers += `
+          <!-- Платье Күлмәк с оборками -->
+          <polygon points="75,88 125,88 145,240 55,240" fill="#fef3c7" stroke="#fde047" stroke-width="2"/>
+          <path d="M55 240 Q100 250 145 240 L148 260 Q100 270 52 260 Z" fill="#fef08a"/>
+          <path d="M52 260 Q100 275 148 260 L150 280 Q100 295 50 280 Z" fill="#fde047"/>
+        `;
+      } else {
+        layers += `
+          <!-- Мужская туника Күлмәк и штаны Ыштан -->
+          <rect x="70" y="210" width="26" height="75" fill="#334155"/>
+          <rect x="104" y="210" width="26" height="75" fill="#334155"/>
+          <polygon points="70,88 130,88 136,220 64,220" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/>
+          <line x1="100" y1="88" x2="100" y2="130" stroke="#047857" stroke-width="2"/>
+        `;
+      }
+
+      // 3. Слой ОДЕЖДЫ (Камзол)
+      if (pickedVest) {
+        if (pickedVest.correct) {
+          // Татарский бархатный камзол
+          layers += `
+            <polygon points="70,90 130,90 140,215 60,215" fill="#065f46" stroke="#fbbf24" stroke-width="2"/>
+            <polygon points="85,90 100,140 115,90" fill="#fed7aa"/>
+            <line x1="100" y1="140" x2="100" y2="215" stroke="#fbbf24" stroke-width="3"/>
+          `;
+        } else {
+          // Неверный элемент
+          layers += `
+            <polygon points="70,90 130,90 135,215 65,215" fill="#b91c1c"/>
+            <text x="100" y="150" font-size="10" fill="#fff" text-anchor="middle">Чужой крой</text>
+          `;
+        }
+      }
+
+      // 4. Слой АКСЕССУАРА (Изү / Кушак)
+      if (pickedAcc) {
+        if (pickedAcc.correct) {
+          if (isWoman) {
+            // Изү с монетами
+            layers += `
+              <polygon points="90,92 110,92 100,145" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/>
+              <circle cx="100" cy="104" r="2.5" fill="#fbbf24"/>
+              <circle cx="96" cy="114" r="2" fill="#fbbf24"/>
+              <circle cx="104" cy="114" r="2" fill="#fbbf24"/>
+              <circle cx="100" cy="126" r="2.5" fill="#fbbf24"/>
+            `;
           } else {
-            slotEl.style.background = "#dcfce7";
-            slotEl.style.color = "#166534";
-            slotEl.style.borderColor = "#22c55e";
+            // Пояс-кушак с пряжкой Каптырма
+            layers += `
+              <rect x="63" y="150" width="74" height="14" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/>
+              <circle cx="100" cy="157" r="5" fill="#fbbf24"/>
+              <circle cx="100" cy="157" r="2" fill="#b45309"/>
+            `;
           }
         } else {
-          allCorrect = false;
-          slotEl.innerText = `${slotLabels[slotKey]} не выбран`;
-          slotEl.className = 'mannequin-slot';
-          slotEl.style.background = "#f1f5f9";
-          slotEl.style.color = "#64748b";
-          slotEl.style.borderColor = "transparent";
+          layers += `<circle cx="100" cy="130" r="12" fill="none" stroke="#ef4444" stroke-width="3"/>`;
         }
-      });
+      }
 
-      const status = document.getElementById('wardrobe-status');
-      if (filledCount === 4) {
-        if (allCorrect) {
-          status.innerHTML = "✨ Искиткеч! Превосходно! Вы безошибочно собрали подлинный татарский праздничный наряд!";
-          status.style.color = "var(--primary)";
+      // 5. Слой ОБУВИ (Читек / Ичиги)
+      if (pickedShoes) {
+        if (pickedShoes.correct) {
+          layers += `
+            <!-- Сафьяновые узорные сапожки читек -->
+            <path d="M66 250 L84 250 L84 300 L95 304 L92 312 L62 312 L64 290 Z" fill="#065f46" stroke="#fbbf24" stroke-width="1.5"/>
+            <path d="M116 250 L134 250 L136 290 L138 312 L108 312 L105 304 L116 300 Z" fill="#b91c1c" stroke="#fbbf24" stroke-width="1.5"/>
+          `;
         } else {
-          status.innerHTML = "⚠️ Внимание: в комплекте есть элементы костюмов других народов. Замените их на аутентичные татарские!";
-          status.style.color = "var(--accent-red)";
+          layers += `
+            <ellipse cx="76" cy="308" rx="14" ry="6" fill="#ca8a04"/>
+            <ellipse cx="124" cy="308" rx="14" ry="6" fill="#ca8a04"/>
+          `;
+        }
+      }
+
+      // 6. Слой ГОЛОВНОГО УБОРА (Калфак / Тюбетейка)
+      if (pickedHead) {
+        if (pickedHead.correct) {
+          if (isWoman) {
+            // Изящный калфак с наклоном
+            layers += `
+              <g transform="rotate(8, 110, 36)">
+                <ellipse cx="108" cy="36" rx="15" ry="9" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/>
+                <path d="M93 36 L118 56 L123 36 Z" fill="#065f46"/>
+                <circle cx="118" cy="56" r="3" fill="#fbbf24"/>
+              </g>
+            `;
+          } else {
+            // Тюбетейка
+            layers += `
+              <ellipse cx="100" cy="38" rx="20" ry="7" fill="#065f46"/>
+              <path d="M80 38 L84 26 L116 26 L120 38 Z" fill="#047857" stroke="#fbbf24" stroke-width="1.5"/>
+              <path d="M92 32 Q100 27 108 32" stroke="#fbbf24" stroke-width="1.5" fill="none"/>
+            `;
+          }
+        } else {
+          layers += `
+            <polygon points="100,10 75,36 125,36" fill="#ef4444"/>
+            <text x="100" y="32" font-size="8" fill="#fff" text-anchor="middle">Чужой убор</text>
+          `;
+        }
+      }
+
+      svg.innerHTML = layers;
+
+      // Вердикт
+      const verd = document.getElementById('costume-verdict');
+      const allPicked = pickedHead && pickedVest && pickedAcc && pickedShoes;
+      if (allPicked) {
+        const isAllRight = pickedHead.correct && pickedVest.correct && pickedAcc.correct && pickedShoes.correct;
+        if (isAllRight) {
+          verd.innerHTML = "✨ Искиткеч! Настоящий праздник! Подлинный праздничный костюм собран безупречно!";
+          verd.style.color = "var(--primary)";
+        } else {
+          verd.innerHTML = "⚠️ В комплекте есть вещи других культур. Замените их на аутентичные татарские!";
+          verd.style.color = "var(--accent-red)";
         }
       } else {
-        status.innerHTML = `Выбрано элементов: ${filledCount} из 4`;
-        status.style.color = "var(--primary)";
+        verd.innerHTML = "Продолжайте примерку: выберите все 4 элемента!";
+        verd.style.color = "var(--text-muted)";
       }
+    }
+
+    // ==========================================
+    // ТАТАРСКАЯ КУХНЯ И ИГРА ПРИГОТОВЛЕНИЯ
+    // ==========================================
+    const kitchenItems = [
+      {
+        id: 'meat',
+        name: 'Рубленое мясо (говядина)',
+        correct: true,
+        icon: `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14" fill="#b91c1c"/><circle cx="16" cy="16" r="3" fill="#ef4444"/><circle cx="23" cy="22" r="4" fill="#991b1b"/></svg>`
+      },
+      {
+        id: 'potato',
+        name: 'Сырой картофель кубиком',
+        correct: true,
+        icon: `<svg viewBox="0 0 40 40"><rect x="8" y="10" width="10" height="10" rx="2" fill="#fde047" stroke="#ca8a04"/><rect x="22" y="10" width="10" height="10" rx="2" fill="#fef08a" stroke="#ca8a04"/><rect x="15" y="22" width="10" height="10" rx="2" fill="#fde047" stroke="#ca8a04"/></svg>`
+      },
+      {
+        id: 'onion',
+        name: 'Мелкий репчатый лук',
+        correct: true,
+        icon: `<svg viewBox="0 0 40 40"><circle cx="20" cy="22" r="12" fill="#fed7aa" stroke="#ea580c" stroke-width="1.5"/><path d="M20 10 L20 2" stroke="#16a34a" stroke-width="2.5"/></svg>`
+      },
+      {
+        id: 'mayo',
+        name: 'Майонез (соус)',
+        correct: false,
+        icon: `<svg viewBox="0 0 40 40"><rect x="12" y="8" width="16" height="24" rx="4" fill="#ffffff" stroke="#cbd5e1" stroke-width="2"/><text x="20" y="24" font-size="8" text-anchor="middle" fill="#dc2626">Mayo</text></svg>`
+      },
+      {
+        id: 'cabbage',
+        name: 'Капуста белокочанная',
+        correct: false,
+        icon: `<svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="#86efac"/><path d="M12 14 Q20 28 28 14" stroke="#15803d" stroke-width="2" fill="none"/></svg>`
+      },
+      {
+        id: 'sugar',
+        name: 'Сахарный песок',
+        correct: false,
+        icon: `<svg viewBox="0 0 40 40"><polygon points="20,8 32,32 8,32" fill="#f1f5f9" stroke="#94a3b8"/><text x="20" y="28" font-size="8" text-anchor="middle" fill="#64748b">Сахар</text></svg>`
+      }
+    ];
+
+    let potIngredients = new Set();
+    let isPinched = false;
+    let isBaked = false;
+
+    function renderKitchen() {
+      const box = document.getElementById('kitchen-ingredients');
+      box.innerHTML = kitchenItems.map(item => `
+        <div class="ing-card ${potIngredients.has(item.id) ? 'added' : ''}" onclick="toggleKitchenItem('${item.id}')">
+          <div class="ing-icon">${item.icon}</div>
+          <div class="ing-name">${item.name}</div>
+          <div style="font-size:0.75rem; color:${item.correct ? 'var(--primary)' : 'var(--accent-red)'}">
+            ${potIngredients.has(item.id) ? 'Добавлено ✔' : '+ Добавить'}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleKitchenItem(id) {
+      if (isPinched) return;
+      if (potIngredients.has(id)) potIngredients.delete(id);
+      else potIngredients.add(id);
+      renderKitchen();
+      drawEchVisual();
+    }
+
+    function drawEchVisual() {
+      const fLayer = document.getElementById('filling-layers');
+      const base = document.getElementById('dough-base');
+      const txt = document.getElementById('cook-status-text');
+
+      if (!isPinched) {
+        base.setAttribute('d', '');
+        base.setAttribute('r', '70');
+        let dots = '';
+        if (potIngredients.has('meat')) {
+          dots += `<circle cx="70" cy="75" r="8" fill="#b91c1c"/><circle cx="90" cy="85" r="7" fill="#991b1b"/>`;
+        }
+        if (potIngredients.has('potato')) {
+          dots += `<rect x="75" y="60" width="10" height="10" fill="#fde047" stroke="#ca8a04"/><rect x="65" y="88" width="9" height="9" fill="#fde047"/>`;
+        }
+        if (potIngredients.has('onion')) {
+          dots += `<circle cx="92" cy="66" r="5" fill="#fed7aa" stroke="#ea580c"/>`;
+        }
+        if (potIngredients.has('mayo') || potIngredients.has('cabbage') || potIngredients.has('sugar')) {
+          dots += `<path d="M60 80 Q80 100 100 80" stroke="#ef4444" stroke-width="4" fill="none"/>`;
+        }
+        fLayer.innerHTML = dots;
+        txt.innerText = potIngredients.size > 0 ? `В начинке компонентов: ${potIngredients.size}` : "Раскатанный круг теста ждет начинку";
+      }
+    }
+
+    function pinchEchpochmak() {
+      if (potIngredients.size === 0) {
+        document.getElementById('cook-verdict').innerHTML = "⚠️ Сначала положите продукты в начинку!";
+        return;
+      }
+      isPinched = true;
+      const fLayer = document.getElementById('filling-layers');
+      const txt = document.getElementById('cook-status-text');
+
+      // Превращаем в треугольник с центральным отверстием
+      fLayer.innerHTML = `
+        <polygon points="80,18 18,125 142,125" fill="#fde68a" stroke="#d97706" stroke-width="3"/>
+        <!-- Фирменный шов косичкой -->
+        <line x1="80" y1="18" x2="80" y2="70" stroke="#b45309" stroke-width="2.5" stroke-dasharray="3,3"/>
+        <line x1="18" y1="125" x2="70" y2="85" stroke="#b45309" stroke-width="2.5" stroke-dasharray="3,3"/>
+        <line x1="142" y1="125" x2="90" y2="85" stroke="#b45309" stroke-width="2.5" stroke-dasharray="3,3"/>
+        <!-- Отверстие для бульона -->
+        <ellipse cx="80" cy="80" rx="9" ry="7" fill="#78350f"/>
+      `;
+      txt.innerText = "Треугольник защипан с отверстием по центру!";
+      document.getElementById('cook-verdict').innerHTML = "🥟 Отлично защипано! Теперь отправляйте в печь и вливайте бульон!";
+      document.getElementById('cook-verdict').style.color = "var(--primary)";
+    }
+
+    function bakeAndBroth() {
+      if (!isPinched) {
+        document.getElementById('cook-verdict').innerHTML = "⚠️ Сначала нужно защипнуть треугольник!";
+        return;
+      }
+      isBaked = true;
+      const fLayer = document.getElementById('filling-layers');
+      const hasMeat = potIngredients.has('meat');
+      const hasPotato = potIngredients.has('potato');
+      const hasOnion = potIngredients.has('onion');
+      const hasBad = potIngredients.has('mayo') || potIngredients.has('cabbage') || potIngredients.has('sugar');
+
+      // Румяный золотистый пирожок
+      fLayer.innerHTML = `
+        <polygon points="80,18 18,125 142,125" fill="#d97706" stroke="#78350f" stroke-width="3"/>
+        <line x1="80" y1="18" x2="80" y2="70" stroke="#451a03" stroke-width="2"/>
+        <line x1="18" y1="125" x2="70" y2="85" stroke="#451a03" stroke-width="2"/>
+        <line x1="142" y1="125" x2="90" y2="85" stroke="#451a03" stroke-width="2"/>
+        <ellipse cx="80" cy="80" rx="9" ry="7" fill="#451a03"/>
+        <!-- Пар и кипящий бульон -->
+        <circle cx="80" cy="80" r="4" fill="#fbbf24"/>
+        <path d="M75 60 Q80 50 78 40" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.8"/>
+        <path d="M85 60 Q82 50 86 40" stroke="#ffffff" stroke-width="2" fill="none" opacity="0.8"/>
+      `;
+
+      const verd = document.getElementById('cook-verdict');
+      if (hasMeat && hasPotato && hasOnion && !hasBad) {
+        verd.innerHTML = "🔥 Искиткеч! Бульон закипел внутри! Получился образцовый сочный татарский эчпочмак!";
+        verd.style.color = "var(--primary)";
+      } else {
+        verd.innerHTML = "❌ Вкус испорчен! Вы добавили лишние продукты либо забыли классическое мясо/картофель/лук!";
+        verd.style.color = "var(--accent-red)";
+      }
+    }
+
+    function resetKitchen() {
+      potIngredients.clear();
+      isPinched = false;
+      isBaked = false;
+      renderKitchen();
+      document.getElementById('filling-layers').innerHTML = '';
+      document.getElementById('cook-status-text').innerText = "Основа: раскатанный кругляш теста";
+      document.getElementById('cook-verdict').innerHTML = "";
+    }
+
+    // ==========================================
+    // 5 КАРТОЧЕК БЛЮД С ИЗОБРАЖЕНИЯМИ
+    // ==========================================
+    const dishesData = [
+      {
+        name: "Эчпочмак",
+        tatar: "Өчпочмак (Треугольник)",
+        time: "1,5 часа",
+        cal: "280 ккал / шт",
+        ing: ["Мясо (говядина/баранина) — 400 г", "Сырой картофель — 400 г", "Репчатый лук — 300 г", "Тесто на кефире и масле — 600 г", "Мясной бульон — 200 мл"],
+        steps: ["Мясо и картофель нарезать кубиками 5 мм, смешать с измельченным луком, солью и перцем.", "Раскатать сочни, выложить начинку и собрать треугольником с круглым отверстием в центре.", "Выпекать при 180°C 40 минут, затем влить в отверстия по 2 ложки бульона и допекать 20 минут."],
+        art: `<svg viewBox="0 0 160 120" width="160" height="120">
+          <polygon points="80,12 24,102 136,102" fill="#d97706" stroke="#92400e" stroke-width="3"/>
+          <line x1="80" y1="12" x2="80" y2="58" stroke="#78350f" stroke-width="2.5" stroke-dasharray="3,3"/>
+          <line x1="24" y1="102" x2="70" y2="70" stroke="#78350f" stroke-width="2.5" stroke-dasharray="3,3"/>
+          <line x1="136" y1="102" x2="90" y2="70" stroke="#78350f" stroke-width="2.5" stroke-dasharray="3,3"/>
+          <ellipse cx="80" cy="65" rx="8" ry="6" fill="#451a03"/>
+          <circle cx="80" cy="65" r="3" fill="#fbbf24"/>
+        </svg>`
+      },
+      {
+        name: "Чак-чак",
+        tatar: "Чәкчәк (Медовая горка)",
+        time: "1 час",
+        cal: "410 ккал / 100 г",
+        ing: ["Мука пшеничная — 300 г", "Свежие яйца — 3 шт", "Мед цветочный — 180 г", "Сахарный песок — 100 г", "Масло для фритюра — 500 мл"],
+        steps: ["Замесить плотное тесто, тонко раскатать и нарезать тонкой лапшой-соломкой.", "Обжарить во фритюре до золотистого румянца 2–3 минуты, обсушить от лишнего масла.", "Уварить мед с сахаром, залить соломку, перемешать и смоченными водой руками выложить горкой."],
+        art: `<svg viewBox="0 0 160 120" width="160" height="120">
+          <ellipse cx="80" cy="98" rx="60" ry="12" fill="#cbd5e1"/>
+          <!-- Медовая горка палочек -->
+          <path d="M30 96 Q80 20 130 96 Z" fill="#f59e0b" stroke="#b45309" stroke-width="2"/>
+          <line x1="50" y1="80" x2="70" y2="85" stroke="#78350f" stroke-width="3"/>
+          <line x1="85" y1="75" x2="110" y2="78" stroke="#78350f" stroke-width="3"/>
+          <line x1="65" y1="60" x2="95" y2="62" stroke="#78350f" stroke-width="3"/>
+          <line x1="72" y1="45" x2="88" y2="46" stroke="#78350f" stroke-width="3"/>
+        </svg>`
+      },
+      {
+        name: "Перемяч",
+        tatar: "Пәрәмәч (Беляш по-татарски)",
+        time: "1 час",
+        cal: "310 ккал / шт",
+        ing: ["Мясной фарш — 400 г", "Дрожжевое тесто — 500 г", "Лук репчатый — 200 г", "Черный перец, соль", "Масло для жарки — 400 мл"],
+        steps: ["Раскатать круглые лепешки, выложить мясной фарш с измельченным сочным луком.", "Защипнуть края красивой «плиссировкой», оставив открытое окошко в центре.", "Опускать в раскаленное масло открытой стороной вниз, жарить до сочности и золотистости."],
+        art: `<svg viewBox="0 0 160 120" width="160" height="120">
+          <circle cx="80" cy="60" r="48" fill="#d97706" stroke="#92400e" stroke-width="3"/>
+          <circle cx="80" cy="60" r="40" fill="#f59e0b"/>
+          <!-- Открытое окошко с мясной начинкой -->
+          <circle cx="80" cy="60" r="20" fill="#78350f"/>
+          <circle cx="80" cy="60" r="14" fill="#991b1b"/>
+          <!-- Складки-плиссировка -->
+          <path d="M42 60 L60 60 M100 60 L118 60 M80 22 L80 40 M80 80 L80 98" stroke="#b45309" stroke-width="2"/>
+        </svg>`
+      },
+      {
+        name: "Кыстыбый",
+        tatar: "Кыстыбый (Кузикмяк)",
+        time: "45 минут",
+        cal: "190 ккал / шт",
+        ing: ["Пресное тесто на молоке — 400 г", "Картофельное пюре с маслом — 500 г", "Пассерованный лук — 150 г", "Топленое масло для смазки — 100 г"],
+        steps: ["Раскатать тончайшие круглые сочни и испечь на сухой горячей сковороде без капли жира.", "На половину горячей лепешки щедро выложить теплое нежное картофельное пюре.", "Сложить пополам и смазать с двух сторон растопленным ароматным сливочным маслом."],
+        art: `<svg viewBox="0 0 160 120" width="160" height="120">
+          <!-- Сложенная полумесяцем лепешка -->
+          <path d="M30 85 Q80 20 130 85 Q80 100 30 85 Z" fill="#fde68a" stroke="#d97706" stroke-width="3"/>
+          <!-- Картофельная начинка внутри -->
+          <path d="M40 82 Q80 40 120 82" stroke="#f59e0b" stroke-width="8" fill="none"/>
+          <!-- Подпалины сухой сковороды -->
+          <circle cx="65" cy="60" r="3" fill="#b45309"/>
+          <circle cx="95" cy="55" r="4" fill="#b45309"/>
+          <circle cx="80" cy="72" r="2.5" fill="#b45309"/>
+        </svg>`
+      },
+      {
+        name: "Зур Бэлиш",
+        tatar: "Зур бәлеш (Семейный пирог)",
+        time: "2,5 часа",
+        cal: "340 ккал / 100 г",
+        ing: ["Говядина / утка крупными кусочками — 800 г", "Картофель — 800 г", "Лук — 400 г", "Сдобное пресное тесто — 900 г", "Бульон наваристый — 300 мл"],
+        steps: ["Выстелить глубокую чугунную сковороду тестом, выложить мясо с картофелем горкой.", "Накрыть крышкой из теста, соединить шов косичкой, по центру сделать отверстие с «пупочком».", "Томить в духовке 2-2,5 часа, периодически открывая крышечку и доливая горячий бульон."],
+        art: `<svg viewBox="0 0 160 120" width="160" height="120">
+          <!-- Чугунная сковорода -->
+          <ellipse cx="80" cy="85" rx="65" ry="24" fill="#1e293b"/>
+          <ellipse cx="80" cy="80" rx="63" ry="22" fill="#334155"/>
+          <!-- Высокий купол пирога -->
+          <path d="M26 78 Q80 25 134 78 Z" fill="#d97706" stroke="#92400e" stroke-width="2.5"/>
+          <!-- Съемный пупочек-пробочка -->
+          <circle cx="80" cy="46" r="8" fill="#f59e0b" stroke="#78350f" stroke-width="2"/>
+        </svg>`
+      }
+    ];
+
+    function renderDishes() {
+      const box = document.getElementById('dishes-shelf-box');
+      box.innerHTML = dishesData.map(d => `
+        <div class="food-card">
+          <div class="food-art-wrap">${d.art}</div>
+          <div class="food-info">
+            <div>
+              <h3>${d.name}</h3>
+              <p class="food-tatar">${d.tatar}</p>
+              <div class="food-stats">
+                <span>⏱ <b>${d.time}</b></span>
+                <span>⚖️ <b>${d.cal}</b></span>
+              </div>
+              <div class="food-ing-box">
+                <p><b>Ингредиенты:</b></p>
+                <ul>${d.ing.map(i => `<li>${i}</li>`).join('')}</ul>
+              </div>
+            </div>
+            <div class="food-steps">
+              <p><b>Приготовление:</b></p>
+              <ol>${d.steps.map(s => `<li>${s}</li>`).join('')}</ol>
+            </div>
+          </div>
+        </div>
+      `).join('');
     }
 
     // --- СТАРТОВАЯ ИНИЦИАЛИЗАЦИЯ ---
     window.addEventListener('DOMContentLoaded', () => {
+      renderQuest();
+      setAvatarGender('woman');
+      renderKitchen();
       renderDishes();
-      renderIngredients();
-      renderSights();
-      renderQuiz();
-      selectGender('woman');
     });
   </script>
 </body>
