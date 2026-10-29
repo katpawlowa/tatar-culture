@@ -164,7 +164,6 @@
       padding: 1.5rem;
       box-shadow: var(--shadow);
     }
-    @media (max-width: 850px) { .wardrobe-arena { grid-template-columns: 1fr; } }
     .avatar-podium {
       display: flex;
       flex-direction: column;
@@ -197,7 +196,6 @@
       padding-bottom: 0.2rem;
     }
     .items-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
-    @media (max-width: 600px) { .items-trio { grid-template-columns: 1fr; } }
     .item-chip {
       background: #fff;
       border: 2px solid #e2e8f0;
@@ -237,7 +235,6 @@
       gap: 1.5rem;
       margin-top: 1.2rem;
     }
-    @media (max-width: 850px) { .cook-bench { grid-template-columns: 1fr; } }
     .ingredients-table {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -361,6 +358,43 @@
       border-top: 5px solid var(--gold);
       margin-top: 3rem;
     }
+
+    /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
+    @media (max-width: 768px) {
+      header { padding: 1.8rem 0.8rem 1.4rem; }
+      header h1 { font-size: 1.6rem; line-height: 1.3; }
+      header p { font-size: 0.95rem; margin-bottom: 1rem; }
+      .audio-bar { font-size: 0.85rem; padding: 0.4rem 0.9rem; max-width: 95%; text-align: center; }
+      .nav-tabs { padding: 0.5rem 0.4rem; gap: 0.4rem; }
+      .nav-btn { flex: 1 1 calc(50% - 0.4rem); padding: 0.55rem 0.4rem; font-size: 0.85rem; text-align: center; justify-content: center; }
+      main { margin: 1.2rem auto; padding: 0 0.6rem; }
+      .section-title { font-size: 1.55rem; }
+      .section-subtitle { font-size: 0.9rem; margin-bottom: 1.3rem; }
+      .sights-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .game-box { padding: 1.2rem 0.8rem; }
+      .quest-btn { font-size: 0.92rem; padding: 0.75rem 0.85rem; }
+      .char-picker { flex-direction: column; gap: 0.5rem; }
+      .char-picker .nav-btn { width: 100%; }
+      .wardrobe-arena { grid-template-columns: 1fr; padding: 1rem 0.75rem; gap: 1.4rem; }
+      .avatar-podium { padding: 0.8rem; }
+      .avatar-frame { width: 230px; height: 360px; }
+      .items-trio { grid-template-columns: repeat(3, 1fr); gap: 0.4rem; }
+      .item-chip { padding: 0.5rem 0.25rem; }
+      .item-chip-icon { width: 44px; height: 44px; }
+      .item-chip-name { font-size: 0.75rem; }
+      .cook-stage { padding: 1.2rem 0.75rem; }
+      .cook-bench { grid-template-columns: 1fr; gap: 1.2rem; }
+      .ingredients-table { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; }
+      .ing-card { padding: 0.6rem 0.3rem; }
+      .ing-icon { width: 42px; height: 42px; }
+      .ing-name { font-size: 0.8rem; }
+      .ing-badge { font-size: 0.72rem; padding: 0.2rem 0.4rem; }
+      .pie-preview-board { min-height: 250px; padding: 0.8rem; }
+      .pan-svg { width: 160px; height: 160px; }
+      .cook-actions { flex-direction: column; gap: 0.5rem; }
+      .cook-btn { width: 100%; padding: 0.75rem 1rem; font-size: 1rem; }
+      .dishes-shelf { grid-template-columns: 1fr; gap: 1.2rem; }
+    }
   </style>
 </head>
 <body>
@@ -383,7 +417,7 @@
   </nav>
 
   <main>
-    <!-- 1. ДОСТОПРИМЕЧАТЕЛЬНОСТИ (С ИЛЛЮСТРАЦИЯМИ) -->
+    <!-- 1. ДОСТОПРИМЕЧАТЕЛЬНОСТИ -->
     <section id="tab-sights" class="tab-content active">
       <h2 class="section-title">Жемчужины Татарстана</h2>
       <p class="section-subtitle">Архитектурные святыни ЮНЕСКО и викторина для гостей стенда</p>
@@ -434,8 +468,6 @@
                 </linearGradient>
               </defs>
               <rect width="240" height="140" fill="#f8fafc"/>
-              <line x1="120" y1="134" x2="120" y2="8" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="3,3"/>
-              <text x="128" y="18" font-size="9" fill="#dc2626" font-family="sans-serif">Ось наклона 2.08 м</text>
               <g transform="rotate(3.6, 120, 134)">
                 <rect x="88" y="96" width="64" height="38" fill="url(#brickGrad)" stroke="#78350f" stroke-width="1.5"/>
                 <path d="M104 134 A16 16 0 0 1 136 134 Z" fill="#451a03"/>
@@ -446,6 +478,10 @@
                 <circle cx="120" cy="5" r="2.5" fill="#fbbf24"/>
               </g>
               <path d="M0 134 L240 134" stroke="#64748b" stroke-width="2"/>
+              <!-- ОСЬ НАКЛОНА ПОВЕРХ КАРТИНКИ (ЯРКАЯ И ЧЕТКО ВИДНАЯ) -->
+              <line x1="120" y1="134" x2="120" y2="6" stroke="#dc2626" stroke-width="2.5" stroke-dasharray="5,3"/>
+              <rect x="123" y="10" width="108" height="18" rx="4" fill="rgba(255,255,255,0.9)" stroke="#dc2626" stroke-width="1"/>
+              <text x="127" y="23" font-size="9.5" font-weight="bold" fill="#dc2626" font-family="sans-serif">Ось наклона 2.08 м</text>
             </svg>
           </div>
           <div class="sight-body">
@@ -711,7 +747,7 @@
       renderQuest();
     }
 
-    // --- 4. ДАННЫЕ КОСТЮМОВ (ПОДНЯТЫЕ ШАПКИ НА y=14..36, САРАФАН ПОЛНОГО РАЗМЕРА, КАЛФАК УВЕЛИЧЕН) ---
+    // --- 4. ДАННЫЕ КОСТЮМОВ ---
     const rawCostumeData = {
       woman: {
         title: "Татарская женщина",
@@ -755,36 +791,26 @@
           { id: 'sarafan', name: "Крестьянский сарафан", correct: false, cultureName: "русский сарафан",
             icon: `<svg viewBox="0 0 50 50"><polygon points="18,10 32,10 42,46 8,46" fill="#b91c1c"/></svg>`,
             draw: `<g id="layer-body-sarafan">
-              <!-- Сарафан подогнан точно по фигуре манекена, не выступает за плечи и руки -->
-              <rect x="92" y="100" width="16" height="32" fill="#b91c1c" stroke="#991b1b"/>
-              <rect x="132" y="100" width="16" height="32" fill="#b91c1c" stroke="#991b1b"/>
-              <polygon points="74,106 166,106 172,285 68,285" fill="#dc2626" stroke="#991b1b" stroke-width="1.5"/>
-              <rect x="116" y="106" width="8" height="179" fill="#fbbf24"/>
+              <!-- Сарафан закрывает белое платье по ширине -->
+              <rect x="88" y="100" width="18" height="32" fill="#b91c1c" stroke="#991b1b"/>
+              <rect x="134" y="100" width="18" height="32" fill="#b91c1c" stroke="#991b1b"/>
+              <polygon points="66,106 174,106 184,295 56,295" fill="#dc2626" stroke="#991b1b" stroke-width="2"/>
+              <rect x="116" y="106" width="8" height="189" fill="#fbbf24"/>
               <circle cx="120" cy="125" r="2.2" fill="#451a03"/><circle cx="120" cy="150" r="2.2" fill="#451a03"/>
               <circle cx="120" cy="175" r="2.2" fill="#451a03"/><circle cx="120" cy="200" r="2.2" fill="#451a03"/>
               <circle cx="120" cy="225" r="2.2" fill="#451a03"/><circle cx="120" cy="250" r="2.2" fill="#451a03"/>
-              <rect x="68" y="275" width="104" height="10" fill="#991b1b"/>
-              <line x1="68" y1="275" x2="172" y2="275" stroke="#fbbf24" stroke-width="2"/>
+              <circle cx="120" cy="275" r="2.2" fill="#451a03"/>
+              <rect x="56" y="283" width="128" height="12" fill="#991b1b"/>
+              <line x1="56" y1="283" x2="184" y2="283" stroke="#fbbf24" stroke-width="2"/>
             </g>`
           },
           { id: 'kamzol_w', name: "Бархатный приталенный камзол", correct: true, cultureName: "татарский камзол",
             icon: `<svg viewBox="0 0 50 50"><polygon points="12,10 38,10 44,46 6,46" fill="#064e3b"/><line x1="25" y1="10" x2="25" y2="46" stroke="#fbbf24" stroke-width="2"/></svg>`,
-            draw: `<g id="layer-body-kamzol">
-              <!-- Приталенный женский камзол точно по размеру плеч и талии манекена -->
-              <path d="M74 106 L104 102 L114 142 L126 142 L136 102 L166 106 L158 246 L120 185 L82 246 Z" fill="#064e3b" stroke="#047857" stroke-width="1.5"/>
-              <path d="M104 102 L114 142 L120 172 L126 142 L136 102" stroke="#fbbf24" stroke-width="2.5" fill="none"/>
-              <line x1="120" y1="172" x2="120" y2="246" stroke="#fbbf24" stroke-width="2.5"/>
-              <path d="M92 238 Q100 228 108 238" stroke="#fbbf24" stroke-width="1.5" fill="none"/>
-              <path d="M132 238 Q140 228 148 238" stroke="#fbbf24" stroke-width="1.5" fill="none"/>
-              <circle cx="120" cy="188" r="2.5" fill="#fef08a"/><circle cx="120" cy="208" r="2.5" fill="#fef08a"/>
-            </g>`
+            draw: `<g id="layer-body-kamzol"><path d="M72 106 L104 100 L114 145 L126 145 L136 100 L168 106 L174 252 L120 185 L66 252 Z" fill="#064e3b" stroke="#047857"/><path d="M104 100 L114 145 L120 172 L126 145 L136 100" stroke="#fbbf24" stroke-width="2.5" fill="none"/><line x1="120" y1="172" x2="120" y2="252" stroke="#fbbf24" stroke-width="2.5"/></g>`
           },
           { id: 'shupar', name: "Холщовый кафтан «Шупар»", correct: false, cultureName: "чувашский кафтан",
             icon: `<svg viewBox="0 0 50 50"><polygon points="14,10 36,10 40,46 10,46" fill="#f8fafc" stroke="#94a3b8"/></svg>`,
-            draw: `<g id="layer-body-shupar">
-              <polygon points="74,106 166,106 168,260 72,260" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.5"/>
-              <line x1="120" y1="106" x2="120" y2="260" stroke="#b91c1c" stroke-width="3"/>
-            </g>`
+            draw: `<g><polygon points="68,106 172,106 178,265 62,265" fill="#f8fafc" stroke="#cbd5e1"/><line x1="120" y1="106" x2="120" y2="265" stroke="#b91c1c" stroke-width="3"/></g>`
           }
         ],
         acc: [
@@ -805,9 +831,8 @@
           { id: 'chitek', name: "Узорные сапожки «Читек»", correct: true, cultureName: "татарские ичиги",
             icon: `<svg viewBox="0 0 50 50"><path d="M12 10 L24 10 L24 38 L34 40 L32 46 L8 46 Z" fill="#047857"/></svg>`,
             draw: `<g id="layer-shoes-chitek">
-              <!-- Заменяет ноги полностью: ножки в чулках и узорные сапожки читек -->
-              <rect x="98" y="290" width="14" height="15" fill="#fde2c7"/>
-              <rect x="128" y="290" width="14" height="15" fill="#fde2c7"/>
+              <rect x="98" y="290" width="14" height="20" fill="#fde2c7"/>
+              <rect x="128" y="290" width="14" height="20" fill="#fde2c7"/>
               <path d="M94 300 L112 300 L112 344 L118 348 L114 362 L86 362 L88 340 Z" fill="#047857" stroke="#064e3b" stroke-width="1.5"/>
               <path d="M94 316 Q106 326 96 338" stroke="#fbbf24" stroke-width="2.5" fill="none"/>
               <circle cx="100" cy="328" r="2" fill="#dc2626"/>
@@ -878,26 +903,15 @@
         vest: [
           { id: 'kamzol_m', name: "Прямой бархатный камзол", correct: true, cultureName: "татарский камзол",
             icon: `<svg viewBox="0 0 50 50"><polygon points="10,8 40,8 44,46 6,46" fill="#064e3b"/></svg>`,
-            draw: `<g id="layer-body-kamzol-m">
-              <!-- Мужской камзол точно подогнан по плечам и торсу, не выступает за руки -->
-              <path d="M74 106 L106 100 L114 138 L126 138 L134 100 L166 106 L160 252 L80 252 Z" fill="#064e3b" stroke="#047857" stroke-width="1.5"/>
-              <line x1="120" y1="138" x2="120" y2="252" stroke="#fbbf24" stroke-width="2.5"/>
-            </g>`
+            draw: `<g><path d="M72 106 L106 100 L114 138 L126 138 L134 100 L168 106 L174 258 L66 258 Z" fill="#064e3b"/><line x1="120" y1="138" x2="120" y2="258" stroke="#fbbf24" stroke-width="2.5"/></g>`
           },
           { id: 'cherkeska', name: "Черкеска с газырями", correct: false, cultureName: "кавказская черкеска",
             icon: `<svg viewBox="0 0 50 50"><polygon points="12,8 38,8 42,46 8,46" fill="#1e293b"/></svg>`,
-            draw: `<g id="layer-body-cherkeska">
-              <!-- Черкеска подогнана по силуэту -->
-              <polygon points="74,106 166,106 164,260 76,260" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
-              <rect x="84" y="125" width="20" height="8" fill="#fbbf24"/><rect x="136" y="125" width="20" height="8" fill="#fbbf24"/>
-            </g>`
+            draw: `<g><polygon points="72,106 168,106 174,268 66,268" fill="#1e293b"/><rect x="84" y="125" width="20" height="8" fill="#fbbf24"/><rect x="136" y="125" width="20" height="8" fill="#fbbf24"/></g>`
           },
           { id: 'kosovorotka', name: "Рубаха-косоворотка", correct: false, cultureName: "русская рубаха",
             icon: `<svg viewBox="0 0 50 50"><polygon points="12,10 38,10 40,44 10,44" fill="#dc2626"/></svg>`,
-            draw: `<g id="layer-body-kosovorotka">
-              <polygon points="74,106 166,106 164,240 76,240" fill="#dc2626" stroke="#b91c1c" stroke-width="1.5"/>
-              <rect x="100" y="106" width="6" height="40" fill="#fff"/>
-            </g>`
+            draw: `<g><polygon points="72,106 168,106 172,242 68,242" fill="#dc2626"/><rect x="100" y="106" width="6" height="42" fill="#fff"/></g>`
           }
         ],
         acc: [
@@ -934,7 +948,6 @@
           { id: 'lapti_m', name: "Берестяные лапти", correct: false, cultureName: "крестьянские лапти",
             icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="36" rx="16" ry="8" fill="#ca8a04"/></svg>`,
             draw: `<g id="layer-shoes-lapti-m">
-              <!-- Заменяет ноги только от щиколотки, брюки сверху остаются целыми! -->
               <rect x="90" y="318" width="22" height="36" fill="#f1f5f9" stroke="#cbd5e1"/>
               <line x1="90" y1="322" x2="112" y2="338" stroke="#78350f" stroke-width="2"/>
               <line x1="112" y1="322" x2="90" y2="338" stroke="#78350f" stroke-width="2"/>
@@ -1012,40 +1025,30 @@
       let layers = '';
 
       if (isWoman) {
-        // ПОЛНАЯ АНАТОМИЯ ЖЕНЩИНЫ: ВИДИМАЯ ШЕЯ, ПЛАВНЫЕ КРУГЛЫЕ ВОЛОСЫ ПО ГОЛОВЕ (БЕЗ СТУПЕНЕК), КОСЫ
         layers += `
           <ellipse cx="120" cy="366" rx="55" ry="7" fill="#e2d6b5"/>
-          <!-- Задняя масса волос (плавный изящный силуэт по голове, шея свободна!) -->
           <path d="M120 34 C92 34, 76 60, 78 105 C79 140, 82 175, 88 200 C92 200, 94 160, 94 110 C98 90, 142 90, 146 110 C146 160, 148 200, 152 200 C158 175, 161 140, 162 105 C164 60, 148 34, 120 34 Z" fill="#241711"/>
-          <!-- Руки -->
           <path d="M72 106 C64 120, 58 170, 62 215 C64 225, 72 225, 74 215 C72 175, 76 130, 84 108 Z" fill="#fed7aa"/>
           <path d="M168 106 C176 120, 182 170, 178 215 C176 225, 168 225, 166 215 C168 175, 164 130, 156 108 Z" fill="#fed7aa"/>
           ${!pickedShoes ? `
-            <!-- Базовые ножки и туфельки (только когда обувь не выбрана!) -->
             <rect x="98" y="290" width="14" height="66" fill="#fde2c7"/>
             <rect x="128" y="290" width="14" height="66" fill="#fde2c7"/>
             <ellipse cx="103" cy="356" rx="14" ry="6" fill="#fed7aa" stroke="#e2d6b5"/>
             <ellipse cx="137" cy="356" rx="14" ry="6" fill="#fed7aa" stroke="#e2d6b5"/>
           ` : ''}
-          <!-- Платье Күлмәк -->
           <polygon points="72,106 110,102 130,102 168,106 180,270 60,270" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
           <path d="M60 270 Q120 278 180 270 L182 288 Q120 296 58 288 Z" fill="#fef08a"/>
           <path d="M58 288 Q120 298 182 288 L184 304 Q120 314 56 304 Z" fill="#fde047"/>
-          <!-- ЧЕТКО ВЫРАЖЕННАЯ ИЗЯЩНАЯ ШЕЯ (ПОВЕРХ ВОЛОС, ПОД ГОЛОВОЙ) -->
           <rect x="113" y="74" width="14" height="30" rx="3" fill="#fed7aa" stroke="#fcd34d" stroke-width="0.5"/>
           <path d="M113 96 Q120 102 127 96" stroke="#ea580c" stroke-width="0.8" fill="none"/>
-          <!-- Две косы толым со свисающими золотыми накосниками чулпы -->
           <path d="M86 85 Q80 135 88 195 Q92 195 92 140 Q92 85 86 85 Z" fill="#1b110c"/>
           <circle cx="88" cy="196" r="3" fill="#fbbf24"/>
           <path d="M154 85 Q160 135 152 195 Q148 195 148 140 Q148 85 154 85 Z" fill="#1b110c"/>
           <circle cx="152" cy="196" r="3" fill="#fbbf24"/>
-          <!-- Голова и ушки -->
           <ellipse cx="120" cy="64" rx="23" ry="26" fill="#fed7aa"/>
           <circle cx="97" cy="72" r="2.5" fill="#fbbf24"/><circle cx="143" cy="72" r="2.5" fill="#fbbf24"/>
-          <!-- СПЛОШНЫЕ ГУСТЫЕ КРУГЛЫЕ ВОЛОСЫ ПО ГОЛОВЕ (БЕЗ КВАДРАТОВ И СТУПЕНЕК!) -->
           <ellipse cx="120" cy="46" rx="24" ry="17" fill="#271b12"/>
           <path d="M96 52 C96 66, 108 62, 118 47 C120 46, 120 46, 122 47 C132 62, 144 66, 144 52 C141 38, 99 38, 96 52 Z" fill="#3d2719"/>
-          <!-- Лицо (брови на y=58, глаза y=64, нос y=70, улыбка y=78) -->
           <path d="M106 58 Q111 55 116 58" stroke="#271b12" stroke-width="1.8" fill="none"/>
           <path d="M124 58 Q129 55 134 58" stroke="#271b12" stroke-width="1.8" fill="none"/>
           <ellipse cx="111" cy="64" rx="4.2" ry="3" fill="#fff"/><circle cx="111.5" cy="64" r="2.2" fill="#3d2719"/><circle cx="112.5" cy="63" r="0.8" fill="#fff"/>
@@ -1056,13 +1059,10 @@
           <path d="M115 78 Q120 82 125 78" stroke="#be123c" stroke-width="2" fill="none"/>
         `;
       } else {
-        // ПОЛНАЯ АНАТОМИЯ МУЖЧИНЫ: ГУСТАЯ ШЕВЕЛЮРА (НЕ НАУШНИКИ!), ЛИЦО, ШТАНЫ, САПОГИ ДО ПОЛА
         layers += `
           <ellipse cx="120" cy="366" rx="55" ry="7" fill="#e2d6b5"/>
-          <!-- Руки -->
           <path d="M68 106 C60 120, 56 170, 60 215 C62 225, 70 225, 72 215 C70 175, 74 130, 82 108 Z" fill="#fdba74"/>
           <path d="M172 106 C180 120, 184 170, 180 215 C178 225, 170 225, 168 215 C170 175, 166 130, 158 108 Z" fill="#fdba74"/>
-          <!-- Штаны «Ыштан» -->
           <rect x="84" y="240" width="32" height="82" fill="#334155"/>
           <rect x="124" y="240" width="32" height="82" fill="#334155"/>
           ${!pickedShoes ? `
@@ -1071,21 +1071,16 @@
             <ellipse cx="100" cy="356" rx="16" ry="6" fill="#0f172a"/>
             <ellipse cx="140" cy="356" rx="16" ry="6" fill="#0f172a"/>
           ` : ''}
-          <!-- Рубаха Күлмәк -->
           <polygon points="72,106 110,100 130,100 168,106 172,250 68,250" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
           <line x1="120" y1="100" x2="120" y2="148" stroke="#047857" stroke-width="2"/>
-          <!-- Шея мужчины -->
           <rect x="112" y="76" width="16" height="28" fill="#fdba74"/>
-          <!-- Голова и уши -->
           <ellipse cx="120" cy="64" rx="23" ry="26" fill="#fdba74"/>
-          <!-- СПЛОШНАЯ ГУСТАЯ ПРИЧЕСКА ДЖИГИТА (ЗАКРЫВАЕТ ВСЮ ГОЛОВУ, НИКАКИХ ДЫРОК И НАУШНИКОВ!) -->
           <ellipse cx="120" cy="44" rx="25" ry="18" fill="#1c1917"/>
           <path d="M94 56 C90 18, 150 18, 146 56 C144 66, 140 68, 138 52 C132 46, 126 44, 120 46 C114 44, 108 46, 102 52 C100 68, 96 66, 94 56 Z" fill="#1c1917"/>
           <path d="M96 46 Q120 30 144 46" stroke="#292524" stroke-width="3" fill="none"/>
           <path d="M102 40 Q120 26 138 40" stroke="#3d3835" stroke-width="2" fill="none"/>
           <polygon points="96,52 100,52 99,68 96,66" fill="#1c1917"/>
           <polygon points="144,52 140,52 141,68 144,66" fill="#1c1917"/>
-          <!-- Лицо (брови y=56, глаза y=63, нос y=69, улыбка y=76) -->
           <path d="M104 56 Q111 52 117 56" stroke="#1c1917" stroke-width="2.2" fill="none"/>
           <path d="M123 56 Q129 52 136 56" stroke="#1c1917" stroke-width="2.2" fill="none"/>
           <ellipse cx="111" cy="63" rx="4.5" ry="3.2" fill="#fff"/><circle cx="111.5" cy="63" r="2.2" fill="#292524"/><circle cx="112.5" cy="62" r="0.8" fill="#fff"/>
@@ -1095,7 +1090,6 @@
         `;
       }
 
-      // Надеваемые слои (аксессуары, обувь, верхняя одежда и шапки)
       if (pickedVest) layers += pickedVest.draw;
       if (pickedAcc) layers += pickedAcc.draw;
       if (pickedShoes) layers += pickedShoes.draw;
@@ -1129,10 +1123,10 @@
       }
     }
 
-    // --- 5. КУХНЯ: ИСПРАВЛЕННЫЙ РАБОЧИЙ ЭЧПОЧМАК С ДЕТАЛИЗИРОВАННЫМИ ИКОНКАМИ ---
+    // --- 5. КУХНЯ ---
     const kitchenIngredientsList = [
       { id: 'pork', name: 'Свинина рубленая', correct: false,
-        icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#fdf2f8"/><g transform="translate(5,5)"><path d="M8 20 C8 12, 28 8, 34 16 C38 22, 32 32, 22 34 C12 34, 8 28, 8 20 Z" fill="#f472b6" stroke="#db2777" stroke-width="1.5"/><ellipse cx="20" cy="21" rx="8" ry="6" fill="#fbcfe8"/><circle cx="17" cy="21" r="1.5" fill="#9d174d"/><circle cx="23" cy="21" r="1.5" fill="#9d174d"/><line x1="8" y1="8" x2="32" y2="32" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/><circle cx="20" cy="20" r="14" stroke="#dc2626" stroke-width="2.5" fill="none"/></g></svg>`
+        icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#fdf2f8"/><g transform="translate(5,5)"><path d="M8 20 C8 11, 26 8, 33 15 C38 21, 33 31, 22 33 C13 33, 8 27, 8 20 Z" fill="#f472b6" stroke="#db2777" stroke-width="1.5"/><ellipse cx="20" cy="20" rx="9" ry="6.5" fill="#fbcfe8"/><circle cx="16" cy="19" r="1.5" fill="#9d174d"/><circle cx="23" cy="19" r="1.5" fill="#9d174d"/><path d="M26 12 Q33 8 36 10 Q38 13 33 16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/></g></svg>`
       },
       { id: 'beef', name: 'Говядина / баранина кубиком', correct: true,
         icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#fef2f2"/><g transform="translate(5,5)"><path d="M6 14 L20 6 L34 14 L34 28 L20 36 L6 28 Z" fill="#991b1b" stroke="#7f1d1d" stroke-width="1.5"/><polygon points="20,6 34,14 20,22 6,14" fill="#b91c1c"/><polygon points="6,14 20,22 20,36 6,28" fill="#7f1d1d"/><polygon points="34,14 20,22 20,36 34,28" fill="#991b1b"/><path d="M10 13 Q16 11 20 15 Q24 19 30 15" stroke="#fecdd3" stroke-width="1.8" fill="none"/><path d="M10 22 Q15 25 20 23" stroke="#fecdd3" stroke-width="1.5" fill="none"/><path d="M22 24 Q26 26 31 22" stroke="#fecdd3" stroke-width="1.5" fill="none"/></g></svg>`
@@ -1159,7 +1153,7 @@
         icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#fffbeb"/><g transform="translate(5,5)"><ellipse cx="20" cy="28" rx="17" ry="9" fill="#1e293b" opacity="0.15"/><path d="M4 20 C4 32, 36 32, 36 20 Z" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/><ellipse cx="20" cy="20" rx="16" ry="7" fill="#f59e0b" stroke="#d97706" stroke-width="1"/><ellipse cx="20" cy="20" rx="12" ry="4.5" fill="#fbbf24"/><circle cx="16" cy="19" r="2" fill="#fef08a" opacity="0.8"/><circle cx="24" cy="21" r="1.5" fill="#fef08a" opacity="0.8"/><path d="M14 13 Q16 9 14 5" stroke="#cbd5e1" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M22 13 Q24 8 22 4" stroke="#cbd5e1" stroke-width="1.8" fill="none" stroke-linecap="round"/></g></svg>`
       },
       { id: 'mayo', name: 'Майонез столовый', correct: false,
-        icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#f8fafc"/><g transform="translate(5,5)"><path d="M10 28 Q12 18 20 18 Q28 18 30 28 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><path d="M14 24 Q20 12 26 24" fill="#fefce8" stroke="#facc15" stroke-width="1"/><ellipse cx="20" cy="28" rx="12" ry="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/><circle cx="20" cy="18" r="2.5" fill="#fef08a"/><line x1="8" y1="8" x2="32" y2="32" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/></g></svg>`
+        icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#f8fafc"/><g transform="translate(5,5)"><path d="M10 26 Q12 16 20 16 Q28 16 30 26 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><path d="M13 22 Q20 10 27 22" fill="#fefce8" stroke="#facc15" stroke-width="1"/><ellipse cx="20" cy="26" rx="12" ry="5.5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/><circle cx="20" cy="16" r="2.5" fill="#fef08a"/><path d="M24 12 Q28 8 32 10" stroke="#16a34a" stroke-width="2" fill="none" stroke-linecap="round"/></g></svg>`
       }
     ];
 
@@ -1314,302 +1308,31 @@
         name: "Эчпочмак", tatar: "Өчпочмак (Треугольник)", time: "1,5 часа", cal: "280 ккал / шт",
         ing: ["Мясо (говядина/баранина) — 400 г", "Сырой картофель — 400 г", "Репчатый лук — 300 г", "Тесто на кефире и масле — 600 г", "Мясной бульон — 200 мл"],
         steps: ["Мясо и картофель нарезать одинаковыми мелкими кубиками, смешать с сочным луком.", "Раскатать сочни, выложить начинку, защипнуть треугольником с круглым отверстием в центре.", "Выпекать при 180°C 40 минут, затем влить в отверстия горячий бульон и допекать 20 минут."],
-        art: `<svg viewBox="0 0 200 160">
-  <defs>
-    <radialGradient id="echPlateGrad" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="75%" stop-color="#f8fafc"/>
-      <stop offset="100%" stop-color="#cbd5e1"/>
-    </radialGradient>
-    <linearGradient id="echCrustFront" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#fef08a"/>
-      <stop offset="35%" stop-color="#f59e0b"/>
-      <stop offset="75%" stop-color="#d97706"/>
-      <stop offset="100%" stop-color="#92400e"/>
-    </linearGradient>
-    <linearGradient id="echCrustBack" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#fde68a"/>
-      <stop offset="50%" stop-color="#d97706"/>
-      <stop offset="100%" stop-color="#78350f"/>
-    </linearGradient>
-  </defs>
-  <!-- Тень от тарелки -->
-  <ellipse cx="100" cy="138" rx="86" ry="18" fill="#e2d6b5" opacity="0.6"/>
-  <!-- Традиционная керамическая тарелка -->
-  <ellipse cx="100" cy="132" rx="84" ry="22" fill="url(#echPlateGrad)" stroke="#94a3b8" stroke-width="1.5"/>
-  <ellipse cx="100" cy="130" rx="74" ry="18" fill="#f8fafc" stroke="#047857" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <ellipse cx="100" cy="128" rx="64" ry="14" fill="#f1f5f9"/>
-
-  <!-- Задний эчпочмак (под углом) -->
-  <g transform="translate(25, -10) rotate(-15, 120, 80)">
-    <polygon points="120,40 70,110 170,110" fill="url(#echCrustBack)" stroke="#78350f" stroke-width="2" stroke-linejoin="round"/>
-    <line x1="120" y1="40" x2="120" y2="82" stroke="#5c2406" stroke-width="2" stroke-dasharray="3,2"/>
-    <line x1="70" y1="110" x2="110" y2="90" stroke="#5c2406" stroke-width="2" stroke-dasharray="3,2"/>
-    <line x1="170" y1="110" x2="130" y2="90" stroke="#5c2406" stroke-width="2" stroke-dasharray="3,2"/>
-    <ellipse cx="120" cy="86" rx="8" ry="6" fill="#451a03"/>
-  </g>
-
-  <!-- Передний главный сочный эчпочмак -->
-  <polygon points="100,28 36,124 164,124" fill="url(#echCrustFront)" stroke="#78350f" stroke-width="2.5" stroke-linejoin="round"/>
-  <!-- Подрумяненные грани и защипанные швы «косичкой» -->
-  <line x1="100" y1="28" x2="100" y2="80" stroke="#5c2406" stroke-width="3" stroke-dasharray="4,2"/>
-  <line x1="36" y1="124" x2="90" y2="90" stroke="#5c2406" stroke-width="3" stroke-dasharray="4,2"/>
-  <line x1="164" y1="124" x2="110" y2="90" stroke="#5c2406" stroke-width="3" stroke-dasharray="4,2"/>
-  
-  <!-- Отверстие с кипящим наваристым бульоном и мясом -->
-  <ellipse cx="100" cy="85" rx="12" ry="9" fill="#3e1605"/>
-  <ellipse cx="100" cy="85" rx="9" ry="6.5" fill="#f59e0b"/>
-  <circle cx="97" cy="84" r="2.5" fill="#fef08a"/>
-  <circle cx="103" cy="86" r="1.8" fill="#b91c1c"/>
-  <circle cx="99" cy="83" r="1" fill="#ffffff"/>
-
-  <!-- Текстура корочки, посыпка и свежая зелень -->
-  <circle cx="68" cy="100" r="1.2" fill="#78350f"/><circle cx="76" cy="112" r="1" fill="#78350f"/>
-  <circle cx="126" cy="104" r="1.2" fill="#78350f"/><circle cx="138" cy="112" r="1" fill="#78350f"/>
-  <!-- Листочки петрушки/укропа на тарелке -->
-  <path d="M42 126 C36 120, 32 130, 40 134 C44 130, 48 132, 42 126 Z" fill="#15803d"/>
-  <path d="M156 126 C162 120, 166 130, 158 134 C154 130, 150 132, 156 126 Z" fill="#15803d"/>
-
-  <!-- Ароматный поднимающийся пар -->
-  <path d="M92 48 Q98 34 94 20" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85"/>
-  <path d="M106 48 Q102 34 108 20" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85"/>
-</svg>`
+        art: `<svg viewBox="0 0 200 150"><ellipse cx="100" cy="115" rx="80" ry="26" fill="#cbd5e1"/><polygon points="100,20 32,118 168,118" fill="#f59e0b" stroke="#78350f" stroke-width="3"/><ellipse cx="100" cy="84" rx="10" ry="8" fill="#451a03"/><circle cx="100" cy="84" r="5" fill="#facc15"/></svg>`
       },
       {
         name: "Чак-чак", tatar: "Чәкчәк (Медовая сладость)", time: "1 час", cal: "410 ккал / 100 г",
         ing: ["Мука пшеничная — 300 г", "Свежие яйца — 3 шт", "Мед цветочный — 180 г", "Сахар — 100 г", "Масло для фритюра — 500 мл"],
         steps: ["Замесить нежное яичное тесто, раскатать и нарезать тонкой соломкой.", "Обжарить во фритюре до золотистого румянца 2–3 минуты.", "Уварить мед с сахаром, залить хрустящую соломку и смоченными руками выложить горку."],
-        art: `<svg viewBox="0 0 200 160">
-  <defs>
-    <radialGradient id="honeyGlow" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#fef08a"/>
-      <stop offset="40%" stop-color="#f59e0b"/>
-      <stop offset="80%" stop-color="#d97706"/>
-      <stop offset="100%" stop-color="#92400e"/>
-    </radialGradient>
-    <linearGradient id="goldDish" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#b45309"/>
-      <stop offset="30%" stop-color="#fde047"/>
-      <stop offset="50%" stop-color="#fffbeb"/>
-      <stop offset="70%" stop-color="#fde047"/>
-      <stop offset="100%" stop-color="#b45309"/>
-    </linearGradient>
-  </defs>
-  <!-- Тень -->
-  <ellipse cx="100" cy="142" rx="88" ry="15" fill="#e2d6b5" opacity="0.6"/>
-  <!-- Золотое праздничное блюдо с чеканным узором -->
-  <ellipse cx="100" cy="134" rx="86" ry="20" fill="url(#goldDish)" stroke="#b45309" stroke-width="1.5"/>
-  <ellipse cx="100" cy="132" rx="76" ry="16" fill="#fef08a" stroke="#d97706" stroke-width="1"/>
-  <ellipse cx="100" cy="130" rx="72" ry="14" fill="#fef9c3"/>
-
-  <!-- Медовая горка чак-чака -->
-  <path d="M38 126 C36 80, 68 25, 100 25 C132 25, 164 80, 162 126 Z" fill="url(#honeyGlow)" stroke="#92400e" stroke-width="2"/>
-
-  <!-- Детализированная текстура медовых палочек теста -->
-  <g stroke="#78350f" stroke-width="3.2" stroke-linecap="round">
-    <line x1="58" y1="116" x2="82" y2="114"/><line x1="94" y1="118" x2="120" y2="115"/><line x1="130" y1="117" x2="152" y2="113"/>
-    <line x1="48" y1="102" x2="74" y2="105"/><line x1="86" y1="102" x2="114" y2="100"/><line x1="126" y1="104" x2="148" y2="101"/>
-    <line x1="60" y1="88" x2="88" y2="86"/><line x1="98" y1="88" x2="128" y2="85"/><line x1="136" y1="87" x2="148" y2="82"/>
-    <line x1="72" y1="72" x2="98" y2="70"/><line x1="108" y1="72" x2="134" y2="68"/>
-    <line x1="82" y1="56" x2="108" y2="54"/><line x1="116" y1="56" x2="128" y2="50"/>
-    <line x1="92" y1="42" x2="112" y2="38"/>
-  </g>
-  <!-- Тонкие перекрестные медовые нити -->
-  <g stroke="#b45309" stroke-width="2" stroke-linecap="round">
-    <line x1="70" y1="110" x2="80" y2="96"/><line x1="112" y1="112" x2="122" y2="94"/>
-    <line x1="90" y1="80" x2="100" y2="65"/><line x1="118" y1="78" x2="110" y2="60"/>
-  </g>
-  <!-- Глянцевые медовые блики -->
-  <ellipse cx="80" cy="62" rx="4" ry="2.2" fill="#ffffff" opacity="0.8"/>
-  <ellipse cx="118" cy="74" rx="5" ry="2.8" fill="#ffffff" opacity="0.8"/>
-  <ellipse cx="94" cy="98" rx="6" ry="3" fill="#ffffff" opacity="0.8"/>
-  <ellipse cx="66" cy="108" rx="4.5" ry="2" fill="#ffffff" opacity="0.8"/>
-  <ellipse cx="138" cy="104" rx="5" ry="2.5" fill="#ffffff" opacity="0.8"/>
-
-  <!-- Стекающая прозрачная янтарная капля меда -->
-  <path d="M152 118 Q155 128 153 134 Q151 138 149 134 Q148 128 152 118" fill="#d97706"/>
-  <!-- Ореховые зерна и кунжутная посыпка -->
-  <ellipse cx="100" cy="30" rx="4" ry="2.5" fill="#78350f" stroke="#451a03" stroke-width="0.8"/>
-  <circle cx="85" cy="50" r="1.5" fill="#ffffff"/><circle cx="122" cy="60" r="1.5" fill="#ffffff"/>
-  <circle cx="75" cy="95" r="1.5" fill="#ffffff"/><circle cx="130" cy="90" r="1.5" fill="#ffffff"/>
-</svg>`
+        art: `<svg viewBox="0 0 200 150"><ellipse cx="100" cy="120" rx="85" ry="22" fill="#fbbf24"/><path d="M42 116 Q100 24 158 116 Z" fill="#f59e0b" stroke="#b45309" stroke-width="2.5"/></svg>`
       },
       {
         name: "Перемяч", tatar: "Пәрәмәч (Беляш по-татарски)", time: "1 час", cal: "310 ккал / шт",
         ing: ["Мясной сочный фарш — 400 г", "Дрожжевое тесто — 500 г", "Лук репчатый — 200 г", "Масло для жарки — 400 мл"],
         steps: ["Раскатать круглые сочни, в центр выложить шарик сочного фарша с луком.", "Собрать края защипами-гармошкой, оставив открытое отверстие в центре.", "Жарить в раскаленном масле отверстием вниз до сочности и румянца."],
-        art: `<svg viewBox="0 0 200 160">
-  <defs>
-    <radialGradient id="peremCrust" cx="45%" cy="45%" r="55%">
-      <stop offset="0%" stop-color="#fef08a"/>
-      <stop offset="25%" stop-color="#f59e0b"/>
-      <stop offset="65%" stop-color="#d97706"/>
-      <stop offset="100%" stop-color="#78350f"/>
-    </radialGradient>
-    <radialGradient id="peremMeat" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#b91c1c"/>
-      <stop offset="40%" stop-color="#991b1b"/>
-      <stop offset="85%" stop-color="#450a0a"/>
-      <stop offset="100%" stop-color="#260404"/>
-    </radialGradient>
-  </defs>
-  <!-- Тень -->
-  <ellipse cx="100" cy="140" rx="84" ry="16" fill="#e2d6b5" opacity="0.6"/>
-  <ellipse cx="100" cy="132" rx="82" ry="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
-  <ellipse cx="100" cy="130" rx="72" ry="18" fill="#f8fafc"/>
-
-  <!-- Задний перемяч -->
-  <g transform="translate(45, -15) scale(0.75)">
-    <circle cx="100" cy="90" r="48" fill="url(#peremCrust)" stroke="#78350f" stroke-width="2"/>
-    <circle cx="100" cy="90" r="20" fill="url(#peremMeat)" stroke="#450a0a" stroke-width="1.5"/>
-    <circle cx="98" cy="87" r="3" fill="#facc15" opacity="0.8"/>
-  </g>
-
-  <!-- Главный передний перемяч со знаменитой спиральной плиссировкой -->
-  <g transform="translate(0, 0)">
-    <circle cx="92" cy="88" r="54" fill="url(#peremCrust)" stroke="#78350f" stroke-width="2.5"/>
-    <!-- Лучи-защипы теста по кругу («плиссировка») -->
-    <g stroke="#92400e" stroke-width="2.5" stroke-linecap="round">
-      <line x1="48" y1="88" x2="68" y2="88"/><line x1="116" y1="88" x2="136" y2="88"/>
-      <line x1="92" y1="44" x2="92" y2="64"/><line x1="92" y1="112" x2="92" y2="132"/>
-      <line x1="61" y1="57" x2="75" y2="71"/><line x1="123" y1="119" x2="109" y2="105"/>
-      <line x1="61" y1="119" x2="75" y2="105"/><line x1="123" y1="57" x2="109" y2="71"/>
-    </g>
-    <!-- Открытое окошко с сочным мясным фаршем -->
-    <circle cx="92" cy="88" r="26" fill="#260404"/>
-    <circle cx="92" cy="88" r="23" fill="url(#peremMeat)" stroke="#450a0a" stroke-width="1.5"/>
-    <!-- Горячее кипящее масло и капельки сока -->
-    <circle cx="88" cy="84" r="3.5" fill="#fef08a" opacity="0.9"/>
-    <circle cx="98" cy="89" r="2.8" fill="#facc15" opacity="0.9"/>
-    <circle cx="89" cy="83" r="1.2" fill="#ffffff"/>
-    <circle cx="94" cy="94" r="1.5" fill="#1c1917"/><circle cx="84" cy="89" r="1.2" fill="#1c1917"/>
-  </g>
-
-  <!-- Свежий листочек зелени сбоку -->
-  <path d="M148 116 C158 108, 166 122, 154 126 C148 122, 142 124, 148 116 Z" fill="#15803d"/>
-  <path d="M152 120 Q160 114 164 116" stroke="#22c55e" stroke-width="1.2" fill="none"/>
-
-  <!-- Ароматный пар -->
-  <path d="M86 52 Q90 38 86 24" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
-  <path d="M98 52 Q94 38 100 24" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
-</svg>`
+        art: `<svg viewBox="0 0 200 150"><ellipse cx="100" cy="80" rx="55" ry="48" fill="#d97706" stroke="#78350f" stroke-width="3"/><ellipse cx="100" cy="80" rx="22" ry="18" fill="#7f1d1d"/></svg>`
       },
       {
         name: "Кыстыбый", tatar: "Кыстыбый (Кузикмяк)", time: "45 минут", cal: "190 ккал / шт",
         ing: ["Пресное тесто — 400 г", "Картофельное пюре — 500 г", "Лук пассерованный — 150 г", "Топленое масло — 100 г"],
         steps: ["Раскатать тонкие лепешки и испечь на сухой раскаленной сковороде.", "На половину горячей лепешки выложить пышное картофельное пюре.", "Сложить пополам и щедро смазать с двух сторон растопленным сливочным маслом."],
-        art: `<svg viewBox="0 0 200 160">
-  <defs>
-    <linearGradient id="kystBread" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#fffbeb"/>
-      <stop offset="35%" stop-color="#fef08a"/>
-      <stop offset="70%" stop-color="#fde047"/>
-      <stop offset="100%" stop-color="#ca8a04"/>
-    </linearGradient>
-    <linearGradient id="mashGrad" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#fef9c3"/>
-      <stop offset="40%" stop-color="#fde047"/>
-      <stop offset="100%" stop-color="#eab308"/>
-    </linearGradient>
-    <linearGradient id="butterCube" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#fef08a"/>
-      <stop offset="100%" stop-color="#f59e0b"/>
-    </linearGradient>
-  </defs>
-  <!-- Тень -->
-  <ellipse cx="100" cy="140" rx="84" ry="16" fill="#e2d6b5" opacity="0.6"/>
-  <ellipse cx="100" cy="132" rx="82" ry="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
-  <ellipse cx="100" cy="130" rx="72" ry="18" fill="#f8fafc" stroke="#d97706" stroke-width="1" stroke-dasharray="4,3"/>
-
-  <!-- Нижний кыстыбый (для объема) -->
-  <g transform="translate(15, 8) scale(0.9)">
-    <path d="M30 110 Q95 25 160 110 Q95 132 30 110 Z" fill="#fde68a" stroke="#ca8a04" stroke-width="2"/>
-    <path d="M44 106 Q95 52 146 106" stroke="#eab308" stroke-width="12" stroke-linecap="round" fill="none"/>
-  </g>
-
-  <!-- Верхний парадный кыстыбый -->
-  <g>
-    <!-- Тонкая пресная лепешка, согнутая полумесяцем -->
-    <path d="M26 106 Q95 18 164 106 Q95 130 26 106 Z" fill="url(#kystBread)" stroke="#b45309" stroke-width="2.5"/>
-    <!-- Щедрая нежная начинка из сливочного картофельного пюре с лучком -->
-    <path d="M38 103 Q95 44 152 103" stroke="url(#mashGrad)" stroke-width="15" stroke-linecap="round" fill="none"/>
-    <path d="M48 101 Q95 48 142 101" stroke="#fefce8" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.8"/>
-
-    <!-- Аппетитные подпалины от раскаленной сухой чугунной сковороды -->
-    <ellipse cx="64" cy="74" rx="6" ry="3.5" fill="#92400e"/>
-    <ellipse cx="124" cy="62" rx="7" ry="4" fill="#78350f"/>
-    <ellipse cx="94" cy="85" rx="5" ry="3" fill="#92400e"/>
-    <ellipse cx="140" cy="88" rx="6" ry="3.5" fill="#78350f"/>
-    <ellipse cx="50" cy="98" rx="4" ry="2.5" fill="#78350f"/>
-
-    <!-- Кусочек тающего сливочного топленого масла сверху -->
-    <polygon points="94,62 106,58 114,64 102,68" fill="url(#butterCube)" stroke="#d97706" stroke-width="1"/>
-    <polygon points="94,62 102,68 102,75 94,69" fill="#f59e0b"/>
-    <polygon points="106,58 114,64 114,71 106,65" fill="#d97706"/>
-    <!-- Талая лужица масла -->
-    <ellipse cx="104" cy="73" rx="14" ry="4.5" fill="#facc15" opacity="0.85"/>
-  </g>
-
-  <!-- Струйки пара от горячего пюре -->
-  <path d="M84 42 Q90 28 86 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.85"/>
-  <path d="M116 42 Q110 28 116 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.85"/>
-</svg>`
+        art: `<svg viewBox="0 0 200 150"><path d="M35 105 Q100 20 165 105 Q100 128 35 105 Z" fill="#fde68a" stroke="#d97706" stroke-width="3"/><path d="M48 102 Q100 48 152 102" stroke="#eab308" stroke-width="10" fill="none"/></svg>`
       },
       {
         name: "Зур Бэлиш", tatar: "Зур бәлеш (Семейный пирог)", time: "2,5 часа", cal: "340 ккал / 100 г",
         ing: ["Говядина/утка кусочками — 800 г", "Картофель — 800 г", "Лук — 400 г", "Пресное сдобное тесто — 900 г", "Бульон — 300 мл"],
         steps: ["Выстелить глубокую форму тестом, выложить начинку горкой.", "Накрыть крышкой из теста, сделать шов-косичку и отверстие с «пупочком».", "Томить в духовке 2–2,5 часа, периодически доливая горячий бульон."],
-        art: `<svg viewBox="0 0 200 160">
-  <defs>
-    <linearGradient id="ironPan" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#020617"/>
-      <stop offset="35%" stop-color="#1e293b"/>
-      <stop offset="65%" stop-color="#334155"/>
-      <stop offset="100%" stop-color="#020617"/>
-    </linearGradient>
-    <radialGradient id="balishDome" cx="50%" cy="40%" r="60%">
-      <stop offset="0%" stop-color="#fef08a"/>
-      <stop offset="25%" stop-color="#f59e0b"/>
-      <stop offset="65%" stop-color="#d97706"/>
-      <stop offset="100%" stop-color="#78350f"/>
-    </radialGradient>
-  </defs>
-  <!-- Тень -->
-  <ellipse cx="100" cy="144" rx="88" ry="14" fill="#e2d6b5" opacity="0.6"/>
-  <!-- Чугунная сковорода с ручками -->
-  <rect x="8" y="112" width="18" height="9" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
-  <rect x="174" y="112" width="18" height="9" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
-  <ellipse cx="100" cy="128" rx="86" ry="24" fill="url(#ironPan)" stroke="#0f172a" stroke-width="2"/>
-  <ellipse cx="100" cy="122" rx="82" ry="20" fill="#1e293b"/>
-
-  <!-- Высокий царский купол Зур Бэлиша -->
-  <path d="M26 118 C26 50, 70 24, 100 24 C130 24, 174 50, 174 118 Z" fill="url(#balishDome)" stroke="#5c2406" stroke-width="2.5"/>
-
-  <!-- Защип косичкой по кругу основания -->
-  <path d="M26 118 Q100 134 174 118" stroke="#451a03" stroke-width="6" stroke-dasharray="7,4" fill="none"/>
-  <path d="M26 118 Q100 134 174 118" stroke="#fbbf24" stroke-width="2" stroke-dasharray="3,4" fill="none"/>
-
-  <!-- Рельефные лучи-защипы на куполе -->
-  <g stroke="#78350f" stroke-width="2" stroke-dasharray="4,2">
-    <path d="M100 50 Q75 75 50 114" fill="none"/>
-    <path d="M100 50 Q85 80 74 118" fill="none"/>
-    <path d="M100 50 L100 122" fill="none"/>
-    <path d="M100 50 Q115 80 126 118" fill="none"/>
-    <path d="M100 50 Q125 75 150 114" fill="none"/>
-  </g>
-
-  <!-- Центральное отверстие с фигурным съемным «пупочком» (пробочкой) -->
-  <ellipse cx="100" cy="50" rx="14" ry="10" fill="#451a03"/>
-  <ellipse cx="100" cy="50" rx="11" ry="7.5" fill="#78350f"/>
-  <!-- Сам фигурный пупочек из теста с защипами -->
-  <ellipse cx="100" cy="44" rx="9" ry="7" fill="#f59e0b" stroke="#78350f" stroke-width="1.5"/>
-  <circle cx="100" cy="38" r="4.5" fill="#fef08a" stroke="#b45309" stroke-width="1.5"/>
-  <circle cx="100" cy="38" r="1.5" fill="#78350f"/>
-
-  <!-- Клубящийся ароматный пар от горячего мясного бульона -->
-  <path d="M88 32 Q82 18 88 6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85"/>
-  <path d="M112 32 Q118 18 112 6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85"/>
-</svg>`
+        art: `<svg viewBox="0 0 200 150"><ellipse cx="100" cy="116" rx="85" ry="22" fill="#1e293b"/><path d="M30 108 Q100 24 170 108 Z" fill="#d97706" stroke="#451a03" stroke-width="3"/><circle cx="100" cy="48" r="7" fill="#fbbf24"/></svg>`
       }
     ];
 
