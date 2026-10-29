@@ -164,7 +164,6 @@
       padding: 1.5rem;
       box-shadow: var(--shadow);
     }
-    @media (max-width: 850px) { .wardrobe-arena { grid-template-columns: 1fr; } }
     .avatar-podium {
       display: flex;
       flex-direction: column;
@@ -197,7 +196,6 @@
       padding-bottom: 0.2rem;
     }
     .items-trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; }
-    @media (max-width: 600px) { .items-trio { grid-template-columns: 1fr; } }
     .item-chip {
       background: #fff;
       border: 2px solid #e2e8f0;
@@ -237,7 +235,6 @@
       gap: 1.5rem;
       margin-top: 1.2rem;
     }
-    @media (max-width: 850px) { .cook-bench { grid-template-columns: 1fr; } }
     .ingredients-table {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -361,6 +358,139 @@
       border-top: 5px solid var(--gold);
       margin-top: 3rem;
     }
+
+    /* ПОЛНАЯ МОБИЛЬНАЯ АДАПТАЦИЯ (СМАРТФОНЫ И ПЛАНШЕТЫ) */
+    @media (max-width: 768px) {
+      header {
+        padding: 1.8rem 0.8rem 1.4rem;
+      }
+      header h1 {
+        font-size: 1.6rem;
+        line-height: 1.3;
+      }
+      header p {
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+      .audio-bar {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.9rem;
+        max-width: 95%;
+        text-align: center;
+      }
+      .nav-tabs {
+        padding: 0.5rem 0.4rem;
+        gap: 0.4rem;
+      }
+      .nav-btn {
+        flex: 1 1 calc(50% - 0.4rem);
+        padding: 0.55rem 0.4rem;
+        font-size: 0.85rem;
+        text-align: center;
+        justify-content: center;
+      }
+      main {
+        margin: 1.2rem auto;
+        padding: 0 0.6rem;
+      }
+      .section-title {
+        font-size: 1.55rem;
+      }
+      .section-subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 1.3rem;
+      }
+      .sights-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .game-box {
+        padding: 1.2rem 0.8rem;
+      }
+      .quest-btn {
+        font-size: 0.92rem;
+        padding: 0.75rem 0.85rem;
+      }
+      .char-picker {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .char-picker .nav-btn {
+        width: 100%;
+      }
+      .wardrobe-arena {
+        grid-template-columns: 1fr;
+        padding: 1rem 0.75rem;
+        gap: 1.4rem;
+      }
+      .avatar-podium {
+        padding: 0.8rem;
+      }
+      .avatar-frame {
+        width: 230px;
+        height: 360px;
+      }
+      .items-trio {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.4rem;
+      }
+      .item-chip {
+        padding: 0.5rem 0.25rem;
+      }
+      .item-chip-icon {
+        width: 44px;
+        height: 44px;
+      }
+      .item-chip-name {
+        font-size: 0.75rem;
+      }
+      .cook-stage {
+        padding: 1.2rem 0.75rem;
+      }
+      .cook-bench {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .ingredients-table {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.6rem;
+      }
+      .ing-card {
+        padding: 0.6rem 0.3rem;
+      }
+      .ing-icon {
+        width: 42px;
+        height: 42px;
+      }
+      .ing-name {
+        font-size: 0.8rem;
+      }
+      .ing-badge {
+        font-size: 0.72rem;
+        padding: 0.2rem 0.4rem;
+      }
+      .pie-preview-board {
+        min-height: 250px;
+        padding: 0.8rem;
+      }
+      .pan-svg {
+        width: 160px;
+        height: 160px;
+      }
+      .cook-actions {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .cook-btn {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+      }
+      .dishes-shelf {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -383,7 +513,7 @@
   </nav>
 
   <main>
-    <!-- 1. ДОСТОПРИМЕЧАТЕЛЬНОСТИ (С ИЛЛЮСТРАЦИЯМИ) -->
+    <!-- 1. ДОСТОПРИМЕЧАТЕЛЬНОСТИ -->
     <section id="tab-sights" class="tab-content active">
       <h2 class="section-title">Жемчужины Татарстана</h2>
       <p class="section-subtitle">Архитектурные святыни ЮНЕСКО и викторина для гостей стенда</p>
@@ -711,30 +841,24 @@
       renderQuest();
     }
 
-    // --- 4. ДАННЫЕ КОСТЮМОВ (ПОДНЯТЫЕ ШАПКИ НА y=14..36, САРАФАН ПОЛНОГО РАЗМЕРА, КАЛФАК УВЕЛИЧЕН) ---
+    // --- 4. ДАННЫЕ КОСТЮМОВ ---
     const rawCostumeData = {
       woman: {
         title: "Татарская женщина",
         head: [
           { id: 'kashmau', name: "Чепец «Кашмау» с кораллами", correct: false, cultureName: "башкирский чепец",
             icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="18" rx="15" ry="10" fill="#b91c1c"/><rect x="20" y="22" width="10" height="24" fill="#991b1b"/></svg>`,
-            // Шапочка высоко на макушке, полоса на глаза полностью убрана!
             draw: `<g id="layer-head-kashmau">
+              <!-- Чепец аккуратно на макушке, лицо и лоб полностью открыты, никакой красной палки вниз! -->
               <path d="M96 36 C96 12, 144 12, 144 36 Z" fill="#b91c1c" stroke="#7f1d1d" stroke-width="1.5"/>
               <ellipse cx="120" cy="24" rx="23" ry="8" fill="#dc2626"/>
               <circle cx="106" cy="24" r="2" fill="#fbbf24"/>
               <circle cx="120" cy="24" r="2" fill="#fbbf24"/>
               <circle cx="134" cy="24" r="2" fill="#fbbf24"/>
-              <path d="M112 36 L108 170 L132 170 L128 36 Z" fill="#991b1b" stroke="#7f1d1d" stroke-width="1"/>
-              <circle cx="116" cy="65" r="2.5" fill="#fbbf24"/>
-              <circle cx="124" cy="65" r="2.5" fill="#fbbf24"/>
-              <circle cx="115" cy="98" r="2.5" fill="#f8fafc"/>
-              <circle cx="125" cy="98" r="2.5" fill="#f8fafc"/>
             </g>`
           },
           { id: 'kalfak', name: "Бархатный калфак с золотым шитьем", correct: true, cultureName: "татарский калфак",
             icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="20" rx="16" ry="9" fill="#047857"/><path d="M10 20 L26 38 L40 20 Z" fill="#064e3b"/><circle cx="26" cy="38" r="3" fill="#fbbf24"/></svg>`,
-            // Калфак увеличен в масштабе, царственный и видный
             draw: `<g id="layer-head-kalfak" transform="rotate(7, 138, 22)">
               <path d="M110 32 C108 8, 154 6, 156 32 Z" fill="#064e3b" stroke="#047857" stroke-width="1.8"/>
               <ellipse cx="133" cy="32" rx="23" ry="8.5" fill="#047857"/>
@@ -760,7 +884,6 @@
         vest: [
           { id: 'sarafan', name: "Крестьянский сарафан", correct: false, cultureName: "русский сарафан",
             icon: `<svg viewBox="0 0 50 50"><polygon points="18,10 32,10 42,46 8,46" fill="#b91c1c"/></svg>`,
-            // Сарафан увеличен по фигуре: полностью закрывает белое платье!
             draw: `<g id="layer-body-sarafan">
               <rect x="88" y="100" width="18" height="32" fill="#b91c1c" stroke="#991b1b"/>
               <rect x="134" y="100" width="18" height="32" fill="#b91c1c" stroke="#991b1b"/>
@@ -817,7 +940,6 @@
         head: [
           { id: 'papaha', name: "Папаха из овчины", correct: false, cultureName: "кавказская папаха",
             icon: `<svg viewBox="0 0 50 50"><path d="M12 36 L14 14 Q25 8 36 14 L38 36 Z" fill="#334155"/></svg>`,
-            // Высота папахи подобрана: не вылезает за пределы рамки (y=16)
             draw: `<g id="layer-head-papaha">
               <path d="M92 40 L96 16 Q120 8 144 16 L148 40 Z" fill="#334155" stroke="#1e293b" stroke-width="1.5"/>
               <circle cx="120" cy="22" r="14" fill="#475569"/>
@@ -827,7 +949,6 @@
           },
           { id: 'kolpak_kz', name: "Войлочный колпак", correct: false, cultureName: "казахский колпак",
             icon: `<svg viewBox="0 0 50 50"><polygon points="25,6 10,40 40,40" fill="#f8fafc" stroke="#cbd5e1"/></svg>`,
-            // Верхушка колпака опущена до y=14, не упирается в рамку
             draw: `<g id="layer-head-kolpak">
               <polygon points="120,14 94,42 146,42" fill="#f8fafc" stroke="#cbd5e1" stroke-width="1.8"/>
               <path d="M90 42 Q120 36 150 42 L146 50 Q120 44 94 50 Z" fill="#0284c7"/>
@@ -883,7 +1004,6 @@
           },
           { id: 'lapti_m', name: "Берестяные лапти", correct: false, cultureName: "крестьянские лапти",
             icon: `<svg viewBox="0 0 50 50"><ellipse cx="25" cy="36" rx="16" ry="8" fill="#ca8a04"/></svg>`,
-            // Лапти начинаются от щиколотки, брюки не стираются!
             draw: `<g id="layer-shoes-lapti-m">
               <rect x="92" y="322" width="18" height="34" fill="#f1f5f9" stroke="#cbd5e1"/>
               <line x1="92" y1="324" x2="110" y2="338" stroke="#78350f" stroke-width="1.8"/>
@@ -962,38 +1082,28 @@
       let layers = '';
 
       if (isWoman) {
-        // ПОЛНАЯ АНАТОМИЯ ЖЕНЩИНЫ: ВИДИМАЯ ШЕЯ, ГУСТЫЕ ВОЛОСЫ, КОСЫ, НОЖКИ С ТУФЕЛЬКАМИ
         layers += `
           <ellipse cx="120" cy="366" rx="55" ry="7" fill="#e2d6b5"/>
-          <!-- Задняя масса волос (только по бокам со спины, шея в центре абсолютно свободна!) -->
           <path d="M82 46 C72 80, 74 150, 80 200 C86 200, 90 150, 92 100 L148 100 C150 150, 154 200, 160 200 C166 150, 168 80, 158 46 Z" fill="#241711"/>
-          <!-- Руки -->
           <path d="M72 106 C64 120, 58 170, 62 215 C64 225, 72 225, 74 215 C72 175, 76 130, 84 108 Z" fill="#fed7aa"/>
           <path d="M168 106 C176 120, 182 170, 178 215 C176 225, 168 225, 166 215 C168 175, 164 130, 156 108 Z" fill="#fed7aa"/>
-          <!-- Ножки и базовые туфельки -->
           <rect x="98" y="290" width="14" height="66" fill="#fde2c7"/>
           <rect x="128" y="290" width="14" height="66" fill="#fde2c7"/>
           <ellipse cx="103" cy="356" rx="14" ry="6" fill="#fed7aa" stroke="#e2d6b5"/>
           <ellipse cx="137" cy="356" rx="14" ry="6" fill="#fed7aa" stroke="#e2d6b5"/>
-          <!-- Платье Күлмәк -->
           <polygon points="72,106 110,102 130,102 168,106 180,270 60,270" fill="#ffffff" stroke="#e2e8f0" stroke-width="1.5"/>
           <path d="M60 270 Q120 278 180 270 L182 288 Q120 296 58 288 Z" fill="#fef08a"/>
           <path d="M58 288 Q120 298 182 288 L184 304 Q120 314 56 304 Z" fill="#fde047"/>
-          <!-- ЧЕТКО ВЫРАЖЕННАЯ ИЗЯЩНАЯ ШЕЯ (ПОВЕРХ ВОЛОС, ПОД ГОЛОВОЙ) -->
           <rect x="113" y="74" width="14" height="30" rx="3" fill="#fed7aa" stroke="#fcd34d" stroke-width="0.5"/>
           <path d="M113 96 Q120 102 127 96" stroke="#ea580c" stroke-width="0.8" fill="none"/>
-          <!-- Две косы толым со свисающими золотыми накосниками чулпы -->
           <path d="M86 85 Q80 135 88 195 Q92 195 92 140 Q92 85 86 85 Z" fill="#1b110c"/>
           <circle cx="88" cy="196" r="3" fill="#fbbf24"/>
           <path d="M154 85 Q160 135 152 195 Q148 195 148 140 Q148 85 154 85 Z" fill="#1b110c"/>
           <circle cx="152" cy="196" r="3" fill="#fbbf24"/>
-          <!-- Голова и ушки -->
           <ellipse cx="120" cy="64" rx="23" ry="26" fill="#fed7aa"/>
           <circle cx="97" cy="72" r="2.5" fill="#fbbf24"/><circle cx="143" cy="72" r="2.5" fill="#fbbf24"/>
-          <!-- СПЛОШНЫЕ ГУСТЫЕ ВОЛОСЫ СПЕРЕДИ (БЕЗ ДЫР И ПРОСВЕТОВ!) -->
           <ellipse cx="120" cy="46" rx="25" ry="17" fill="#271b12"/>
           <path d="M95 50 C98 68, 114 60, 120 44 C126 60, 140 68, 145 50 Z" fill="#3d2719"/>
-          <!-- Лицо (брови на y=58, глаза y=64, нос y=70, улыбка y=78) -->
           <path d="M106 58 Q111 55 116 58" stroke="#271b12" stroke-width="1.8" fill="none"/>
           <path d="M124 58 Q129 55 134 58" stroke="#271b12" stroke-width="1.8" fill="none"/>
           <ellipse cx="111" cy="64" rx="4.2" ry="3" fill="#fff"/><circle cx="111.5" cy="64" r="2.2" fill="#3d2719"/><circle cx="112.5" cy="63" r="0.8" fill="#fff"/>
@@ -1004,34 +1114,26 @@
           <path d="M115 78 Q120 82 125 78" stroke="#be123c" stroke-width="2" fill="none"/>
         `;
       } else {
-        // ПОЛНАЯ АНАТОМИЯ МУЖЧИНЫ: ГУСТАЯ ШЕВЕЛЮРА (НЕ НАУШНИКИ!), ЛИЦО, ШТАНЫ, САПОГИ ДО ПОЛА
         layers += `
           <ellipse cx="120" cy="366" rx="55" ry="7" fill="#e2d6b5"/>
-          <!-- Руки -->
           <path d="M68 106 C60 120, 56 170, 60 215 C62 225, 70 225, 72 215 C70 175, 74 130, 82 108 Z" fill="#fdba74"/>
           <path d="M172 106 C180 120, 184 170, 180 215 C178 225, 170 225, 168 215 C170 175, 166 130, 158 108 Z" fill="#fdba74"/>
-          <!-- Штаны «Ыштан» и сапоги до пола -->
           <rect x="84" y="240" width="32" height="90" fill="#334155"/>
           <rect x="124" y="240" width="32" height="90" fill="#334155"/>
           <rect x="92" y="325" width="18" height="32" fill="#1e293b"/>
           <rect x="130" y="325" width="18" height="32" fill="#1e293b"/>
           <ellipse cx="100" cy="356" rx="16" ry="6" fill="#0f172a"/>
           <ellipse cx="140" cy="356" rx="16" ry="6" fill="#0f172a"/>
-          <!-- Рубаха Күлмәк -->
           <polygon points="72,106 110,100 130,100 168,106 172,250 68,250" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
           <line x1="120" y1="100" x2="120" y2="148" stroke="#047857" stroke-width="2"/>
-          <!-- Шея мужчины -->
           <rect x="112" y="76" width="16" height="28" fill="#fdba74"/>
-          <!-- Голова и уши -->
           <ellipse cx="120" cy="64" rx="23" ry="26" fill="#fdba74"/>
-          <!-- СПЛОШНАЯ ГУСТАЯ ПРИЧЕСКА ДЖИГИТА (ЗАКРЫВАЕТ ВСЮ ГОЛОВУ, НИКАКИХ ДЫРОК И НАУШНИКОВ!) -->
           <ellipse cx="120" cy="44" rx="25" ry="18" fill="#1c1917"/>
           <path d="M94 56 C90 18, 150 18, 146 56 C144 66, 140 68, 138 52 C132 46, 126 44, 120 46 C114 44, 108 46, 102 52 C100 68, 96 66, 94 56 Z" fill="#1c1917"/>
           <path d="M96 46 Q120 30 144 46" stroke="#292524" stroke-width="3" fill="none"/>
           <path d="M102 40 Q120 26 138 40" stroke="#3d3835" stroke-width="2" fill="none"/>
           <polygon points="96,52 100,52 99,68 96,66" fill="#1c1917"/>
           <polygon points="144,52 140,52 141,68 144,66" fill="#1c1917"/>
-          <!-- Лицо (брови y=56, глаза y=63, нос y=69, улыбка y=76) -->
           <path d="M104 56 Q111 52 117 56" stroke="#1c1917" stroke-width="2.2" fill="none"/>
           <path d="M123 56 Q129 52 136 56" stroke="#1c1917" stroke-width="2.2" fill="none"/>
           <ellipse cx="111" cy="63" rx="4.5" ry="3.2" fill="#fff"/><circle cx="111.5" cy="63" r="2.2" fill="#292524"/><circle cx="112.5" cy="62" r="0.8" fill="#fff"/>
@@ -1041,7 +1143,6 @@
         `;
       }
 
-      // Надеваемые слои (аксессуары, обувь, верхняя одежда и шапки)
       if (pickedVest) layers += pickedVest.draw;
       if (pickedAcc) layers += pickedAcc.draw;
       if (pickedShoes) layers += pickedShoes.draw;
@@ -1075,10 +1176,10 @@
       }
     }
 
-    // --- 5. КУХНЯ: ИСПРАВЛЕННЫЙ РАБОЧИЙ ЭЧПОЧМАК С ДЕТАЛИЗИРОВАННЫМИ ИКОНКАМИ ---
+    // --- 5. КУХНЯ ---
     const kitchenIngredientsList = [
       { id: 'pork', name: 'Свинина рубленая', correct: false,
-        icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#fdf2f8"/><g transform="translate(5,5)"><path d="M8 20 C8 12, 28 8, 34 16 C38 22, 32 32, 22 34 C12 34, 8 28, 8 20 Z" fill="#f472b6" stroke="#db2777" stroke-width="1.5"/><ellipse cx="20" cy="21" rx="8" ry="6" fill="#fbcfe8"/><circle cx="17" cy="21" r="1.5" fill="#9d174d"/><circle cx="23" cy="21" r="1.5" fill="#9d174d"/><line x1="8" y1="8" x2="32" y2="32" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/><circle cx="20" cy="20" r="14" stroke="#dc2626" stroke-width="2.5" fill="none"/></g></svg>`
+        icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#fdf2f8"/><g transform="translate(5,5)"><path d="M8 20 C8 11, 26 8, 33 15 C38 21, 33 31, 22 33 C13 33, 8 27, 8 20 Z" fill="#f472b6" stroke="#db2777" stroke-width="1.5"/><ellipse cx="20" cy="20" rx="9" ry="6.5" fill="#fbcfe8"/><circle cx="16" cy="19" r="1.5" fill="#9d174d"/><circle cx="23" cy="19" r="1.5" fill="#9d174d"/><path d="M26 12 Q33 8 36 10 Q38 13 33 16" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1.2"/></g></svg>`
       },
       { id: 'beef', name: 'Говядина / баранина кубиком', correct: true,
         icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#fef2f2"/><g transform="translate(5,5)"><path d="M6 14 L20 6 L34 14 L34 28 L20 36 L6 28 Z" fill="#991b1b" stroke="#7f1d1d" stroke-width="1.5"/><polygon points="20,6 34,14 20,22 6,14" fill="#b91c1c"/><polygon points="6,14 20,22 20,36 6,28" fill="#7f1d1d"/><polygon points="34,14 20,22 20,36 34,28" fill="#991b1b"/><path d="M10 13 Q16 11 20 15 Q24 19 30 15" stroke="#fecdd3" stroke-width="1.8" fill="none"/><path d="M10 22 Q15 25 20 23" stroke="#fecdd3" stroke-width="1.5" fill="none"/><path d="M22 24 Q26 26 31 22" stroke="#fecdd3" stroke-width="1.5" fill="none"/></g></svg>`
@@ -1105,7 +1206,7 @@
         icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#fffbeb"/><g transform="translate(5,5)"><ellipse cx="20" cy="28" rx="17" ry="9" fill="#1e293b" opacity="0.15"/><path d="M4 20 C4 32, 36 32, 36 20 Z" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/><ellipse cx="20" cy="20" rx="16" ry="7" fill="#f59e0b" stroke="#d97706" stroke-width="1"/><ellipse cx="20" cy="20" rx="12" ry="4.5" fill="#fbbf24"/><circle cx="16" cy="19" r="2" fill="#fef08a" opacity="0.8"/><circle cx="24" cy="21" r="1.5" fill="#fef08a" opacity="0.8"/><path d="M14 13 Q16 9 14 5" stroke="#cbd5e1" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M22 13 Q24 8 22 4" stroke="#cbd5e1" stroke-width="1.8" fill="none" stroke-linecap="round"/></g></svg>`
       },
       { id: 'mayo', name: 'Майонез столовый', correct: false,
-        icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#f8fafc"/><g transform="translate(5,5)"><path d="M10 28 Q12 18 20 18 Q28 18 30 28 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><path d="M14 24 Q20 12 26 24" fill="#fefce8" stroke="#facc15" stroke-width="1"/><ellipse cx="20" cy="28" rx="12" ry="5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/><circle cx="20" cy="18" r="2.5" fill="#fef08a"/><line x1="8" y1="8" x2="32" y2="32" stroke="#dc2626" stroke-width="3" stroke-linecap="round"/></g></svg>`
+        icon: `<svg viewBox="0 0 50 50"><rect x="4" y="4" width="42" height="42" rx="10" fill="#f8fafc"/><g transform="translate(5,5)"><path d="M10 26 Q12 16 20 16 Q28 16 30 26 Z" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/><path d="M13 22 Q20 10 27 22" fill="#fefce8" stroke="#facc15" stroke-width="1"/><ellipse cx="20" cy="26" rx="12" ry="5.5" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/><circle cx="20" cy="16" r="2.5" fill="#fef08a"/><path d="M24 12 Q28 8 32 10" stroke="#16a34a" stroke-width="2" fill="none" stroke-linecap="round"/></g></svg>`
       }
     ];
 
