@@ -1318,7 +1318,7 @@
   <defs>
     <radialGradient id="echPlateGrad" cx="50%" cy="50%" r="50%">
       <stop offset="0%" stop-color="#ffffff"/>
-      <stop offset="75%" stop-color="#f8fafc"/>
+      <stop offset="70%" stop-color="#f8fafc"/>
       <stop offset="100%" stop-color="#cbd5e1"/>
     </radialGradient>
     <linearGradient id="echCrustFront" x1="0" y1="0" x2="1" y2="1">
@@ -1333,44 +1333,45 @@
       <stop offset="100%" stop-color="#78350f"/>
     </linearGradient>
   </defs>
-  <!-- Тень от тарелки -->
-  <ellipse cx="100" cy="138" rx="86" ry="18" fill="#e2d6b5" opacity="0.6"/>
-  <!-- Традиционная керамическая тарелка -->
-  <ellipse cx="100" cy="132" rx="84" ry="22" fill="url(#echPlateGrad)" stroke="#94a3b8" stroke-width="1.5"/>
-  <ellipse cx="100" cy="130" rx="74" ry="18" fill="#f8fafc" stroke="#047857" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <ellipse cx="100" cy="128" rx="64" ry="14" fill="#f1f5f9"/>
+  <!-- Тень под тарелкой -->
+  <ellipse cx="100" cy="144" rx="88" ry="14" fill="#e2d6b5" opacity="0.6"/>
+  <!-- Расписная татарская керамическая тарелка -->
+  <ellipse cx="100" cy="134" rx="86" ry="24" fill="url(#echPlateGrad)" stroke="#94a3b8" stroke-width="1.5"/>
+  <ellipse cx="100" cy="132" rx="76" ry="19" fill="#f8fafc" stroke="#047857" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <ellipse cx="100" cy="130" rx="66" ry="15" fill="#f1f5f9"/>
 
-  <!-- Задний эчпочмак (под углом) -->
-  <g transform="translate(25, -10) rotate(-15, 120, 80)">
-    <polygon points="120,40 70,110 170,110" fill="url(#echCrustBack)" stroke="#78350f" stroke-width="2" stroke-linejoin="round"/>
-    <line x1="120" y1="40" x2="120" y2="82" stroke="#5c2406" stroke-width="2" stroke-dasharray="3,2"/>
-    <line x1="70" y1="110" x2="110" y2="90" stroke="#5c2406" stroke-width="2" stroke-dasharray="3,2"/>
-    <line x1="170" y1="110" x2="130" y2="90" stroke="#5c2406" stroke-width="2" stroke-dasharray="3,2"/>
-    <ellipse cx="120" cy="86" rx="8" ry="6" fill="#451a03"/>
+  <!-- Задний эчпочмак на тарелке -->
+  <g transform="translate(26, -4) rotate(-14, 115, 82)">
+    <polygon points="115,44 72,108 158,108" fill="url(#echCrustBack)" stroke="#78350f" stroke-width="2" stroke-linejoin="round"/>
+    <line x1="115" y1="44" x2="115" y2="82" stroke="#5c2406" stroke-width="2" stroke-dasharray="3,2"/>
+    <line x1="72" y1="108" x2="108" y2="90" stroke="#5c2406" stroke-width="2" stroke-dasharray="3,2"/>
+    <line x1="158" y1="108" x2="122" y2="90" stroke="#5c2406" stroke-width="2" stroke-dasharray="3,2"/>
+    <ellipse cx="115" cy="86" rx="8" ry="6" fill="#451a03"/>
   </g>
 
-  <!-- Передний главный сочный эчпочмак -->
-  <polygon points="100,28 36,124 164,124" fill="url(#echCrustFront)" stroke="#78350f" stroke-width="2.5" stroke-linejoin="round"/>
-  <!-- Подрумяненные грани и защипанные швы «косичкой» -->
-  <line x1="100" y1="28" x2="100" y2="80" stroke="#5c2406" stroke-width="3" stroke-dasharray="4,2"/>
-  <line x1="36" y1="124" x2="90" y2="90" stroke="#5c2406" stroke-width="3" stroke-dasharray="4,2"/>
-  <line x1="164" y1="124" x2="110" y2="90" stroke="#5c2406" stroke-width="3" stroke-dasharray="4,2"/>
+  <!-- Главный передний эчпочмак (точно лежит в углублении тарелки!) -->
+  <!-- Основание треугольника лежит на y=128 внутри чаши тарелки -->
+  <polygon points="100,32 46,126 154,126" fill="url(#echCrustFront)" stroke="#78350f" stroke-width="2.5" stroke-linejoin="round"/>
+  <!-- Закругленный нижний край по форме дна тарелки -->
+  <path d="M46 126 Q100 134 154 126" stroke="#78350f" stroke-width="2.5" fill="none"/>
   
-  <!-- Отверстие с кипящим наваристым бульоном и мясом -->
-  <ellipse cx="100" cy="85" rx="12" ry="9" fill="#3e1605"/>
-  <ellipse cx="100" cy="85" rx="9" ry="6.5" fill="#f59e0b"/>
-  <circle cx="97" cy="84" r="2.5" fill="#fef08a"/>
-  <circle cx="103" cy="86" r="1.8" fill="#b91c1c"/>
-  <circle cx="99" cy="83" r="1" fill="#ffffff"/>
+  <!-- Защипанные швы «косичкой» -->
+  <line x1="100" y1="32" x2="100" y2="82" stroke="#5c2406" stroke-width="3" stroke-dasharray="4,2"/>
+  <line x1="46" y1="126" x2="92" y2="92" stroke="#5c2406" stroke-width="3" stroke-dasharray="4,2"/>
+  <line x1="154" y1="126" x2="108" y2="92" stroke="#5c2406" stroke-width="3" stroke-dasharray="4,2"/>
+  
+  <!-- Отверстие с наваристым бульоном и мясной начинкой -->
+  <ellipse cx="100" cy="87" rx="12" ry="9" fill="#3e1605"/>
+  <ellipse cx="100" cy="87" rx="9" ry="6.5" fill="#f59e0b"/>
+  <circle cx="97" cy="86" r="2.5" fill="#fef08a"/>
+  <circle cx="103" cy="88" r="1.8" fill="#b91c1c"/>
+  <circle cx="99" cy="85" r="1" fill="#ffffff"/>
 
-  <!-- Текстура корочки, посыпка и свежая зелень -->
-  <circle cx="68" cy="100" r="1.2" fill="#78350f"/><circle cx="76" cy="112" r="1" fill="#78350f"/>
-  <circle cx="126" cy="104" r="1.2" fill="#78350f"/><circle cx="138" cy="112" r="1" fill="#78350f"/>
-  <!-- Листочки петрушки/укропа на тарелке -->
-  <path d="M42 126 C36 120, 32 130, 40 134 C44 130, 48 132, 42 126 Z" fill="#15803d"/>
-  <path d="M156 126 C162 120, 166 130, 158 134 C154 130, 150 132, 156 126 Z" fill="#15803d"/>
+  <!-- Зелень на тарелке -->
+  <path d="M40 130 C34 124, 30 134, 38 138 C42 134, 46 136, 40 130 Z" fill="#15803d"/>
+  <path d="M160 130 C166 124, 170 134, 162 138 C158 134, 154 136, 160 130 Z" fill="#15803d"/>
 
-  <!-- Ароматный поднимающийся пар -->
+  <!-- Ароматный пар -->
   <path d="M92 48 Q98 34 94 20" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85"/>
   <path d="M106 48 Q102 34 108 20" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85"/>
 </svg>`
@@ -1396,42 +1397,32 @@
     </linearGradient>
   </defs>
   <!-- Тень -->
-  <ellipse cx="100" cy="142" rx="88" ry="15" fill="#e2d6b5" opacity="0.6"/>
-  <!-- Золотое праздничное блюдо с чеканным узором -->
-  <ellipse cx="100" cy="134" rx="86" ry="20" fill="url(#goldDish)" stroke="#b45309" stroke-width="1.5"/>
-  <ellipse cx="100" cy="132" rx="76" ry="16" fill="#fef08a" stroke="#d97706" stroke-width="1"/>
-  <ellipse cx="100" cy="130" rx="72" ry="14" fill="#fef9c3"/>
+  <ellipse cx="100" cy="144" rx="88" ry="14" fill="#e2d6b5" opacity="0.6"/>
+  <!-- Чеканное золотое праздничное блюдо -->
+  <ellipse cx="100" cy="134" rx="86" ry="22" fill="url(#goldDish)" stroke="#b45309" stroke-width="1.5"/>
+  <ellipse cx="100" cy="132" rx="76" ry="17" fill="#fef08a" stroke="#d97706" stroke-width="1"/>
+  <ellipse cx="100" cy="130" rx="70" ry="14" fill="#fef9c3"/>
 
-  <!-- Медовая горка чак-чака -->
-  <path d="M38 126 C36 80, 68 25, 100 25 C132 25, 164 80, 162 126 Z" fill="url(#honeyGlow)" stroke="#92400e" stroke-width="2"/>
+  <!-- Горка чак-чака (точно стоит на золотом подносе) -->
+  <path d="M44 126 C42 80, 70 30, 100 30 C130 30, 158 80, 156 126 Q100 134 44 126 Z" fill="url(#honeyGlow)" stroke="#92400e" stroke-width="2"/>
 
-  <!-- Детализированная текстура медовых палочек теста -->
-  <g stroke="#78350f" stroke-width="3.2" stroke-linecap="round">
-    <line x1="58" y1="116" x2="82" y2="114"/><line x1="94" y1="118" x2="120" y2="115"/><line x1="130" y1="117" x2="152" y2="113"/>
-    <line x1="48" y1="102" x2="74" y2="105"/><line x1="86" y1="102" x2="114" y2="100"/><line x1="126" y1="104" x2="148" y2="101"/>
-    <line x1="60" y1="88" x2="88" y2="86"/><line x1="98" y1="88" x2="128" y2="85"/><line x1="136" y1="87" x2="148" y2="82"/>
-    <line x1="72" y1="72" x2="98" y2="70"/><line x1="108" y1="72" x2="134" y2="68"/>
-    <line x1="82" y1="56" x2="108" y2="54"/><line x1="116" y1="56" x2="128" y2="50"/>
-    <line x1="92" y1="42" x2="112" y2="38"/>
+  <!-- Хрустящие медовые палочки -->
+  <g stroke="#78350f" stroke-width="3" stroke-linecap="round">
+    <line x1="60" y1="118" x2="84" y2="116"/><line x1="94" y1="120" x2="118" y2="117"/><line x1="128" y1="118" x2="148" y2="115"/>
+    <line x1="52" y1="104" x2="76" y2="106"/><line x1="88" y1="104" x2="112" y2="102"/><line x1="124" y1="106" x2="144" y2="103"/>
+    <line x1="62" y1="90" x2="88" y2="88"/><line x1="98" y1="90" x2="124" y2="87"/><line x1="134" y1="89" x2="144" y2="84"/>
+    <line x1="74" y1="74" x2="98" y2="72"/><line x1="108" y1="74" x2="132" y2="70"/>
+    <line x1="84" y1="58" x2="108" y2="56"/><line x1="116" y1="58" x2="126" y2="52"/>
+    <line x1="92" y1="44" x2="112" y2="40"/>
   </g>
-  <!-- Тонкие перекрестные медовые нити -->
-  <g stroke="#b45309" stroke-width="2" stroke-linecap="round">
-    <line x1="70" y1="110" x2="80" y2="96"/><line x1="112" y1="112" x2="122" y2="94"/>
-    <line x1="90" y1="80" x2="100" y2="65"/><line x1="118" y1="78" x2="110" y2="60"/>
-  </g>
-  <!-- Глянцевые медовые блики -->
-  <ellipse cx="80" cy="62" rx="4" ry="2.2" fill="#ffffff" opacity="0.8"/>
+  <!-- Медовые блики -->
+  <ellipse cx="82" cy="64" rx="4" ry="2.2" fill="#ffffff" opacity="0.8"/>
   <ellipse cx="118" cy="74" rx="5" ry="2.8" fill="#ffffff" opacity="0.8"/>
   <ellipse cx="94" cy="98" rx="6" ry="3" fill="#ffffff" opacity="0.8"/>
-  <ellipse cx="66" cy="108" rx="4.5" ry="2" fill="#ffffff" opacity="0.8"/>
-  <ellipse cx="138" cy="104" rx="5" ry="2.5" fill="#ffffff" opacity="0.8"/>
-
-  <!-- Стекающая прозрачная янтарная капля меда -->
-  <path d="M152 118 Q155 128 153 134 Q151 138 149 134 Q148 128 152 118" fill="#d97706"/>
-  <!-- Ореховые зерна и кунжутная посыпка -->
-  <ellipse cx="100" cy="30" rx="4" ry="2.5" fill="#78350f" stroke="#451a03" stroke-width="0.8"/>
-  <circle cx="85" cy="50" r="1.5" fill="#ffffff"/><circle cx="122" cy="60" r="1.5" fill="#ffffff"/>
-  <circle cx="75" cy="95" r="1.5" fill="#ffffff"/><circle cx="130" cy="90" r="1.5" fill="#ffffff"/>
+  <ellipse cx="68" cy="110" rx="4.5" ry="2" fill="#ffffff" opacity="0.8"/>
+  <ellipse cx="136" cy="106" rx="5" ry="2.5" fill="#ffffff" opacity="0.8"/>
+  <!-- Стекающая капля меда на блюдо -->
+  <path d="M148 120 Q152 128 150 132 Q148 135 146 132 Q145 128 148 120" fill="#d97706"/>
 </svg>`
       },
       {
@@ -1454,44 +1445,42 @@
     </radialGradient>
   </defs>
   <!-- Тень -->
-  <ellipse cx="100" cy="140" rx="84" ry="16" fill="#e2d6b5" opacity="0.6"/>
-  <ellipse cx="100" cy="132" rx="82" ry="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
-  <ellipse cx="100" cy="130" rx="72" ry="18" fill="#f8fafc"/>
+  <ellipse cx="100" cy="144" rx="88" ry="14" fill="#e2d6b5" opacity="0.6"/>
+  <!-- Фарфоровая тарелка с ободком -->
+  <ellipse cx="100" cy="134" rx="86" ry="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <ellipse cx="100" cy="132" rx="76" ry="18" fill="#f8fafc" stroke="#047857" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <ellipse cx="100" cy="130" rx="68" ry="14" fill="#f1f5f9"/>
 
-  <!-- Задний перемяч -->
-  <g transform="translate(45, -15) scale(0.75)">
-    <circle cx="100" cy="90" r="48" fill="url(#peremCrust)" stroke="#78350f" stroke-width="2"/>
-    <circle cx="100" cy="90" r="20" fill="url(#peremMeat)" stroke="#450a0a" stroke-width="1.5"/>
-    <circle cx="98" cy="87" r="3" fill="#facc15" opacity="0.8"/>
+  <!-- Задний перемяч на тарелке -->
+  <g transform="translate(38, -12) scale(0.78)">
+    <ellipse cx="100" cy="116" rx="46" ry="36" fill="url(#peremCrust)" stroke="#78350f" stroke-width="2"/>
+    <ellipse cx="100" cy="116" rx="18" ry="14" fill="url(#peremMeat)" stroke="#450a0a" stroke-width="1.5"/>
+    <circle cx="98" cy="113" r="2.5" fill="#facc15" opacity="0.8"/>
   </g>
 
-  <!-- Главный передний перемяч со знаменитой спиральной плиссировкой -->
+  <!-- Главный передний перемяч (лежит в тарелке!) -->
   <g transform="translate(0, 0)">
-    <circle cx="92" cy="88" r="54" fill="url(#peremCrust)" stroke="#78350f" stroke-width="2.5"/>
-    <!-- Лучи-защипы теста по кругу («плиссировка») -->
-    <g stroke="#92400e" stroke-width="2.5" stroke-linecap="round">
-      <line x1="48" y1="88" x2="68" y2="88"/><line x1="116" y1="88" x2="136" y2="88"/>
-      <line x1="92" y1="44" x2="92" y2="64"/><line x1="92" y1="112" x2="92" y2="132"/>
-      <line x1="61" y1="57" x2="75" y2="71"/><line x1="123" y1="119" x2="109" y2="105"/>
-      <line x1="61" y1="119" x2="75" y2="105"/><line x1="123" y1="57" x2="109" y2="71"/>
+    <ellipse cx="90" cy="114" rx="50" ry="38" fill="url(#peremCrust)" stroke="#78350f" stroke-width="2.5"/>
+    <!-- Складки-плиссировка по кругу -->
+    <g stroke="#92400e" stroke-width="2.2" stroke-linecap="round">
+      <line x1="48" y1="114" x2="68" y2="114"/><line x1="112" y1="114" x2="132" y2="114"/>
+      <line x1="90" y1="82" x2="90" y2="98"/><line x1="90" y1="130" x2="90" y2="146"/>
+      <line x1="60" y1="92" x2="74" y2="104"/><line x1="120" y1="136" x2="106" y2="124"/>
+      <line x1="60" y1="136" x2="74" y2="124"/><line x1="120" y1="92" x2="106" y2="104"/>
     </g>
-    <!-- Открытое окошко с сочным мясным фаршем -->
-    <circle cx="92" cy="88" r="26" fill="#260404"/>
-    <circle cx="92" cy="88" r="23" fill="url(#peremMeat)" stroke="#450a0a" stroke-width="1.5"/>
-    <!-- Горячее кипящее масло и капельки сока -->
-    <circle cx="88" cy="84" r="3.5" fill="#fef08a" opacity="0.9"/>
-    <circle cx="98" cy="89" r="2.8" fill="#facc15" opacity="0.9"/>
-    <circle cx="89" cy="83" r="1.2" fill="#ffffff"/>
-    <circle cx="94" cy="94" r="1.5" fill="#1c1917"/><circle cx="84" cy="89" r="1.2" fill="#1c1917"/>
+    <!-- Открытое отверстие с сочным мясным фаршем -->
+    <ellipse cx="90" cy="114" rx="22" ry="16" fill="#260404"/>
+    <ellipse cx="90" cy="114" rx="19" ry="14" fill="url(#peremMeat)" stroke="#450a0a" stroke-width="1.5"/>
+    <circle cx="86" cy="111" r="3" fill="#fef08a" opacity="0.9"/>
+    <circle cx="95" cy="115" r="2.5" fill="#facc15" opacity="0.9"/>
+    <circle cx="87" cy="110" r="1" fill="#ffffff"/>
   </g>
 
-  <!-- Свежий листочек зелени сбоку -->
-  <path d="M148 116 C158 108, 166 122, 154 126 C148 122, 142 124, 148 116 Z" fill="#15803d"/>
-  <path d="M152 120 Q160 114 164 116" stroke="#22c55e" stroke-width="1.2" fill="none"/>
-
-  <!-- Ароматный пар -->
-  <path d="M86 52 Q90 38 86 24" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
-  <path d="M98 52 Q94 38 100 24" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <!-- Веточка свежей зелени на краю тарелки -->
+  <path d="M146 124 C154 116, 162 130, 150 134 Z" fill="#15803d"/>
+  <!-- Пар -->
+  <path d="M84 76 Q88 62 84 48" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <path d="M96 76 Q92 62 98 48" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
 </svg>`
       },
       {
@@ -1517,42 +1506,41 @@
     </linearGradient>
   </defs>
   <!-- Тень -->
-  <ellipse cx="100" cy="140" rx="84" ry="16" fill="#e2d6b5" opacity="0.6"/>
-  <ellipse cx="100" cy="132" rx="82" ry="22" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
-  <ellipse cx="100" cy="130" rx="72" ry="18" fill="#f8fafc" stroke="#d97706" stroke-width="1" stroke-dasharray="4,3"/>
+  <ellipse cx="100" cy="144" rx="88" ry="14" fill="#e2d6b5" opacity="0.6"/>
+  <!-- Тарелка с восточным кантом -->
+  <ellipse cx="100" cy="134" rx="86" ry="24" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+  <ellipse cx="100" cy="132" rx="76" ry="18" fill="#f8fafc" stroke="#d97706" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <ellipse cx="100" cy="130" rx="66" ry="14" fill="#fefce8"/>
 
-  <!-- Нижний кыстыбый (для объема) -->
-  <g transform="translate(15, 8) scale(0.9)">
-    <path d="M30 110 Q95 25 160 110 Q95 132 30 110 Z" fill="#fde68a" stroke="#ca8a04" stroke-width="2"/>
-    <path d="M44 106 Q95 52 146 106" stroke="#eab308" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <!-- Нижний кыстыбый на тарелке -->
+  <g transform="translate(10, 2) scale(0.92)">
+    <path d="M34 116 Q95 38 156 116 Q95 136 34 116 Z" fill="#fde68a" stroke="#ca8a04" stroke-width="2"/>
+    <path d="M46 112 Q95 60 144 112" stroke="#eab308" stroke-width="10" stroke-linecap="round" fill="none"/>
   </g>
 
-  <!-- Верхний парадный кыстыбый -->
+  <!-- Верхний парадный кыстыбый (лежит точно в тарелке!) -->
   <g>
-    <!-- Тонкая пресная лепешка, согнутая полумесяцем -->
-    <path d="M26 106 Q95 18 164 106 Q95 130 26 106 Z" fill="url(#kystBread)" stroke="#b45309" stroke-width="2.5"/>
-    <!-- Щедрая нежная начинка из сливочного картофельного пюре с лучком -->
-    <path d="M38 103 Q95 44 152 103" stroke="url(#mashGrad)" stroke-width="15" stroke-linecap="round" fill="none"/>
-    <path d="M48 101 Q95 48 142 101" stroke="#fefce8" stroke-width="5" stroke-linecap="round" fill="none" opacity="0.8"/>
+    <path d="M30 114 Q95 32 160 114 Q95 134 30 114 Z" fill="url(#kystBread)" stroke="#b45309" stroke-width="2.5"/>
+    <!-- Картофельное пюре с лучком -->
+    <path d="M42 111 Q95 54 148 111" stroke="url(#mashGrad)" stroke-width="13" stroke-linecap="round" fill="none"/>
+    <path d="M52 109 Q95 58 138 109" stroke="#fefce8" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
 
-    <!-- Аппетитные подпалины от раскаленной сухой чугунной сковороды -->
-    <ellipse cx="64" cy="74" rx="6" ry="3.5" fill="#92400e"/>
-    <ellipse cx="124" cy="62" rx="7" ry="4" fill="#78350f"/>
-    <ellipse cx="94" cy="85" rx="5" ry="3" fill="#92400e"/>
-    <ellipse cx="140" cy="88" rx="6" ry="3.5" fill="#78350f"/>
-    <ellipse cx="50" cy="98" rx="4" ry="2.5" fill="#78350f"/>
+    <!-- Поджаристые пятнышки сухой сковороды -->
+    <ellipse cx="64" cy="86" rx="5" ry="3" fill="#92400e"/>
+    <ellipse cx="124" cy="74" rx="6" ry="3.5" fill="#78350f"/>
+    <ellipse cx="94" cy="95" rx="5" ry="3" fill="#92400e"/>
+    <ellipse cx="138" cy="98" rx="5" ry="3" fill="#78350f"/>
 
-    <!-- Кусочек тающего сливочного топленого масла сверху -->
-    <polygon points="94,62 106,58 114,64 102,68" fill="url(#butterCube)" stroke="#d97706" stroke-width="1"/>
-    <polygon points="94,62 102,68 102,75 94,69" fill="#f59e0b"/>
-    <polygon points="106,58 114,64 114,71 106,65" fill="#d97706"/>
-    <!-- Талая лужица масла -->
-    <ellipse cx="104" cy="73" rx="14" ry="4.5" fill="#facc15" opacity="0.85"/>
+    <!-- Кусочек тающего топленого масла -->
+    <polygon points="94,76 106,72 114,78 102,82" fill="url(#butterCube)" stroke="#d97706" stroke-width="1"/>
+    <polygon points="94,76 102,82 102,88 94,82" fill="#f59e0b"/>
+    <polygon points="106,72 114,78 114,84 106,78" fill="#d97706"/>
+    <ellipse cx="104" cy="85" rx="12" ry="4" fill="#facc15" opacity="0.85"/>
   </g>
 
-  <!-- Струйки пара от горячего пюре -->
-  <path d="M84 42 Q90 28 86 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.85"/>
-  <path d="M116 42 Q110 28 116 16" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.85"/>
+  <!-- Пар -->
+  <path d="M84 48 Q90 34 86 20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
+  <path d="M116 48 Q110 34 116 20" stroke="#ffffff" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
 </svg>`
       },
       {
@@ -1576,37 +1564,36 @@
   </defs>
   <!-- Тень -->
   <ellipse cx="100" cy="144" rx="88" ry="14" fill="#e2d6b5" opacity="0.6"/>
-  <!-- Чугунная сковорода с ручками -->
-  <rect x="8" y="112" width="18" height="9" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
-  <rect x="174" y="112" width="18" height="9" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
-  <ellipse cx="100" cy="128" rx="86" ry="24" fill="url(#ironPan)" stroke="#0f172a" stroke-width="2"/>
-  <ellipse cx="100" cy="122" rx="82" ry="20" fill="#1e293b"/>
+  <!-- Ручки чугунной сковороды -->
+  <rect x="8" y="114" width="18" height="9" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+  <rect x="174" y="114" width="18" height="9" rx="4" fill="#1e293b" stroke="#0f172a" stroke-width="1.5"/>
+  <!-- Чугунная глубокая сковорода -->
+  <ellipse cx="100" cy="130" rx="86" ry="24" fill="url(#ironPan)" stroke="#0f172a" stroke-width="2"/>
+  <ellipse cx="100" cy="124" rx="80" ry="19" fill="#1e293b"/>
 
-  <!-- Высокий царский купол Зур Бэлиша -->
-  <path d="M26 118 C26 50, 70 24, 100 24 C130 24, 174 50, 174 118 Z" fill="url(#balishDome)" stroke="#5c2406" stroke-width="2.5"/>
+  <!-- Зур Бэлиш (точно сидит ВНУТРИ чугунной формы!) -->
+  <path d="M30 118 C30 54, 70 28, 100 28 C130 28, 170 54, 170 118 Z" fill="url(#balishDome)" stroke="#5c2406" stroke-width="2.5"/>
 
-  <!-- Защип косичкой по кругу основания -->
-  <path d="M26 118 Q100 134 174 118" stroke="#451a03" stroke-width="6" stroke-dasharray="7,4" fill="none"/>
-  <path d="M26 118 Q100 134 174 118" stroke="#fbbf24" stroke-width="2" stroke-dasharray="3,4" fill="none"/>
+  <!-- Защип косичкой по кругу внутри сковороды -->
+  <path d="M30 118 Q100 132 170 118" stroke="#451a03" stroke-width="6" stroke-dasharray="7,4" fill="none"/>
+  <path d="M30 118 Q100 132 170 118" stroke="#fbbf24" stroke-width="2" stroke-dasharray="3,4" fill="none"/>
 
   <!-- Рельефные лучи-защипы на куполе -->
   <g stroke="#78350f" stroke-width="2" stroke-dasharray="4,2">
-    <path d="M100 50 Q75 75 50 114" fill="none"/>
-    <path d="M100 50 Q85 80 74 118" fill="none"/>
-    <path d="M100 50 L100 122" fill="none"/>
-    <path d="M100 50 Q115 80 126 118" fill="none"/>
-    <path d="M100 50 Q125 75 150 114" fill="none"/>
+    <path d="M100 52 Q76 76 52 114" fill="none"/>
+    <path d="M100 52 Q86 80 76 118" fill="none"/>
+    <path d="M100 52 L100 122" fill="none"/>
+    <path d="M100 52 Q114 80 124 118" fill="none"/>
+    <path d="M100 52 Q124 76 148 114" fill="none"/>
   </g>
 
-  <!-- Центральное отверстие с фигурным съемным «пупочком» (пробочкой) -->
-  <ellipse cx="100" cy="50" rx="14" ry="10" fill="#451a03"/>
-  <ellipse cx="100" cy="50" rx="11" ry="7.5" fill="#78350f"/>
-  <!-- Сам фигурный пупочек из теста с защипами -->
-  <ellipse cx="100" cy="44" rx="9" ry="7" fill="#f59e0b" stroke="#78350f" stroke-width="1.5"/>
-  <circle cx="100" cy="38" r="4.5" fill="#fef08a" stroke="#b45309" stroke-width="1.5"/>
-  <circle cx="100" cy="38" r="1.5" fill="#78350f"/>
+  <!-- Съемный пупочек по центру -->
+  <ellipse cx="100" cy="52" rx="13" ry="9" fill="#451a03"/>
+  <ellipse cx="100" cy="52" rx="10" ry="7" fill="#78350f"/>
+  <ellipse cx="100" cy="46" rx="8" ry="6" fill="#f59e0b" stroke="#78350f" stroke-width="1.5"/>
+  <circle cx="100" cy="40" r="4" fill="#fef08a" stroke="#b45309" stroke-width="1.5"/>
 
-  <!-- Клубящийся ароматный пар от горячего мясного бульона -->
+  <!-- Клубящийся ароматный пар -->
   <path d="M88 32 Q82 18 88 6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85"/>
   <path d="M112 32 Q118 18 112 6" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity="0.85"/>
 </svg>`
