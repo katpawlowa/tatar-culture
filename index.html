@@ -379,7 +379,7 @@
     <button class="nav-btn active" onclick="showTab('sights')">🏛 1. Достопримечательности</button>
     <button class="nav-btn" onclick="showTab('costume')">👘 2. Национальный костюм</button>
     <button class="nav-btn" onclick="showTab('cuisine')">🍲 3. Татарская кухня</button>
-    <button class="nav-btn" onclick="showTab('qr')">📱 4. QR-код стенда</button>
+    <button class="nav-btn" onclick="showTab('qr')">📱 4. QR-код</button>
   </nav>
 
   <main>
@@ -708,13 +708,12 @@
       <div class="dishes-shelf" id="dishes-shelf-box"></div>
     </section>
 
-        <!-- 4. QR-КОД СТЕНДА -->
+            <!-- 4. QR-КОД -->
     <section id="tab-qr" class="tab-content">
-      <h2 class="section-title">QR-код стенда</h2>
-      <p class="section-subtitle">Отсканируйте камерой смартфона для перехода на интерактивный портал</p>
+      <h2 class="section-title">QR-код</h2>
+      <p class="section-subtitle">Отсканируйте камерой смартфона для перехода на сайт</p>
       
       <div style="max-width:440px; margin: 0 auto; background:#fff; border:2px solid var(--gold); border-radius:16px; padding:2rem 1.4rem; text-align:center; box-shadow:var(--shadow);">
-        <!-- Автономный статический векторный QR-код (гарантированно считывается камерой любого телефона) -->
         <div style="display:inline-block; padding:12px; background:#ffffff; border-radius:12px; border:1px solid #cbd5e1; box-shadow:0 4px 14px rgba(0,0,0,0.06);">
           <svg id="stand-qr-svg" width="220" height="220" viewBox="0 0 37 37" shape-rendering="crispEdges" style="display:block; margin:0 auto; border-radius:8px;">
   <rect width="37" height="37" fill="#ffffff"/>
@@ -730,12 +729,9 @@
 
         <div style="margin-top:1.2rem;">
           <button class="cook-btn" style="padding:0.7rem 1.6rem; font-size:0.95rem;" onclick="downloadStaticQr()">
-            Скачать QR-код для плаката 📥
+            Скачать QR-код 📥
           </button>
         </div>
-        <p style="font-size:0.82rem; color:var(--text-muted); margin-top:0.9rem;">
-          Векторный код зашит прямо в страницу: мгновенно сканируется даже без подключения к интернету
-        </p>
       </div>
     </section>
   </main>
@@ -1811,7 +1807,7 @@
         ctx.fillRect(0, 0, size, size);
         ctx.drawImage(img, 0, 0, size, size);
         const link = document.createElement('a');
-        link.download = 'qr_tatar_culture_stand.png';
+        link.download = 'qr_tatar_culture.png';
         link.href = canvas.toDataURL('image/png');
         link.click();
       };
